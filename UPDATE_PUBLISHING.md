@@ -8,11 +8,11 @@ Install 7.3 A once by the existing APK method to obtain the updater. 7.3 A APK w
 
 ## Publish an Android update
 
-1. Increase versionCode in app/build.gradle.kts for each update. 3.15 A uses 15. The next update must use 16 or higher. Also set versionName and the visible revision label.
+1. Increase versionCode in app/build.gradle.kts for each update. 0.78 A uses 16. The next update must use 17 or higher. Also set versionName and the visible revision label.
 2. Build and test the APK using the original signing key. Do not generate a replacement key.
-3. Name the APK exactly `StruKit-3.15-A-vc15.apk` for this version. A future example is `StruKit-3.16-A-vc16.apk`. The `vc` number must equal the APK versionCode.
+3. Name the APK exactly `StruKit-0.78-A-vc16.apk` for this version. The `vc` number must equal the APK versionCode.
 4. Commit and push the source to the existing repository.
-5. On GitHub, choose Releases, then Draft a new release. Create tag `v3.15-A` targeting main. Use title `StruKit Revision 3.15 A` and describe the changes.
+5. On GitHub, choose Releases, then Draft a new release. Create tag `v0.78-A` targeting main. Use title `StruKit Revision 0.78 A` and describe the changes.
 6. Attach the APK to the release's binary-file area. Do not add it as a normal source file. Wait for the upload to finish.
 7. For an installable stable update, leave Pre-release unchecked, select Set as latest release, then publish. Draft/pre-release versions are ignored. Do not mark a Windows-only release as latest in this Android update feed.
 8. On a phone running an older updater-enabled version, choose Check for updates, Download update, then Install update. Allow installations from StruKit in Android Settings on the first attempt, then confirm the installation. App data is retained by an ordinary signed update.
@@ -27,3 +27,5 @@ Install 7.3 A once by the existing APK method to obtain the updater. 7.3 A APK w
 - HTTP 404 from the latest-release endpoint means there is no accessible stable release, not that the app is current.
 
 Sources: [GitHub release management](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository), [Android installation permission](https://developer.android.com/reference/android/content/pm/PackageManager#canRequestPackageInstalls()), [FileProvider](https://developer.android.com/reference/androidx/core/content/FileProvider).
+
+The 0.78 display label corrects earlier numbering. Explicitly set this release as latest; Android uses versionCode 16 to recognise it as newer than vc15.

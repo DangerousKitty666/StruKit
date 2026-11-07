@@ -70,14 +70,14 @@ private fun topicTint(id:String):Color=when(id){
                 if(query.isEmpty()) Text("Search standards & paragraphs", color = Color(0xFF9EA6B2), fontSize = 14.sp)
                 inner()
             } })
-        Spacer(Modifier.height(7.dp))
+        Spacer(Modifier.height(2.dp))
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             Text("Standards", color = Color(0xFFD9DDE3), fontSize = 27.sp, modifier = Modifier.weight(1f))
             ToolDropdown(expanded,{expanded=it}) {
                 referenceTopics.forEachIndexed { i, topic -> DropdownMenuItem(modifier=Modifier.background(topicTint(topic.second)),text = { Text(topic.first, color = Color(0xFF9EC5E8), fontSize = 13.sp) }, onClick = { selected = i; expanded = false }) }
             }
         }
-        Text(referenceTopics[selected].first, color = Color(0xFF9EC5E8), fontSize = 13.sp)
+        if(referenceTopics[selected].second !in listOf("access","dw144","htm0301")) Text(referenceTopics[selected].first, color = Color(0xFF9EC5E8), fontSize = 13.sp)
         if(query.isNotBlank()) {
             Text("${matches.size} matching topics · open one to see matching sections", fontSize = 11.sp, color = Color(0xFF9EA6B2))
             Column(Modifier.fillMaxWidth().heightIn(max = 130.dp).fadedVerticalScroll(rememberScrollState())) {
@@ -86,7 +86,7 @@ private fun topicTint(id:String):Color=when(id){
         }
         key(selected) {
             when(val file=referenceTopics[selected].second) {
-                "access","dw144","htm0301"->ContinuousPdf("standards/$file.pdf",Modifier.weight(1f))
+                "access","dw144","htm0301"->ContinuousPdf("standards/$file.pdf",Modifier.weight(1f),referenceTopics[selected].first)
                 "colour"->ColourLibrary(Modifier.weight(1f))
                 "guarding"->Column(Modifier.weight(1f)) { Text("Original ISO 14120 PDF not supplied. Existing guide retained below.",color=updateBlue,fontSize=12.sp);ReferencePage("guarding.html",Modifier.weight(1f),query) }
                 else->ReferencePage("$file.html",Modifier.weight(1f).fillMaxWidth(),query)

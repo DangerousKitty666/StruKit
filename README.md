@@ -1,5 +1,7 @@
-StruKit Revision 3.15 A — Android
+StruKit Revision 0.78 A — Android
 
-See REVISION_3.15_A_NOTES.md for navigation, measurement, component names and stylus support. APK: StruKit-3.15-A-vc15.apk. Android versionCode 15 updates 7.31 A. Same signing certificate as previous versions.
+APK: StruKit-0.78-A-vc16.apk. Android versionCode 16 updates the earlier vc15 build using the original signing certificate.
+See REVISION_0.78_A_NOTES.md for changes, checks and measurement limitations.
 
-Browser feature tests passed. Phone/S Pen hardware validation remains pending. No GitHub release has been published by this build task.
+Revision labels intentionally remain below 1 during development. Flag unexpected future numbering before editing. Internal Android versionCode must keep increasing.
+Phone/S Pen hardware validation remains pending. GitHub publication is manual; see UPDATE_PUBLISHING.md.

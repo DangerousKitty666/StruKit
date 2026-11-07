@@ -495,8 +495,10 @@ private fun signUm(v: Int) = if (v > 0) "+$v" else "$v"
 
 @Composable private fun TechnicalSketch(kind: String, modifier: Modifier = Modifier) {
     Canvas(modifier) {
-        val sx = size.width / 320f
-        val sy = size.height / 190f
+        val purlin = kind.startsWith("PURLIN_")
+        val fit = min(size.width / 320f, size.height / 200f)
+        val sx = if(purlin) fit else size.width / 320f
+        val sy = if(purlin) fit else size.height / 190f
         fun p(x: Float, y: Float) = Offset(x*sx, y*sy)
         fun line(x1: Float,y1: Float,x2: Float,y2: Float, c: Color = text4, sw: Float = 1.6f) {
             drawLine(c,p(x1,y1),p(x2,y2),strokeWidth=sw*min(sx,sy))
@@ -684,19 +686,22 @@ private fun signUm(v: Int) = if (v > 0) "+$v" else "$v"
                     line(201f,91f,225f,91f,blue4);line(201f,87f,201f,95f,blue4);line(209f,87f,209f,95f,blue4);label("t",235f,95f)
                 } else {
                     val z=kind == "PURLIN_Z"
-                    if(z) poly(80f to 70f,80f to 50f,160f to 50f,160f to 130f,235f to 130f,235f to 110f)
-                    else poly(235f to 70f,235f to 50f,160f to 50f,160f to 130f,235f to 130f,235f to 110f)
-                    val start=if(z) 80f else 160f
-                    val finish=if(z) 160f else 235f
-                    dim(start,25f,finish,25f,"b")
-                    line(start,46f,start,20f,line4);line(finish,46f,finish,20f,line4)
-                    dim(160f,158f,235f,158f,"b₁")
-                    line(160f,134f,160f,163f,line4);line(235f,134f,235f,163f,line4)
-                    dim(48f,50f,48f,130f,"h")
-                    line(50f,50f,start-5,50f,line4);line(50f,130f,155f,130f,line4)
-                    dim(265f,110f,265f,130f,"a₁")
-                    line(239f,110f,270f,110f,line4);line(239f,130f,270f,130f,line4)
-                    line(150f,90f,185f,90f,blue4);line(156f,86f,156f,94f,blue4);line(164f,86f,164f,94f,blue4);label("t",195f,94f)
+                    val web=190f;val tip=260f;val top=40f;val bottom=160f
+                    val start=if(z) 125f else web
+                    val finish=if(z) web else tip
+                    if(z) poly(start to 62f,start to top,web to top,web to bottom,tip to bottom,tip to 138f)
+                    else poly(tip to 62f,tip to top,web to top,web to bottom,tip to bottom,tip to 138f)
+                    dim(start,20f,finish,20f,"b")
+                    line(start,36f,start,16f,line4);line(finish,36f,finish,16f,line4)
+                    dim(web,183f,tip,183f,"b₁")
+                    line(web,164f,web,188f,line4);line(tip,164f,tip,188f,line4)
+                    val hx=if(z) 104f else 163f
+                    dim(hx,top,hx,bottom,"h")
+                    line(hx+3,top,start-5,top,line4);line(hx+3,bottom,web-5,bottom,line4)
+                    dim(286f,138f,286f,bottom,"a₁")
+                    line(tip+4,138f,294f,138f,line4);line(tip+4,bottom,294f,bottom,line4)
+                    line(web-7,112f,web+26,112f,blue4)
+                    line(web-3,108f,web-3,116f,blue4);line(web+3,108f,web+3,116f,blue4);label("t",web+38,116f)
                 }
             }        }
     }
@@ -853,8 +858,20 @@ internal val purlinRows = listOf(
                 Text("$family / SECTION",color=text4,fontSize=12.sp,fontWeight=FontWeight.SemiBold)
                 Spacer(Modifier.weight(1f));Text("NTS",color=muted4,fontSize=10.sp)
             }
-            ToggleChips(listOf("C","Z","HAT"),family){family=it}
-            TechnicalSketch("PURLIN_$family",Modifier.fillMaxWidth().weight(1f))
+            if(family=="HAT") {
+                ToggleChips(listOf("C","Z","HAT"),family){family=it}
+                TechnicalSketch("PURLIN_$family",Modifier.fillMaxWidth().weight(1f))
+            } else Box(Modifier.fillMaxWidth().weight(1f)) {
+                TechnicalSketch("PURLIN_$family",Modifier.fillMaxSize())
+                Row(Modifier.align(Alignment.TopStart).fillMaxWidth(.39f).padding(top=7.dp),horizontalArrangement=Arrangement.spacedBy(5.dp)) {
+                    listOf("C","Z","HAT").forEach { option ->
+                        Box(Modifier.weight(1f).height(30.dp).background(if(family==option)Color(0xFF253442) else plate4,RoundedCornerShape(9.dp))
+                            .border(1.dp,if(family==option)blue4 else line4,RoundedCornerShape(9.dp)).clickable{family=option},contentAlignment=Alignment.Center) {
+                            Text(option,color=if(family==option)blue4 else text4,fontSize=11.sp)
+                        }
+                    }
+                }
+            }
             Text("Section dimensions · source: metalmaster.lt",color=muted4,fontSize=10.sp)
         }
         Spacer(Modifier.height(10.dp))

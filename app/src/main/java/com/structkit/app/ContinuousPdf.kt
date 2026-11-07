@@ -1,4 +1,10 @@
 package com.structkit.app
+import androidx.compose.foundation.border
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.text.TextStyle
 import android.graphics.Bitmap
 import android.graphics.pdf.PdfRenderer
 import android.os.ParcelFileDescriptor
@@ -25,7 +31,7 @@ import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import java.io.File
 
-@Composable internal fun ContinuousPdf(asset:String,modifier:Modifier=Modifier) {
+@Composable internal fun ContinuousPdf(asset:String,modifier:Modifier=Modifier,title:String="") {
     val context=LocalContext.current
     var query by remember(asset){mutableStateOf("")};var hit by remember(asset){mutableIntStateOf(0)}
     val scope=rememberCoroutineScope();val scroll=rememberLazyListState()
@@ -44,23 +50,26 @@ import java.io.File
     }
     val matches=remember(query,pages){if(query.isBlank())emptyList() else pages.indices.filter{pages[it].contains(query,true)}}
     Column(modifier.fillMaxSize()) {
+        Row(Modifier.fillMaxWidth().padding(bottom=3.dp),verticalAlignment=Alignment.CenterVertically) {
+            Text(title,color=updateBlue,fontSize=12.sp,modifier=Modifier.weight(1f),maxLines=2)
+            Text(if(pages.isEmpty()) "" else "${scroll.firstVisibleItemIndex+1} / ${pages.size}",color=updateMuted,fontSize=11.sp,modifier=Modifier.padding(start=6.dp))
+        }
         error?.let{Text(it,color=updateInk)}
         if(pdf==null&&error==null)CircularProgressIndicator()
         pdf?.let{file->LazyColumn(state=scroll,modifier=Modifier.weight(1f).fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(10.dp)) {
             items(pages.indices.toList(),key={it}) { index ->
                 PdfScrollPage(file,index){zoom=it}
-                Text("${index+1} / ${pages.size}",color=updateMuted,fontSize=10.sp)
             }
         }}
-        Row(Modifier.fillMaxWidth(),verticalAlignment=androidx.compose.ui.Alignment.CenterVertically) {
-            OutlinedTextField(query,{query=it;hit=0},singleLine=true,label={Text("Search")},modifier=Modifier.weight(1f))
+        Row(Modifier.fillMaxWidth().padding(top=4.dp),verticalAlignment=Alignment.CenterVertically) {
+            CompactPdfField(query,{query=it;hit=0},"search in off",Modifier.weight(1f))
             Spacer(Modifier.width(6.dp))
-            OutlinedTextField(jump,{jump=it;pageError=null},singleLine=true,label={Text("Page / ${pages.size}")},modifier=Modifier.weight(.7f),keyboardOptions=androidx.compose.foundation.text.KeyboardOptions(keyboardType=androidx.compose.ui.text.input.KeyboardType.Number))
-            TextButton(onClick={val n=jump.toIntOrNull();if(n!=null&&n in 1..pages.size){scope.launch{scroll.scrollToItem(n-1)};pageError=null}else pageError="Enter page 1–${pages.size}"},enabled=pages.isNotEmpty()){Text("Go")}
+            CompactPdfField(jump,{jump=it;pageError=null},"Page",Modifier.weight(.65f),true)
+            TextButton(modifier=Modifier.height(36.dp),contentPadding=PaddingValues(horizontal=10.dp,vertical=0.dp),onClick={val n=jump.toIntOrNull();if(n!=null&&n in 1..pages.size){scope.launch{scroll.scrollToItem(n-1)};pageError=null}else pageError="Enter page 1–${pages.size}"},enabled=pages.isNotEmpty()){Text("Go")}
         }
-        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween) {
-            Text(pageError?:if(query.isBlank())"PDF page ${scroll.firstVisibleItemIndex+1} / ${pages.size} · tap to zoom" else "${matches.size} matching pages",color=updateMuted,fontSize=11.sp)
-            if(matches.isNotEmpty())TextButton(onClick={scope.launch{scroll.scrollToItem(matches[hit % matches.size]);hit++}}){Text("Next match")}
+        if(pageError!=null||query.isNotBlank()) Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.SpaceBetween) {
+            Text(pageError?:"${matches.size} matching pages",color=updateMuted,fontSize=11.sp)
+            if(matches.isNotEmpty())TextButton(modifier=Modifier.height(32.dp),contentPadding=PaddingValues(horizontal=8.dp,vertical=0.dp),onClick={scope.launch{scroll.scrollToItem(matches[hit % matches.size]);hit++}}){Text("Next match")}
         }
     }
     zoom?.let{file->Dialog(onDismissRequest={zoom=null},properties=DialogProperties(usePlatformDefaultWidth=false)) {
@@ -91,4 +100,11 @@ import java.io.File
     val b=bitmap
     if(b!=null)Image(b.asImageBitmap(),"Original PDF page ${index+1}",Modifier.fillMaxWidth().aspectRatio(b.width.toFloat()/b.height).clickable{rendered?.let(zoom)})
     else Box(Modifier.fillMaxWidth().height(420.dp)){Text(error?:"Loading page ${index+1}…",color=updateMuted)}
+}
+
+@Composable private fun CompactPdfField(value:String,onChange:(String)->Unit,hint:String,modifier:Modifier,numeric:Boolean=false) {
+    BasicTextField(value,onChange,singleLine=true,textStyle=TextStyle(color=updateInk,fontSize=13.sp),cursorBrush=SolidColor(updateBlue),
+        keyboardOptions=androidx.compose.foundation.text.KeyboardOptions(keyboardType=if(numeric)androidx.compose.ui.text.input.KeyboardType.Number else androidx.compose.ui.text.input.KeyboardType.Text),
+        modifier=modifier.height(36.dp).border(1.dp,updateMuted,RoundedCornerShape(5.dp)).padding(horizontal=10.dp),
+        decorationBox={inner->Box(Modifier.fillMaxSize(),contentAlignment=Alignment.CenterStart){if(value.isEmpty())Text(hint,color=updateMuted,fontSize=13.sp);inner()}})
 }

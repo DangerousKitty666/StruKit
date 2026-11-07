@@ -133,7 +133,7 @@ class MainActivity : ComponentActivity() {
                 }
                 Column {
                     Text("StruKit", color = ink, fontWeight = FontWeight.Bold, fontSize = 20.sp, letterSpacing = 1.6.sp)
-                    Text("Revision 3.15 A", color = secondaryInk, fontSize = 11.sp)
+                    Text("Revision 0.78 A · development", color = secondaryInk, fontSize = 11.sp)
                 }
                 Spacer(Modifier.weight(1f))
                 Image(painter = painterResource(R.drawable.strukit_logo), contentDescription = "StruKit logo",
@@ -172,27 +172,27 @@ class MainActivity : ComponentActivity() {
         Text("Engineering tools", color = ink, fontSize = 30.sp, fontWeight = FontWeight.SemiBold)
         Text("Offline tools for everyday structural work.", color = secondaryInk, fontSize = 13.sp)
         Spacer(Modifier.height(26.dp))
-        ToolCard("01", "Steel profiles & other", "Sections & purlins · properties · comparison") { onOpen("Steel profiles & other") }
+        ToolCard("01", "2D viewer", "DWG · DXF · pan, zoom & layers") { onOpen("2D viewer") }
         Spacer(Modifier.height(12.dp))
-        ToolCard("02", "Unit converter", "Right-hand categories · instant engineering conversion") { onOpen("Unit converter") }
+        ToolCard("02", "3D viewer", "STEP · STL · OBJ · orbit & parts") { onOpen("3D viewer") }
         Spacer(Modifier.height(12.dp))
-        ToolCard("03", "Tolerances", "ISO 286 fits · shaft keys / DIN 6885") { onOpen("Tolerances") }
+        ToolCard("03", "Steel profiles & other", "Sections & purlins · properties · comparison") { onOpen("Steel profiles & other") }
         Spacer(Modifier.height(12.dp))
-        ToolCard("04", "Steel connections", "I / H joints · diagrams · detail checks") { onOpen("Steel connections") }
+        ToolCard("04", "Unit converter", "Right-hand categories · instant engineering conversion") { onOpen("Unit converter") }
         Spacer(Modifier.height(12.dp))
-        ToolCard("05", "Fixing library", "Bolts · nuts · washers · self-drilling screws") { onOpen("Fixing library") }
+        ToolCard("05", "Tolerances", "ISO 286 fits · shaft keys / DIN 6885") { onOpen("Tolerances") }
         Spacer(Modifier.height(12.dp))
-        ToolCard("06", "Building drafter", "Frame layout · four views · main-member weight") { onOpen("Building drafter") }
+        ToolCard("06", "Fixing library", "Bolts · nuts · washers · self-drilling screws") { onOpen("Fixing library") }
         Spacer(Modifier.height(12.dp))
-        ToolCard("07", "Forces calculator", "Rain collection · retained water · roof snow loads") { onOpen("Forces calculator") }
+        ToolCard("07", "Building drafter", "Frame layout · four views · main-member weight") { onOpen("Building drafter") }
         Spacer(Modifier.height(12.dp))
-        ToolCard("08", "Standards", "Standards overview · access · guarding · formulas") { onOpen("Standards") }
+        ToolCard("08", "Forces calculator", "Rain collection · retained water · roof snow loads") { onOpen("Forces calculator") }
         Spacer(Modifier.height(12.dp))
-        ToolCard("09", "Material library", "100 materials · grade comparisons · original diagrams") { onOpen("Material library") }
+        ToolCard("09", "Standards", "Standards overview · access · guarding · formulas") { onOpen("Standards") }
         Spacer(Modifier.height(12.dp))
-        ToolCard("10", "2D viewer", "DWG · DXF · pan, zoom & layers") { onOpen("2D viewer") }
+        ToolCard("10", "Material library", "100 materials · grade comparisons · original diagrams") { onOpen("Material library") }
         Spacer(Modifier.height(12.dp))
-        ToolCard("11", "3D viewer", "STEP · STL · OBJ · orbit & parts") { onOpen("3D viewer") }
+        ToolCard("11", "Steel connections", "I / H joints · diagrams · detail checks") { onOpen("Steel connections") }
         Spacer(Modifier.height(22.dp))
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text("About", color = subtleInk, fontSize = 10.sp, letterSpacing = 1.sp,
