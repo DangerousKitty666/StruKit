@@ -107,13 +107,23 @@ class MainActivity : ComponentActivity() {
 
 @Composable private fun StructKit(profiles: List<Profile>, pins: MutableList<SectionPin>, materialPins: MutableList<SectionPin>) {
     var screen by rememberSaveable { mutableStateOf("Home") }
+    val landscapeViewer = (screen == "2D viewer" || screen == "3D viewer") &&
+        androidx.compose.ui.platform.LocalConfiguration.current.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
+    val activity = androidx.compose.ui.platform.LocalContext.current as android.app.Activity
+    DisposableEffect(landscapeViewer) {
+        val bars = androidx.core.view.WindowCompat.getInsetsController(activity.window, activity.window.decorView)
+        bars.systemBarsBehavior = androidx.core.view.WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        if(landscapeViewer) bars.hide(androidx.core.view.WindowInsetsCompat.Type.systemBars())
+        else bars.show(androidx.core.view.WindowInsetsCompat.Type.systemBars())
+        onDispose { bars.show(androidx.core.view.WindowInsetsCompat.Type.systemBars()) }
+    }
     BackHandler(enabled = screen != "Home") { screen = "Home" }
     MaterialTheme(colorScheme = darkColorScheme(
         background = background, surface = panel, primary = accent, onPrimary = background,
         onBackground = ink, onSurface = ink, onSurfaceVariant = secondaryInk
     )) {
-        Column(Modifier.fillMaxSize().background(background).statusBarsPadding().navigationBarsPadding().imePadding()) {
-            Row(
+        Column(Modifier.fillMaxSize().background(background).then(if(landscapeViewer) Modifier.displayCutoutPadding() else Modifier.statusBarsPadding().navigationBarsPadding()).imePadding()) {
+            if(!landscapeViewer) Row(
                 Modifier.fillMaxWidth().height(82.dp).padding(start = 15.dp, end = 15.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -123,12 +133,13 @@ class MainActivity : ComponentActivity() {
                 }
                 Column {
                     Text("StruKit", color = ink, fontWeight = FontWeight.Bold, fontSize = 20.sp, letterSpacing = 1.6.sp)
-                    Text("Revision 7.3 A · preview", color = secondaryInk, fontSize = 11.sp)
+                    Text("Revision 7.31 A", color = secondaryInk, fontSize = 11.sp)
                 }
                 Spacer(Modifier.weight(1f))
                 Image(painter = painterResource(R.drawable.strukit_logo), contentDescription = "StruKit logo",
                     modifier = Modifier.padding(end = 8.dp).size(48.dp))
             }
+            Box(Modifier.fillMaxWidth().weight(1f)) {
             when (screen) {
                 "Home" -> Home { screen = it }
                 "About" -> ReferencePage("about.html", Modifier.fillMaxSize())
@@ -146,6 +157,7 @@ class MainActivity : ComponentActivity() {
                 "Material library" -> MetalsPilot(materialPins)
                 "2D viewer" -> CadViewer(false)
                 "3D viewer" -> CadViewer(true)
+            }
             }
         }
     }

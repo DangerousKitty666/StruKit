@@ -23,6 +23,7 @@ import java.io.ByteArrayInputStream
     key(is3d) {
         AndroidView(modifier=Modifier.fillMaxSize(),factory={context->
             WebView(context).apply {
+                layoutParams = android.view.ViewGroup.LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.MATCH_PARENT)
                 setBackgroundColor(0xFF08090B.toInt())
                 settings.javaScriptEnabled=true
                 settings.domStorageEnabled=false

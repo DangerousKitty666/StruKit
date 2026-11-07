@@ -20,7 +20,7 @@ if(new URLSearchParams(location.search).get('mode')==='3d'){import('./three.js')
   await Promise.race([viewer.Load({url,fonts:[new URL('vendor/NotoSans-Regular.ttf',location.href).href],workerFactory:()=>new Worker('dxf-worker.js'),progressCbk:phase=>busy(phase==='prepare'?'Preparing drawing geometry…':'Reading drawing…')}),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('Drawing preparation exceeded 120 seconds.')),120000)})]);clearTimeout(timer);
   if(id!==sequence)return;
   if(!viewer.GetBounds())throw Error('No visible model-space geometry.');
-  rows=[...viewer.GetLayers()];layers();ready(file);state.layers=rows.length;state.bounds=viewer.GetBounds();state.warnings=messages;status(`${rows.length} layers · model space only${messages.length?' · '+messages.length+' reader warnings':''}`);$('selection').textContent=messages.length?messages.slice(0,2).join(' · '):'Preview: fonts, dimensions and line styles may differ from CAD.';
+  rows=[...viewer.GetLayers()];layers();ready(file);state.layers=rows.length;state.bounds=viewer.GetBounds();state.warnings=messages;status(`${rows.length} layers · model space only${messages.length?' · '+messages.length+' reader warnings':''}`);$('selection').textContent=messages.length?messages.slice(0,2).join(' · '):'';
  }catch(e){if(id===sequence){clear();reset();fail(e);}}finally{if(url)URL.revokeObjectURL(url);}}
  $('file').onchange=e=>{const f=e.target.files[0];e.target.value='';if(f)open(f)};window.openViewerFile=open;window.addEventListener('pagehide',clear);
 }

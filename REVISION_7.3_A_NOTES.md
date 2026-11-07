@@ -1,6 +1,6 @@
 # Revision 7.3 A — CAD viewer work in progress
 
-No APK has been assembled or released for this revision. Previous releases remain unchanged.
+APK assembled 7 November 2026 as StruKit-7.3-A-vc13.apk. Local delivery only; no GitHub release published. Previous releases remain unchanged.
 
 ## Added tools
 

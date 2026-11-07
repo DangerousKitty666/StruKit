@@ -10,4 +10,4 @@
 - Keyboard guidance: https://developer.android.com/develop/ui/compose/system/insets-ui
 - About credit reads “by Dangerous Kitty”. Say thanks opens https://ko-fi.com/strukit externally; the retained thanks page also links there instead of showing the PayPal QR.
 
-Validation: Kotlin compilation only. No APK assembled or released. Phone keyboard behaviour and final visual spacing still require on-device review. GitHub copy untouched.
+Validation: Kotlin compilation passed. APK assembled 7 November 2026; not published to GitHub. Phone keyboard behaviour and final visual spacing still require on-device review. GitHub copy untouched.

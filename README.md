@@ -1,7 +1,5 @@
-StruKit Revision 7.3 A — Android work in progress
+StruKit Revision 7.31 A — Android
 
-See REVISION_7.3_A_NOTES.md for the CAD viewers, sample validation and limitations. No APK release yet.
+See REVISION_7.31_A_NOTES.md for enlarged viewers, landscape full-screen controls and rotation retention. APK: StruKit-7.31-A-vc14.apk. Built with the same signing certificate as 7.3 A. Phone verification pending.
 
-UI_FOLLOWUP_7.3_A.md covers the profile/converter layout changes. UPDATE_PUBLISHING.md explains the new Check for updates button, release naming and signing requirements. The updater reads public stable releases from DangerousKitty666/StruKit; source uploads alone do not deliver phone updates.
-
-Build with Android SDK 35, Java 17+, Gradle 8.9. Existing personal-install signing configuration is retained.
+UPDATE_PUBLISHING.md describes GitHub update delivery. No GitHub release has been published by this build task.

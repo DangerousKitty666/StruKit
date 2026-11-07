@@ -4,15 +4,15 @@ The home-page Check for updates button uses the latest stable release of the pub
 
 ## First installation
 
-Install 7.3 A once by the existing APK method to obtain the updater. No 7.3 APK has been built or published at this stage. Keep using the original signing key: the installed app and every update must have the same application ID and signing certificate. Keep the keystore outside GitHub and backed up privately. The existing personal-install signing configuration points to C:/Users/gidro/.android/debug.keystore.
+Install 7.3 A once by the existing APK method to obtain the updater. 7.3 A APK was built locally on 7 November 2026; no GitHub release has been published yet. Keep using the original signing key: the installed app and every update must have the same application ID and signing certificate. Keep the keystore outside GitHub and backed up privately. The existing personal-install signing configuration points to C:/Users/gidro/.android/debug.keystore.
 
 ## Publish an Android update
 
-1. Increase versionCode in app/build.gradle.kts for each update. 7.3 A uses 13. The next update must use 14 or higher. Also set versionName and the visible revision label.
+1. Increase versionCode in app/build.gradle.kts for each update. 7.31 A uses 14. The next update must use 15 or higher. Also set versionName and the visible revision label.
 2. Build and test the APK using the original signing key. Do not generate a replacement key.
-3. Name the APK exactly `StruKit-7.3-A-vc13.apk` for this version. A future example is `StruKit-7.31-A-vc14.apk`. The `vc` number must equal the APK versionCode.
+3. Name the APK exactly `StruKit-7.31-A-vc14.apk` for this version. A future example is `StruKit-7.32-A-vc15.apk`. The `vc` number must equal the APK versionCode.
 4. Commit and push the source to the existing repository.
-5. On GitHub, choose Releases, then Draft a new release. Create tag `v7.3-A` targeting main. Use title `StruKit Revision 7.3 A` and describe the changes.
+5. On GitHub, choose Releases, then Draft a new release. Create tag `v7.31-A` targeting main. Use title `StruKit Revision 7.31 A` and describe the changes.
 6. Attach the APK to the release's binary-file area. Do not add it as a normal source file. Wait for the upload to finish.
 7. For an installable stable update, leave Pre-release unchecked, select Set as latest release, then publish. Draft/pre-release versions are ignored. Do not mark a Windows-only release as latest in this Android update feed.
 8. On a phone running an older updater-enabled version, choose Check for updates, Download update, then Install update. Allow installations from StruKit in Android Settings on the first attempt, then confirm the installation. App data is retained by an ordinary signed update.
