@@ -124,7 +124,7 @@ class MainActivity : ComponentActivity() {
     )) {
         Column(Modifier.fillMaxSize().background(background).then(if(landscapeViewer) Modifier.displayCutoutPadding() else Modifier.statusBarsPadding().navigationBarsPadding()).imePadding()) {
             if(!landscapeViewer) Row(
-                Modifier.fillMaxWidth().height(82.dp).padding(start = 15.dp, end = 15.dp),
+                Modifier.fillMaxWidth().height(if(screen == "2D viewer" || screen == "3D viewer") 66.dp else 82.dp).padding(start = 15.dp, end = 15.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (screen != "Home") {
@@ -133,7 +133,7 @@ class MainActivity : ComponentActivity() {
                 }
                 Column {
                     Text("StruKit", color = ink, fontWeight = FontWeight.Bold, fontSize = 20.sp, letterSpacing = 1.6.sp)
-                    Text("Revision 7.31 A", color = secondaryInk, fontSize = 11.sp)
+                    Text("Revision 3.15 A", color = secondaryInk, fontSize = 11.sp)
                 }
                 Spacer(Modifier.weight(1f))
                 Image(painter = painterResource(R.drawable.strukit_logo), contentDescription = "StruKit logo",
