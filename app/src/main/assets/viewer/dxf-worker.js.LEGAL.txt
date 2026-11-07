@@ -1,0 +1,12 @@
+Bundled license information:
+
+opentype.js/dist/opentype.js:
+  /*! https://mths.be/codepointat v0.2.0 by @mathias */
+
+three/build/three.core.js:
+three/build/three.module.js:
+  /**
+   * @license
+   * Copyright 2010-2026 Three.js Authors
+   * SPDX-License-Identifier: MIT
+   */

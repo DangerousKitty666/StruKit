@@ -1,0 +1,100 @@
+{
+  "result": [
+    {
+      "name": "plate.obj",
+      "state": {
+        "ready": true,
+        "loading": false,
+        "error": null,
+        "parts": 2,
+        "triangles": 3,
+        "bounds": [
+          100,
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "name": "ascii.stl",
+      "state": {
+        "ready": true,
+        "loading": false,
+        "error": null,
+        "parts": 1,
+        "triangles": 1,
+        "bounds": [
+          100,
+          50,
+          0
+        ]
+      }
+    },
+    {
+      "name": "binary.stl",
+      "state": {
+        "ready": true,
+        "loading": false,
+        "error": null,
+        "parts": 1,
+        "triangles": 1,
+        "bounds": [
+          100,
+          50,
+          0
+        ]
+      }
+    },
+    {
+      "name": "broken.obj",
+      "state": {
+        "ready": false,
+        "loading": false,
+        "error": "No supported mesh geometry found."
+      }
+    },
+    {
+      "name": "broken.step",
+      "state": {
+        "ready": false,
+        "loading": false,
+        "error": "No supported STEP geometry found."
+      }
+    },
+    {
+      "name": "empty.stl",
+      "state": {
+        "ready": false,
+        "loading": false,
+        "error": "The file is empty."
+      }
+    },
+    {
+      "name": "recover.obj",
+      "state": {
+        "ready": true,
+        "loading": false,
+        "error": null,
+        "parts": 2,
+        "triangles": 3,
+        "bounds": [
+          100,
+          50,
+          80
+        ]
+      }
+    },
+    {
+      "name": "broken.dwg",
+      "state": {
+        "ready": false,
+        "loading": false,
+        "error": "DWG decoder returned 2048. This drawing is not supported reliably."
+      }
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "cancelAndRecovery": true,
+  "visibilityAndUnits": true
+}

@@ -31,9 +31,24 @@ internal data class SectionPin(val section: String, val property: String, val va
             }
         }
     }
-    selected?.let { p -> AlertDialog(containerColor=Color(0xFF17212B),titleContentColor=updateBlue,textContentColor=updateInk,onDismissRequest={selected=null},title={Text(p.section)},text={Column(Modifier.heightIn(max=440.dp).fadedVerticalScroll(rememberScrollState())) {
-        if(details!=null)details(p) else { Text(p.property);Text(p.value) }
-    }},confirmButton={TextButton(onClick={selected=null}){Text("Close")}}) }
+    selected?.let { p ->
+        val density=androidx.compose.ui.platform.LocalDensity.current
+        val maxHeight=androidx.compose.ui.platform.LocalConfiguration.current.screenHeightDp.dp*.72f
+        androidx.compose.ui.window.Dialog(onDismissRequest={selected=null},properties=androidx.compose.ui.window.DialogProperties(usePlatformDefaultWidth=false)) {
+            Surface(color=Color(0xEB17212B),shape=RoundedCornerShape(18.dp),modifier=Modifier.fillMaxWidth(.94f).widthIn(max=440.dp)) {
+                Column(Modifier.padding(16.dp)) {
+                    Text(p.section,color=updateBlue,fontSize=20.sp)
+                    Spacer(Modifier.height(8.dp))
+                    CompositionLocalProvider(LocalPropertyPopup provides true,androidx.compose.ui.platform.LocalDensity provides androidx.compose.ui.unit.Density(density.density,density.fontScale*1.15f)) {
+                        Column(Modifier.fillMaxWidth().heightIn(max=maxHeight).fadedVerticalScroll(rememberScrollState())) {
+                            if(details!=null)details(p) else { Text(p.property,color=updateInk);Text(p.value,color=updateBlue) }
+                        }
+                    }
+                    TextButton(onClick={selected=null},modifier=Modifier.align(androidx.compose.ui.Alignment.End)){Text("Close")}
+                }
+            }
+        }
+    }
 }
 @OptIn(ExperimentalFoundationApi::class)
 @Composable internal fun PinnableValue(section: String, label: String, value: String, pin: (SectionPin) -> Unit) {

@@ -1,0 +1,19 @@
+{
+  "name": "strukit-cad-viewers",
+  "version": "7.3.0",
+  "description": "Offline CAD viewer prototypes for StruKit Android",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build.cjs"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "dependencies": {
+    "@mlightcad/libredwg-web": "0.8.6",
+    "dxf-viewer": "1.0.50",
+    "esbuild": "0.28.2",
+    "occt-import-js": "0.0.23",
+    "three": "0.187.0"
+  },
+  "private": true
+}

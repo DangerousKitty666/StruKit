@@ -1,0 +1,20 @@
+{
+  "name": "DWG",
+  "seconds": 5.166,
+  "state": {
+    "ready": true,
+    "loading": false,
+    "error": null,
+    "layers": 59,
+    "bounds": {
+      "minX": -35332,
+      "maxX": 85428.66666666673,
+      "minY": 24903.128314733643,
+      "maxY": 142230.57493279123
+    },
+    "warnings": []
+  },
+  "status": "59 layers · model space only",
+  "errors": [],
+  "warnings": []
+}

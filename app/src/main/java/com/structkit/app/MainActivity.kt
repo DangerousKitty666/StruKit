@@ -96,6 +96,8 @@ class MainActivity : ComponentActivity() {
         window.navigationBarColor = android.graphics.Color.rgb(8, 9, 11)
         @Suppress("DEPRECATION")
         window.decorView.systemUiVisibility = 0
+        androidx.core.view.WindowCompat.setDecorFitsSystemWindows(window, false)
+        window.setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         val referenceData = assets.open("profiles.csv").bufferedReader().use { it.readText() }
         val sections = loadProfiles(referenceData)
         val session = ViewModelProvider(this)[ComparisonSession::class.java]
@@ -110,7 +112,7 @@ class MainActivity : ComponentActivity() {
         background = background, surface = panel, primary = accent, onPrimary = background,
         onBackground = ink, onSurface = ink, onSurfaceVariant = secondaryInk
     )) {
-        Column(Modifier.fillMaxSize().background(background).statusBarsPadding().navigationBarsPadding()) {
+        Column(Modifier.fillMaxSize().background(background).statusBarsPadding().navigationBarsPadding().imePadding()) {
             Row(
                 Modifier.fillMaxWidth().height(82.dp).padding(start = 15.dp, end = 15.dp),
                 verticalAlignment = Alignment.CenterVertically
@@ -121,7 +123,7 @@ class MainActivity : ComponentActivity() {
                 }
                 Column {
                     Text("StruKit", color = ink, fontWeight = FontWeight.Bold, fontSize = 20.sp, letterSpacing = 1.6.sp)
-                    Text("Revision 7.27 A", color = secondaryInk, fontSize = 11.sp)
+                    Text("Revision 7.3 A · preview", color = secondaryInk, fontSize = 11.sp)
                 }
                 Spacer(Modifier.weight(1f))
                 Image(painter = painterResource(R.drawable.strukit_logo), contentDescription = "StruKit logo",
@@ -130,6 +132,7 @@ class MainActivity : ComponentActivity() {
             when (screen) {
                 "Home" -> Home { screen = it }
                 "About" -> ReferencePage("about.html", Modifier.fillMaxSize())
+                "Check for updates" -> AppUpdates()
                 "Say thanks" -> ReferencePage("thanks.html", Modifier.fillMaxSize())
                 "Steel profiles & other" -> ProfileBrowser(profiles, pins)
                 "Unit converter" -> Converter()
@@ -141,12 +144,15 @@ class MainActivity : ComponentActivity() {
                 "Building drafter" -> BuildingDrafter(profiles.filter { it.family in setOf("IPE", "HEA", "HEB") }.map { DraftMember("${it.family} ${it.designation.removePrefix(it.family).trim()}", it.mass.toDouble(), it.h.toDouble(),it.b.toDouble(),it.tw.toDouble(),it.tf.toDouble()) })
                 "Standards" -> StandardsTool()
                 "Material library" -> MetalsPilot(materialPins)
+                "2D viewer" -> CadViewer(false)
+                "3D viewer" -> CadViewer(true)
             }
         }
     }
 }
 
 @Composable private fun Home(onOpen: (String) -> Unit) {
+    val context = androidx.compose.ui.platform.LocalContext.current
     Column(Modifier.fillMaxSize().fadedVerticalScroll(rememberScrollState()).padding(top = 2.dp, bottom = 20.dp)) {
         Image(painterResource(R.drawable.home_banner), "Steel-frame building", Modifier.fillMaxWidth().aspectRatio(6000f / (2496f * 1.2f)), contentScale = androidx.compose.ui.layout.ContentScale.Crop)
         Column(Modifier.padding(horizontal = 20.dp)) {
@@ -171,12 +177,18 @@ class MainActivity : ComponentActivity() {
         ToolCard("08", "Standards", "Standards overview · access · guarding · formulas") { onOpen("Standards") }
         Spacer(Modifier.height(12.dp))
         ToolCard("09", "Material library", "100 materials · grade comparisons · original diagrams") { onOpen("Material library") }
+        Spacer(Modifier.height(12.dp))
+        ToolCard("10", "2D viewer", "DWG · DXF · pan, zoom & layers") { onOpen("2D viewer") }
+        Spacer(Modifier.height(12.dp))
+        ToolCard("11", "3D viewer", "STEP · STL · OBJ · orbit & parts") { onOpen("3D viewer") }
         Spacer(Modifier.height(22.dp))
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text("About", color = subtleInk, fontSize = 10.sp, letterSpacing = 1.sp,
                 modifier = Modifier.clickable { onOpen("About") }.padding(vertical = 12.dp))
+            Text("Check for updates", color = accent, fontSize = 10.sp,
+                modifier = Modifier.clickable { onOpen("Check for updates") }.padding(vertical = 12.dp))
             Text("Say thanks", color = accent, fontSize = 10.sp, letterSpacing = 1.sp,
-                modifier = Modifier.clickable { onOpen("Say thanks") }.padding(vertical = 12.dp))
+                modifier = Modifier.clickable { context.startActivity(android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse("https://ko-fi.com/strukit"))) }.padding(vertical = 12.dp))
         }
         Spacer(Modifier.height(14.dp))
         }
@@ -205,6 +217,8 @@ class MainActivity : ComponentActivity() {
         fun line(x:Float,y:Float,a:Float,b:Float) = drawLine(accent,Offset(x*u,y*u),Offset(a*u,b*u),1.5f*u)
         fun box(x:Float,y:Float,w:Float,h:Float) = drawRect(accent,Offset(x*u,y*u),Size(w*u,h*u),style=Stroke(1.5f*u))
         when(index) {
+            "10" -> {box(5f,7f,38f,34f);box(12f,15f,24f,18f);line(12f,11f,36f,11f);line(8f,15f,8f,33f)}
+            "11" -> {box(8f,18f,24f,24f);box(17f,7f,24f,24f);line(8f,18f,17f,7f);line(32f,18f,41f,7f);line(32f,42f,41f,31f);line(8f,42f,17f,31f)}
             "01" -> { box(6f,7f,36f,5f);box(21f,12f,6f,24f);box(6f,36f,36f,5f) }
             "02" -> { line(6f,16f,41f,16f);line(34f,9f,41f,16f);line(34f,23f,41f,16f);line(7f,32f,42f,32f);line(7f,32f,14f,25f);line(7f,32f,14f,39f) }
             "03" -> { box(5f,10f,10f,28f);box(33f,10f,10f,28f);box(18f,17f,12f,14f);line(18f,7f,30f,7f);line(18f,4f,18f,10f);line(30f,4f,30f,10f) }
@@ -237,18 +251,16 @@ class MainActivity : ComponentActivity() {
         ComparisonTray(pins, { pins.remove(it); pinFull=false }) { pin ->
             val entry=profiles.find { (if(it.designation.startsWith(it.family))it.designation else "${it.family} ${it.designation}")==pin.section }
             if(entry!=null) {
-                SectionProperties(entry,280,addPin,false)
-            } else TimberPinDetails(pin.section)
+                SectionProperties(entry,420,addPin,false)
+            } else if(pin.section.startsWith("Purlin ")) PurlinPinDetails(pin.section) else TimberPinDetails(pin.section)
         }
         if(pinFull)Text("Three materials pinned. Double-tap a tile to remove it.",color=accent,fontSize=11.sp)
         Row(Modifier.weight(1f).fillMaxWidth().padding(start=2.dp,end=4.dp),horizontalArrangement=Arrangement.spacedBy(4.dp)) {
         if (family == "Purlins") {
-            Box(Modifier.weight(1f).fillMaxHeight()) { PurlinTool() }
+            Box(Modifier.weight(1f).fillMaxHeight()) { PurlinTool(addPin) }
         } else if (family == "Timber") {
             Box(Modifier.weight(1f).fillMaxHeight()) { TimberTable(addPin) }
         } else Column(Modifier.weight(1f).fillMaxHeight()) {
-            Text("$family · ${matches.size} sizes",color=secondaryInk,fontSize=12.sp)
-            Spacer(Modifier.height(8.dp))
             Box(Modifier.fillMaxWidth().height(265.dp).background(panel, RoundedCornerShape(14.dp))) {
                 Column(Modifier.fillMaxSize().padding(start = 8.dp, end = 8.dp, top = 10.dp, bottom = 8.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -308,7 +320,7 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.padding(bottom = 10.dp, end = 2.dp)
             )
         }
-        ToolTabRail(items = families, selected = family, short = { it }, onSelect = { family = it })
+        ToolTabRail(items = families, selected = family, short = { if(it == "PLATE") "Plates" else it }, onSelect = { family = it })
         }
     }
 }
@@ -380,7 +392,7 @@ private fun fmt(value: Float?): String = if (value == null) "—" else num(value
 @Composable private fun SectionProperties(profile: Profile, width: Int, pin: (SectionPin) -> Unit, heading: Boolean = true) {
     val isPlate = profile.family == "PLATE"
     val pinName = if (profile.designation.startsWith(profile.family)) profile.designation else "${profile.family} ${profile.designation}"
-    Column(Modifier.widthIn(max=width.dp).fillMaxWidth().background(Color(0xFF17212B)).padding(start = 13.dp, top = 10.dp, bottom = 11.dp)) {
+    ProfilePropertiesPanel {
         if(heading) Text("SECTION PROPERTIES  /  ${profile.designation}", color = accent,
             fontSize = 11.sp, fontWeight = FontWeight.SemiBold, letterSpacing = .5.sp)
         Spacer(Modifier.height(7.dp))
@@ -673,10 +685,12 @@ private val converterTabs = linkedMapOf(
     }
     Row(Modifier.fillMaxSize().padding(start = 13.dp, end = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        Column(Modifier.weight(1f).fillMaxHeight().imePadding()) {
+        Column(Modifier.weight(1f).fillMaxHeight()) {
             Text("Unit converter", color = ink, fontSize = 26.sp, fontWeight = FontWeight.SemiBold)
             Text(group, color = secondaryInk, fontSize = 12.sp)
-            Spacer(Modifier.height(12.dp))
+            Spacer(Modifier.height(8.dp))
+            Box(Modifier.weight(1f).fillMaxWidth(),contentAlignment=Alignment.BottomStart) {
+            Column(Modifier.fillMaxWidth().fadedVerticalScroll(rememberScrollState())) {
             Column(Modifier.fillMaxWidth().background(panel, RoundedCornerShape(14.dp)).padding(16.dp)) {
                 Text("RESULT", color = secondaryInk, fontSize = 11.sp, letterSpacing = 1.5.sp)
                 Spacer(Modifier.height(8.dp))
@@ -690,8 +704,7 @@ private val converterTabs = linkedMapOf(
                 Text("kg/m² is mass/area; conversion to force uses standard gravity (9.80665 m/s²).",
                     color = secondaryInk, fontSize = 11.sp)
             }
-            Box(Modifier.weight(1f).fillMaxWidth(),contentAlignment=Alignment.BottomStart) {
-            Column(Modifier.fillMaxWidth().fadedVerticalScroll(rememberScrollState())) {
+            Spacer(Modifier.height(8.dp))
             Column(Modifier.fillMaxWidth().background(panel, RoundedCornerShape(14.dp)).padding(14.dp)) {
                 Text("INPUT", color = ink, fontSize = 11.sp, fontWeight = FontWeight.Bold,
                     letterSpacing = 1.2.sp)
@@ -719,8 +732,7 @@ private val converterTabs = linkedMapOf(
                 Spacer(Modifier.height(7.dp))
                 UnitPicker(units, to) { to = it }
             }
-            Spacer(Modifier.height(12.dp))
-            Spacer(Modifier.height(8.dp))
+            Spacer(Modifier.height(4.dp))
             }
             }
         }

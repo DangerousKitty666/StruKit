@@ -1,0 +1,20 @@
+{
+  "name": "DXF",
+  "seconds": 0.282,
+  "state": {
+    "ready": true,
+    "loading": false,
+    "error": null,
+    "layers": 3,
+    "bounds": {
+      "minX": -14.142135623731074,
+      "maxX": 1854.8083007443431,
+      "minY": -4.902744876744691e-13,
+      "maxY": 344.06506557884546
+    },
+    "warnings": []
+  },
+  "status": "3 layers · model space only",
+  "errors": [],
+  "warnings": []
+}

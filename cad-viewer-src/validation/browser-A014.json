@@ -1,0 +1,19 @@
+{
+  "name": "A014",
+  "seconds": 63.471,
+  "state": {
+    "ready": true,
+    "loading": false,
+    "error": null,
+    "parts": 3062,
+    "triangles": 1227692,
+    "bounds": [
+      25370,
+      11210.1376953125,
+      73040
+    ]
+  },
+  "status": "3062 parts · 1,227,692 triangles · bounds 25,370 × 11,210.1 × 73,040 mm",
+  "errors": [],
+  "warnings": []
+}

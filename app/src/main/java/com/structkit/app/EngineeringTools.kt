@@ -225,19 +225,16 @@ private fun signUm(v: Int) = if (v > 0) "+$v" else "$v"
     val beamOptions = connections.take(7) + additionalBeamConnections
     val detail = beamOptions[selected]
     var reverseView by remember { mutableStateOf(false) }
-    Column(Modifier.fillMaxSize().fadedVerticalScroll(rememberScrollState()).padding(horizontal = 15.dp)) {
+    Column(Modifier.fillMaxSize().fadedVerticalScroll(rememberScrollState()).padding(horizontal = 12.dp)) {
         var menuOpen by remember { mutableStateOf(false) }
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             Text("Steel connections", color = text4, fontSize = 24.sp, fontWeight = FontWeight.SemiBold, modifier = Modifier.weight(1f))
-            Box {
-                OutlinedButton(onClick = { menuOpen = true }, border = androidx.compose.foundation.BorderStroke(1.dp, blue4), shape = RoundedCornerShape(9.dp)) { Text("Select ▾", color = blue4) }
-                DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }, containerColor = Color.Black, modifier = Modifier.heightIn(max = 800.dp).widthIn(max = 340.dp).border(1.dp, blue4, RoundedCornerShape(9.dp))) {
+            ToolDropdown(menuOpen,{menuOpen=it}) {
                     beamOptions.forEachIndexed { idx, c ->
                         DropdownMenuItem(text = { Text(c.title, fontSize = 13.sp, color = blue4) },
                             leadingIcon = { ConnectionThumbnail(c.mode) },
                             onClick = { selected = idx; reverseView = false; menuOpen = false })
                     }
-                }
             }
         }
         Text("Beam connection concepts · illustrative details", color = muted4, fontSize = 12.sp)
@@ -833,47 +830,39 @@ internal val purlinRows = listOf(
     PurlinRow("Z","Z350/30","3.0","350","30","70","80","13.20")
 )
 
-@Composable internal fun PurlinTool() {
+@Composable internal fun PurlinPinDetails(name:String) {
+    purlinRows.find { "Purlin ${it.profile}" == name }?.let { PurlinProperties(it) {} }
+}
+@Composable private fun PurlinProperties(r:PurlinRow,pin:(SectionPin)->Unit) {
+    val name="Purlin ${r.profile}"
+    ProfilePropertiesPanel {
+        if(!LocalPropertyPopup.current) Text("SECTION PROPERTIES  /  ${r.profile}",color=updateBlue,fontSize=11.sp)
+        PinnableValue(name,"Mass / m","${r.weight} kg/m",pin)
+        SectionPrices(name,r.weight.toDoubleOrNull() ?: 0.0,false,pin)
+        Text("Supplier chart mass. Budget prices extrapolate generic steel rates; forming and galvanising are not included. Confirm the finished section price with the supplier.",color=updateMuted,fontSize=10.sp)
+        SourceLink("Section data · Metalmaster","https://metalmaster.lt")
+    }
+}
+@Composable internal fun PurlinTool(pin:(SectionPin)->Unit = {}) {
     var family by remember { mutableStateOf("C") }
-    val rows = purlinRows.filter { it.family == family }
-    val purlinScroll = rememberLazyListState()
-    LaunchedEffect(family) { purlinScroll.scrollToItem(0) }
-    Row(Modifier.fillMaxSize().padding(start = 13.dp, end = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        Column(Modifier.weight(1f).fillMaxHeight()) {
-            Text("Steel profiles · Purlins", color = text4, fontSize = 27.sp, fontWeight = FontWeight.SemiBold)
-            Text("$family section · ${rows.size} entries", color = muted4, fontSize = 12.sp)
-            Spacer(Modifier.height(10.dp))
-            InfoPanel(Modifier.fillMaxWidth()) {
-                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                    Text("$family / SECTION", color = text4, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
-                    Spacer(Modifier.weight(1f))
-                    Text("NTS", color = muted4, fontSize = 10.sp)
-                }
-                ToggleChips(listOf("C", "Z", "HAT"), family) { family = it }
-                TechnicalSketch("PURLIN_$family", Modifier.fillMaxWidth().height(if(family == "HAT") 170.dp else 221.dp))
-                Text("Reference note: data taken from metalmaster.lt charts supplied by the user.", color = muted4, fontSize = 10.sp)
+    var selected by remember(family) { mutableStateOf<PurlinRow?>(null) }
+    val rows=remember(family){purlinRows.filter { it.family==family }}
+    Column(Modifier.fillMaxSize()) {
+        Column(Modifier.fillMaxWidth().height(265.dp).background(plate4,RoundedCornerShape(14.dp)).padding(start=8.dp,end=8.dp,top=10.dp,bottom=8.dp)) {
+            Row {
+                Text("$family / SECTION",color=text4,fontSize=12.sp,fontWeight=FontWeight.SemiBold)
+                Spacer(Modifier.weight(1f));Text("NTS",color=muted4,fontSize=10.sp)
             }
-            Spacer(Modifier.height(10.dp))
-            SmallTag("Dimensions")
-            Spacer(Modifier.height(6.dp))
-            Row(Modifier.fillMaxWidth().background(plate4, RoundedCornerShape(8.dp)).padding(8.dp)) {
-                listOf("Profile","t","h","a","b","b1","kg/m").forEachIndexed { idx, it ->
-                    Text(it, color = muted4, fontSize = 10.sp, modifier = Modifier.weight(if (idx==0) 1.8f else 1f), textAlign = TextAlign.Center)
-                }
-            }
-            LazyColumn(Modifier.fillMaxWidth().weight(1f).edgeFade(start={purlinScroll.canScrollBackward},end={purlinScroll.canScrollForward}), state=purlinScroll) {
-                items(rows) { r ->
-                    Row(Modifier.fillMaxWidth().padding(vertical = 10.dp)) {
-                        listOf(r.profile,r.t,r.h,r.a,r.b,r.b1,r.weight).forEachIndexed { idx, v ->
-                            Text(v, color = text4, fontSize = 12.sp, modifier = Modifier.weight(if (idx==0) 1.8f else 1f), textAlign = TextAlign.Center)
-                        }
-                    }
-                    HorizontalDivider(color = line4.copy(alpha = .4f), thickness = .5.dp)
-                }
-            }
-            Spacer(Modifier.height(8.dp))
-            Text("Data is presented as an offline quick reference. Verify the exact supplier table, material grade and availability before specifying.", color = muted4, fontSize = 11.sp, lineHeight = 15.sp)
+            ToggleChips(listOf("C","Z","HAT"),family){family=it}
+            TechnicalSketch("PURLIN_$family",Modifier.fillMaxWidth().weight(1f))
+            Text("Section dimensions · source: metalmaster.lt",color=muted4,fontSize=10.sp)
         }
+        Spacer(Modifier.height(10.dp))
+        ProfileDataTable(columns=listOf("Section" to "","t" to "mm","h" to "mm","a" to "mm","b" to "mm","b1" to "mm"),
+            rows=rows,selected=selected,onSelect={selected=if(selected==it)null else it},
+            cells={listOf(it.profile,it.t,it.h,it.a,it.b,it.b1)},modifier=Modifier.weight(1f)) { PurlinProperties(it,pin) }
+        Spacer(Modifier.height(8.dp))
+        Text("Supplier nominal dimensions. Tap a row for mass and indicative prices.",color=muted4,fontSize=10.sp,modifier=Modifier.padding(bottom=10.dp))
     }
 }
 

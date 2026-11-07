@@ -1,0 +1,82 @@
+[
+  {
+    "file": "libredwg-web.js",
+    "bytes": 114465,
+    "sha256": "e263ab8c8a00de0cc38fd259db5b0cdc4d7ef0f4b123dbe9a41de2da6f3311a4"
+  },
+  {
+    "file": "libredwg-web.wasm",
+    "bytes": 11373231,
+    "sha256": "8f8dbfe1ba3a0ae9ceb8856ed2090c0f44decd9d7febde68016df8c1fca50f9b"
+  },
+  {
+    "file": "license.dxf-viewer.txt",
+    "bytes": 16835,
+    "sha256": "b7f27edcd4a4517ff7bac39278b491142075c6b979f4455839ac3b4a6719a204"
+  },
+  {
+    "file": "license.earcut.LICENSE.txt",
+    "bytes": 738,
+    "sha256": "0b348fff56384b43dbb37593906904e56d0f9deb51eae590d4dc6d427fbf1808"
+  },
+  {
+    "file": "license.font.txt",
+    "bytes": 4377,
+    "sha256": "0dab92d0544f7b233403f14b84a663bdbfa746982eda629e7f4f9ffe1b036feb"
+  },
+  {
+    "file": "license.libredwg.txt",
+    "bytes": 35147,
+    "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+  },
+  {
+    "file": "license.loglevel.LICENSE-MIT.txt",
+    "bytes": 1075,
+    "sha256": "18e8cf5f0dbaf13d9562e93b9bef79aff2acff18fab698c2d589d2159375a1f9"
+  },
+  {
+    "file": "license.occt-import-js.txt",
+    "bytes": 27030,
+    "sha256": "7ffe1954587c77dfba1cf8eb9b2ea743671fa6e63f9e7a2f258119d42e14eefe"
+  },
+  {
+    "file": "license.occt.txt",
+    "bytes": 26936,
+    "sha256": "090f8eb6ba63e72887c1f89b009fb1656cfda02d83b6e9805b20468520a5d77f"
+  },
+  {
+    "file": "license.opentype.js.LICENSE.txt",
+    "bytes": 1085,
+    "sha256": "a5b87c9bc191e7f9c06b07bd7cbbed3ed846dfdb50e859484b2c245aa1ab2e61"
+  },
+  {
+    "file": "license.string.prototype.codepointat.LICENSE-MIT.txt.txt",
+    "bytes": 1077,
+    "sha256": "483acb265f182907d1caf6cff9c16c96f31325ed23792832cc5d8b12d5f88c8a"
+  },
+  {
+    "file": "license.three.txt",
+    "bytes": 1081,
+    "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+  },
+  {
+    "file": "license.tiny-inflate.LICENSE.txt",
+    "bytes": 1077,
+    "sha256": "c0df7f551401f8f80197ff31bf69b8cd23727d127423403282514d242a3ab132"
+  },
+  {
+    "file": "NotoSans-Regular.ttf",
+    "bytes": 569208,
+    "sha256": "b85c38ecea8a7cfb39c24e395a4007474fa5a4fc864f6ee33309eb4948d232d5"
+  },
+  {
+    "file": "occt-import-js.js",
+    "bytes": 96871,
+    "sha256": "3fb44ce11d00611f9b3f3c5775d520ebab48930c1f08279b7b1316f05f0d3379"
+  },
+  {
+    "file": "occt-import-js.wasm",
+    "bytes": 7604031,
+    "sha256": "33391fc9d94ea5c869a6718488bf0a9a464222bac9bdc764dfe1690cef281952"
+  }
+]

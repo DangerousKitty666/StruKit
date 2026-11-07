@@ -1,0 +1,19 @@
+{
+  "name": "A007",
+  "seconds": 6.199,
+  "state": {
+    "ready": true,
+    "loading": false,
+    "error": null,
+    "parts": 246,
+    "triangles": 126348,
+    "bounds": [
+      6951,
+      5100,
+      10250
+    ]
+  },
+  "status": "246 parts · 126,348 triangles · bounds 6,951 × 5,100 × 10,250 mm",
+  "errors": [],
+  "warnings": []
+}

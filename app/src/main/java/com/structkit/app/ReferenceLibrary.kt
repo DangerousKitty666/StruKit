@@ -46,7 +46,7 @@ private fun topicTint(id:String):Color=when(id){
     "design","math"->Color(0x661E367B)
     "regs-lt","regs-uk"->Color(0x66426A8C)
     "access","guarding","dw144","htm0301"->Color(0x661D4C64)
-    else->Color.Black
+    else->Color.Transparent
 }
 
 @Composable internal fun StandardsTool() {
@@ -54,14 +54,6 @@ private fun topicTint(id:String):Color=when(id){
     var query by rememberSaveable { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
     var sourcePage by remember { mutableStateOf<Int?>(null) }
-    var menuBottom by remember { mutableFloatStateOf(0f) }
-    val density=LocalDensity.current
-    val menuHeight=(LocalConfiguration.current.screenHeightDp.dp-with(density){menuBottom.toDp()}-36.dp).coerceAtLeast(80.dp)
-    val menuGap=with(density){20.dp.roundToPx()}
-    val menuPosition=remember(menuGap){object:PopupPositionProvider {
-        override fun calculatePosition(anchorBounds:IntRect,windowSize:IntSize,layoutDirection:LayoutDirection,popupContentSize:IntSize):IntOffset =
-            IntOffset((anchorBounds.right-popupContentSize.width).coerceIn(0,(windowSize.width-popupContentSize.width).coerceAtLeast(0)),(anchorBounds.bottom+menuGap).coerceIn(0,(windowSize.height-popupContentSize.height).coerceAtLeast(0)))
-    }}
     val context = LocalContext.current
     val texts = remember { referenceTopics.map { (_,file) -> runCatching { context.assets.open("standards/$file.html").bufferedReader().use { it.readText() }.replace(Regex("<[^>]*>"), " ") }.getOrDefault("") } }
     val matches = remember(query) { referenceTopics.indices.filter { referenceTopics[it].first.contains(query, true) || texts[it].contains(query, true) } }
@@ -81,15 +73,8 @@ private fun topicTint(id:String):Color=when(id){
         Spacer(Modifier.height(7.dp))
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             Text("Standards", color = Color(0xFFD9DDE3), fontSize = 27.sp, modifier = Modifier.weight(1f))
-            Box(Modifier.onGloballyPositioned{menuBottom=it.boundsInWindow().bottom}) {
-                OutlinedButton(onClick = { expanded = true }, border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFF9EC5E8)), shape = RoundedCornerShape(9.dp)) { Text("Select ▾", color = Color(0xFF9EC5E8)) }
-                if(expanded) Popup(popupPositionProvider=menuPosition,onDismissRequest={expanded=false},properties=PopupProperties(focusable=true)) {
-                    Surface(color=Color.Black,shape=RoundedCornerShape(9.dp),border=androidx.compose.foundation.BorderStroke(1.dp,Color(0xFF9EC5E8))) {
-                    Column(Modifier.width(300.dp).heightIn(max=menuHeight).fadedVerticalScroll(rememberScrollState())) {
-                    referenceTopics.forEachIndexed { i, topic -> DropdownMenuItem(modifier=Modifier.background(topicTint(topic.second)),text = { Text(topic.first, color = Color(0xFF9EC5E8), fontSize = 13.sp) }, onClick = { selected = i; expanded = false }) }
-                    }
-                    }
-                }
+            ToolDropdown(expanded,{expanded=it}) {
+                referenceTopics.forEachIndexed { i, topic -> DropdownMenuItem(modifier=Modifier.background(topicTint(topic.second)),text = { Text(topic.first, color = Color(0xFF9EC5E8), fontSize = 13.sp) }, onClick = { selected = i; expanded = false }) }
             }
         }
         Text(referenceTopics[selected].first, color = Color(0xFF9EC5E8), fontSize = 13.sp)
@@ -113,7 +98,7 @@ private fun topicTint(id:String):Color=when(id){
 @Composable internal fun ReferencePage(file: String, modifier: Modifier, query: String = "", onSource: ((Int) -> Unit)? = null, onPin: ((String,String)->Unit)? = null, flatPanel:Boolean=false) {
     AndroidView(modifier = modifier, factory = { context ->
         WebView(context).apply {
-            setBackgroundColor(if(flatPanel)0xFF17212B.toInt() else 0xFF08090B.toInt())
+            setBackgroundColor(if(flatPanel)android.graphics.Color.TRANSPARENT else 0xFF08090B.toInt())
             settings.javaScriptEnabled = onPin != null
             settings.allowFileAccess = true
             settings.allowContentAccess = false
@@ -132,7 +117,7 @@ private fun topicTint(id:String):Color=when(id){
                 }
             }
             var html = context.assets.open("standards/$file").bufferedReader().use { it.readText() }
-            if(flatPanel) html += "<style>body,details,summary,.row{background:#17212b!important;border:0!important;box-shadow:none!important}body{margin:0!important}h1{display:none}summary{padding-left:0!important}</style>"
+            if(flatPanel) html += "<style>body,details,summary,.row{background:transparent!important;border:0!important;box-shadow:none!important}body{margin:0!important;padding:0!important;font-size:16px!important}.label,.value{font-size:16px!important}.row{padding:8px 0!important}h1{display:none}summary{padding-left:0!important}</style>"
             if(onPin!=null) html += """<script>document.querySelectorAll('.row').forEach(function(r){r.style.touchAction='manipulation';r.addEventListener('dblclick',function(e){e.preventDefault();location.href='strukit://pin?label='+encodeURIComponent(r.querySelector('.label').innerText)+'&value='+encodeURIComponent(r.querySelector('.value').innerText || 'See source marker');});});</script>"""
             if(query.isNotBlank()) {
                 html = Regex("<details([^>]*)>(.*?)</details>", setOf(RegexOption.DOT_MATCHES_ALL)).replace(html) { m ->
