@@ -133,7 +133,7 @@ class MainActivity : ComponentActivity() {
                 }
                 Column {
                     Text("StruKit", color = ink, fontWeight = FontWeight.Bold, fontSize = 20.sp, letterSpacing = 1.6.sp)
-                    Text("Revision 0.78 A · development", color = secondaryInk, fontSize = 11.sp)
+                    Text("Revision 0.785 A", color = secondaryInk, fontSize = 11.sp)
                 }
                 Spacer(Modifier.weight(1f))
                 Image(painter = painterResource(R.drawable.strukit_logo), contentDescription = "StruKit logo",
@@ -197,8 +197,10 @@ class MainActivity : ComponentActivity() {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text("About", color = subtleInk, fontSize = 10.sp, letterSpacing = 1.sp,
                 modifier = Modifier.clickable { onOpen("About") }.padding(vertical = 12.dp))
-            Text("Check for updates", color = accent, fontSize = 10.sp,
+            Spacer(Modifier.weight(1f))
+            Text("Check for updates", color = accent, fontSize = 10.sp, letterSpacing = 1.sp,
                 modifier = Modifier.clickable { onOpen("Check for updates") }.padding(vertical = 12.dp))
+            Spacer(Modifier.width(14.dp))
             Text("Say thanks", color = accent, fontSize = 10.sp, letterSpacing = 1.sp,
                 modifier = Modifier.clickable { context.startActivity(android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse("https://ko-fi.com/strukit"))) }.padding(vertical = 12.dp))
         }
@@ -219,26 +221,26 @@ class MainActivity : ComponentActivity() {
             Text(description, color = secondaryInk, fontSize = 11.sp)
         }
         Spacer(Modifier.width(8.dp))
-        ToolIllustration(index, Modifier.size(44.dp))
+        ToolIllustration(name, Modifier.size(44.dp))
     }
 }
 
-@Composable private fun ToolIllustration(index: String, modifier: Modifier) {
+@Composable private fun ToolIllustration(name: String, modifier: Modifier) {
     Canvas(modifier) {
         val u = size.width / 48f
         fun line(x:Float,y:Float,a:Float,b:Float) = drawLine(accent,Offset(x*u,y*u),Offset(a*u,b*u),1.5f*u)
         fun box(x:Float,y:Float,w:Float,h:Float) = drawRect(accent,Offset(x*u,y*u),Size(w*u,h*u),style=Stroke(1.5f*u))
-        when(index) {
-            "10" -> {box(5f,7f,38f,34f);box(12f,15f,24f,18f);line(12f,11f,36f,11f);line(8f,15f,8f,33f)}
-            "11" -> {box(8f,18f,24f,24f);box(17f,7f,24f,24f);line(8f,18f,17f,7f);line(32f,18f,41f,7f);line(32f,42f,41f,31f);line(8f,42f,17f,31f)}
-            "01" -> { box(6f,7f,36f,5f);box(21f,12f,6f,24f);box(6f,36f,36f,5f) }
-            "02" -> { line(6f,16f,41f,16f);line(34f,9f,41f,16f);line(34f,23f,41f,16f);line(7f,32f,42f,32f);line(7f,32f,14f,25f);line(7f,32f,14f,39f) }
-            "03" -> { box(5f,10f,10f,28f);box(33f,10f,10f,28f);box(18f,17f,12f,14f);line(18f,7f,30f,7f);line(18f,4f,18f,10f);line(30f,4f,30f,10f) }
-            "04" -> { box(6f,5f,10f,38f);box(16f,16f,27f,16f);box(17f,11f,7f,26f);for(y in listOf(16f,24f,32f))drawCircle(accent,1.4f*u,Offset(20.5f*u,y*u)) }
-            "05" -> { box(6f,15f,8f,18f);box(14f,20f,28f,8f);for(x in 24..40 step 4)line(x.toFloat(),20f,x-3f,28f) }
-            "06" -> { line(7f,41f,7f,18f);line(7f,18f,22f,7f);line(22f,7f,37f,18f);line(37f,18f,37f,41f);line(14f,36f,14f,16f);line(14f,16f,29f,5f);line(29f,5f,44f,16f);line(44f,16f,44f,36f);line(7f,18f,14f,16f);line(37f,18f,44f,16f) }
-            "07" -> { val p=Path().apply{moveTo(24*u,5*u);cubicTo(18*u,17*u,9*u,24*u,12*u,33*u);cubicTo(17*u,46*u,36*u,41*u,36*u,30*u);cubicTo(36*u,23*u,28*u,14*u,24*u,5*u)};drawPath(p,accent,style=Stroke(1.5f*u));line(18f,31f,21f,35f) }
-            "08" -> { box(8f,6f,31f,36f);line(14f,6f,14f,42f);for(y in 15..33 step 6)line(20f,y.toFloat(),33f,y.toFloat()) }
+        when(name) {
+            "2D viewer" -> {box(5f,7f,38f,34f);box(12f,15f,24f,18f);line(12f,11f,36f,11f);line(8f,15f,8f,33f)}
+            "3D viewer" -> {box(8f,18f,24f,24f);box(17f,7f,24f,24f);line(8f,18f,17f,7f);line(32f,18f,41f,7f);line(32f,42f,41f,31f);line(8f,42f,17f,31f)}
+            "Steel profiles & other" -> { box(6f,7f,36f,5f);box(21f,12f,6f,24f);box(6f,36f,36f,5f) }
+            "Unit converter" -> { line(6f,16f,41f,16f);line(34f,9f,41f,16f);line(34f,23f,41f,16f);line(7f,32f,42f,32f);line(7f,32f,14f,25f);line(7f,32f,14f,39f) }
+            "Tolerances" -> { box(5f,10f,10f,28f);box(33f,10f,10f,28f);box(18f,17f,12f,14f);line(18f,7f,30f,7f);line(18f,4f,18f,10f);line(30f,4f,30f,10f) }
+            "Steel connections" -> { box(6f,5f,10f,38f);box(16f,16f,27f,16f);box(17f,11f,7f,26f);for(y in listOf(16f,24f,32f))drawCircle(accent,1.4f*u,Offset(20.5f*u,y*u)) }
+            "Fixing library" -> { box(6f,15f,8f,18f);box(14f,20f,28f,8f);for(x in 24..40 step 4)line(x.toFloat(),20f,x-3f,28f) }
+            "Building drafter" -> { line(7f,41f,7f,18f);line(7f,18f,22f,7f);line(22f,7f,37f,18f);line(37f,18f,37f,41f);line(14f,36f,14f,16f);line(14f,16f,29f,5f);line(29f,5f,44f,16f);line(44f,16f,44f,36f);line(7f,18f,14f,16f);line(37f,18f,44f,16f) }
+            "Forces calculator" -> { val p=Path().apply{moveTo(24*u,5*u);cubicTo(18*u,17*u,9*u,24*u,12*u,33*u);cubicTo(17*u,46*u,36*u,41*u,36*u,30*u);cubicTo(36*u,23*u,28*u,14*u,24*u,5*u)};drawPath(p,accent,style=Stroke(1.5f*u));line(18f,31f,21f,35f) }
+            "Standards" -> { box(8f,6f,31f,36f);line(14f,6f,14f,42f);for(y in 15..33 step 6)line(20f,y.toFloat(),33f,y.toFloat()) }
             else -> { for(y in listOf(11f,21f,31f)){line(5f,y,24f,y-6f);line(24f,y-6f,43f,y);line(43f,y,24f,y+7f);line(24f,y+7f,5f,y)} }
         }
     }

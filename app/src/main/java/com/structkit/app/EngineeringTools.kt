@@ -496,7 +496,12 @@ private fun signUm(v: Int) = if (v > 0) "+$v" else "$v"
 @Composable private fun TechnicalSketch(kind: String, modifier: Modifier = Modifier) {
     Canvas(modifier) {
         val purlin = kind.startsWith("PURLIN_")
-        val fit = min(size.width / 320f, size.height / 200f)
+        val fit = min(size.width / (if(kind=="PURLIN_Z")350f else 320f), size.height / 200f)
+        val hat=kind=="PURLIN_HAT"
+        val canvasScale=if(hat)1.15f else 1f
+        drawContext.canvas.save()
+        if(hat){drawContext.canvas.translate(size.width/2,size.height/2);drawContext.canvas.scale(canvasScale,canvasScale);drawContext.canvas.translate(-160f*fit,-95f*fit)}
+        else if(kind=="PURLIN_Z")drawContext.canvas.translate(30f*fit,0f)
         val sx = if(purlin) fit else size.width / 320f
         val sy = if(purlin) fit else size.height / 190f
         fun p(x: Float, y: Float) = Offset(x*sx, y*sy)
@@ -704,6 +709,7 @@ private fun signUm(v: Int) = if (v > 0) "+$v" else "$v"
                     line(web-3,108f,web-3,116f,blue4);line(web+3,108f,web+3,116f,blue4);label("t",web+38,116f)
                 }
             }        }
+        drawContext.canvas.restore()
     }
 }
 

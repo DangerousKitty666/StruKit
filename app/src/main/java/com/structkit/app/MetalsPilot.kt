@@ -51,15 +51,15 @@ private val metalInk=Color(0xFFD9DDE3)
     Column(Modifier.fillMaxSize().padding(horizontal=12.dp)) {
         Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) {
             if(selected!=0 || gradePage!=null) TextButton(onClick={if(gradePage!=null)gradePage=null else if(source)source=false else selected=0}) {Text("‹ Library",color=metalBlue,fontSize=19.sp)}
-            Text(if(selected==0) "Material library" else if(source) "Original datasheet" else "Material library",color=metalInk,fontSize=if(selected==0)26.sp else 19.sp,modifier=Modifier.weight(1f))
-        }
-        Box(Modifier.align(Alignment.End)) {
+            Text(if(selected==0) "Material library" else if(source) "Original datasheet" else "Material library",color=metalInk,fontSize=19.sp,modifier=Modifier.weight(1f))
+        Box {
             OutlinedButton(onClick={gradeMenu=true},border=androidx.compose.foundation.BorderStroke(1.dp,metalBlue),shape=RoundedCornerShape(9.dp)) { Text("Grade comparisons ▾",color=metalBlue,fontSize=12.sp) }
             DropdownMenu(gradeMenu,{gradeMenu=false},containerColor=Color.Black) {
                 listOf("Steel grades" to "grades-steel.html","Concrete classes" to "grades-concrete.html","Timber classes" to "grades-timber.html").forEach { (label,file) ->
                     DropdownMenuItem(text={Text(label,color=metalBlue)},onClick={gradePage=file;gradeMenu=false})
                 }
             }
+        }
         }
         ComparisonTray(pins,{pins.remove(it);pinFull=false}) { p ->
             p.sourceId?.let { id -> ReferencePage("metals/$id.html",Modifier.fillMaxWidth().height(390.dp),flatPanel=true) }

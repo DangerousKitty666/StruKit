@@ -51,6 +51,8 @@ import org.json.JSONArray
                 if(frame==null)Text("Check inputs: length 0.5–200 m, width 0.5–100 m, eaves 1–30 m, apex ≥ eaves and ≤50 m, slope ≤60°, bay 1–12 m.",color=updateBlue,fontSize=12.sp)
                 else {
                     ResultLine("Footprint", "${fixed(frame.area)} m²")
+                    ResultLine("Roof area", "${fixed(frame.area / cos(Math.toRadians(frame.slope)))} m²")
+                    Text("Sloping roof surface · excludes overhangs",color=updateMuted,fontSize=10.sp)
                     ResultLine("Roof form / slope", "${if(mono)"Mono" else "Duo"} · ${fixed(frame.slope)}°")
                     ResultLine("Main support assemblies", "${frame.frames}")
                     ResultLine("Equal bays", "${frame.bays} × ${fixed(frame.spacing)} m")
@@ -136,7 +138,8 @@ import org.json.JSONArray
         }
         val points=lines.flatMap{listOf(it.first,it.second)}
         val minX=points.minOf{it.first};val minY=points.minOf{it.second};val maxX=points.maxOf{it.first};val maxY=points.maxOf{it.second}
-        val factor=minOf((size.width-100*density)/(maxX-minX).coerceAtLeast(1.0),(size.height-75*density)/(maxY-minY).coerceAtLeast(1.0))
+        val iso=view !in listOf("Top","Front","Side")
+        val factor=minOf((size.width-(if(iso)132 else 100)*density)/(maxX-minX).coerceAtLeast(1.0),(size.height-(if(iso)110 else 75)*density)/(maxY-minY).coerceAtLeast(1.0))
         fun pt(p:Pair<Double,Double>)=Offset(((p.first-minX)*factor+(size.width-(maxX-minX)*factor)/2).toFloat(),((p.second-minY)*factor+(size.height-(maxY-minY)*factor)/2).toFloat())
         lines.forEach { (a,b)->drawLine(updateBlue,pt(a),pt(b),2f) }
         val dim=Color(0xFFE8B46D)
@@ -170,9 +173,9 @@ import org.json.JSONArray
                 dimension(project(0.0,0.0,f.apex),project(0.0,f.spacing,f.apex),Offset(0f,-20*density),"${fixed(f.spacing)} m bay")
             }
             else->{
-                dimension(project(0.0,0.0,0.0),project(f.width,0.0,0.0),Offset(0f,22*density),"${fixed(f.width)} m")
-                dimension(project(f.width,0.0,0.0),project(f.width,f.length,0.0),Offset(22*density,0f),"${fixed(f.length)} m")
-                dimension(project(0.0,0.0,0.0),project(0.0,0.0,f.eaves),Offset(-24*density,0f),"${fixed(f.eaves)} m")
+                dimension(project(0.0,0.0,0.0),project(f.width,0.0,0.0),Offset(0f,38*density),"${fixed(f.width)} m")
+                dimension(project(f.width,0.0,0.0),project(f.width,f.length,0.0),Offset(38*density,0f),"${fixed(f.length)} m")
+                dimension(project(0.0,0.0,0.0),project(0.0,0.0,f.eaves),Offset(-40*density,0f),"${fixed(f.eaves)} m")
             }
         }
     }

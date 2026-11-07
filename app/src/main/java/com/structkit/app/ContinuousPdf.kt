@@ -1,4 +1,12 @@
 package com.structkit.app
+import androidx.compose.foundation.background
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.foundation.border
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -33,6 +41,11 @@ import java.io.File
 
 @Composable internal fun ContinuousPdf(asset:String,modifier:Modifier=Modifier,title:String="") {
     val context=LocalContext.current
+    val preferences=remember { context.getSharedPreferences("pdf-viewer",android.content.Context.MODE_PRIVATE) }
+    var brightness by remember { mutableFloatStateOf(preferences.getFloat("brightness",.8f).coerceIn(.25f,1f)) }
+    var showBrightness by remember { mutableStateOf(false) }
+    var barHeight by remember { mutableIntStateOf(0) }
+    val density=LocalDensity.current
     var query by remember(asset){mutableStateOf("")};var hit by remember(asset){mutableIntStateOf(0)}
     val scope=rememberCoroutineScope();val scroll=rememberLazyListState()
     var pages by remember(asset){mutableStateOf<List<String>>(emptyList())}
@@ -50,32 +63,46 @@ import java.io.File
     }
     val matches=remember(query,pages){if(query.isBlank())emptyList() else pages.indices.filter{pages[it].contains(query,true)}}
     Column(modifier.fillMaxSize()) {
-        Row(Modifier.fillMaxWidth().padding(bottom=3.dp),verticalAlignment=Alignment.CenterVertically) {
-            Text(title,color=updateBlue,fontSize=12.sp,modifier=Modifier.weight(1f),maxLines=2)
-            Text(if(pages.isEmpty()) "" else "${scroll.firstVisibleItemIndex+1} / ${pages.size}",color=updateMuted,fontSize=11.sp,modifier=Modifier.padding(start=6.dp))
-        }
+        Text(title,color=updateBlue,fontSize=13.8.sp,maxLines=2)
         error?.let{Text(it,color=updateInk)}
         if(pdf==null&&error==null)CircularProgressIndicator()
-        pdf?.let{file->LazyColumn(state=scroll,modifier=Modifier.weight(1f).fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(10.dp)) {
-            items(pages.indices.toList(),key={it}) { index ->
-                PdfScrollPage(file,index){zoom=it}
+        Box(Modifier.weight(1f).fillMaxWidth()) {
+            pdf?.let { file ->
+                LazyColumn(state=scroll,modifier=Modifier.fillMaxSize().drawWithContent{drawContent();drawRect(Color.Black.copy(alpha=1f-brightness))},
+                    contentPadding=PaddingValues(bottom=with(density){barHeight.toDp()}),verticalArrangement=Arrangement.spacedBy(10.dp)) {
+                    items(pages.indices.toList(),key={it}) { index -> PdfScrollPage(file,index){zoom=it} }
+                }
             }
-        }}
-        Row(Modifier.fillMaxWidth().padding(top=4.dp),verticalAlignment=Alignment.CenterVertically) {
-            CompactPdfField(query,{query=it;hit=0},"search in off",Modifier.weight(1f))
-            Spacer(Modifier.width(6.dp))
-            CompactPdfField(jump,{jump=it;pageError=null},"Page",Modifier.weight(.65f),true)
-            TextButton(modifier=Modifier.height(36.dp),contentPadding=PaddingValues(horizontal=10.dp,vertical=0.dp),onClick={val n=jump.toIntOrNull();if(n!=null&&n in 1..pages.size){scope.launch{scroll.scrollToItem(n-1)};pageError=null}else pageError="Enter page 1–${pages.size}"},enabled=pages.isNotEmpty()){Text("Go")}
-        }
-        if(pageError!=null||query.isNotBlank()) Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.SpaceBetween) {
-            Text(pageError?:"${matches.size} matching pages",color=updateMuted,fontSize=11.sp)
-            if(matches.isNotEmpty())TextButton(modifier=Modifier.height(32.dp),contentPadding=PaddingValues(horizontal=8.dp,vertical=0.dp),onClick={scope.launch{scroll.scrollToItem(matches[hit % matches.size]);hit++}}){Text("Next match")}
+            Column(Modifier.align(Alignment.BottomCenter).fillMaxWidth().onSizeChanged{barHeight=it.height}) {
+                Box(Modifier.fillMaxWidth().height(12.dp).background(Brush.verticalGradient(listOf(Color.Transparent,Color(0xEB08090B)))))
+                Column(Modifier.fillMaxWidth().background(Color(0xEB08090B)).padding(start=2.dp,end=2.dp,bottom=2.dp)) {
+                    if(showBrightness) Row(Modifier.fillMaxWidth().height(40.dp),verticalAlignment=Alignment.CenterVertically) {
+                        Text("PDF ${(brightness*100).toInt()}%",color=updateMuted,fontSize=11.sp)
+                        Slider(value=brightness,onValueChange={brightness=it;preferences.edit().putFloat("brightness",it).apply()},valueRange=.25f..1f,
+                            modifier=Modifier.weight(1f).semantics{contentDescription="PDF brightness"})
+                    }
+                    Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) {
+                        CompactPdfField(query,{query=it;hit=0},"search in off",Modifier.weight(1f))
+                        Spacer(Modifier.width(5.dp))
+                        Column(Modifier.width(64.dp),horizontalAlignment=Alignment.CenterHorizontally) {
+                            Text(if(pages.isEmpty()) "– / –" else "${scroll.firstVisibleItemIndex+1} / ${pages.size}",color=updateMuted,fontSize=10.sp)
+                            CompactPdfField(jump,{jump=it;pageError=null},"Page",Modifier.fillMaxWidth(),true)
+                        }
+                        TextButton(modifier=Modifier.width(38.dp).height(36.dp),contentPadding=PaddingValues(0.dp),onClick={val n=jump.toIntOrNull();if(n!=null&&n in 1..pages.size){scope.launch{scroll.scrollToItem(n-1)};pageError=null}else pageError="Enter page 1–${pages.size}"},enabled=pages.isNotEmpty()){Text("Go",fontSize=12.sp)}
+                        TextButton(modifier=Modifier.width(36.dp).height(36.dp).semantics{contentDescription="Adjust PDF brightness"},contentPadding=PaddingValues(0.dp),onClick={showBrightness=!showBrightness}){Text("☀",fontSize=20.sp)}
+                    }
+                    if(pageError!=null||query.isNotBlank()) Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.SpaceBetween) {
+                        Text(pageError?:"${matches.size} matching pages",color=updateMuted,fontSize=11.sp)
+                        if(matches.isNotEmpty())TextButton(modifier=Modifier.height(32.dp),contentPadding=PaddingValues(horizontal=8.dp,vertical=0.dp),onClick={scope.launch{scroll.scrollToItem(matches[hit % matches.size]);hit++}}){Text("Next match")}
+                    }
+                }
+            }
         }
     }
     zoom?.let{file->Dialog(onDismissRequest={zoom=null},properties=DialogProperties(usePlatformDefaultWidth=false)) {
         Surface(Modifier.fillMaxSize(),color=androidx.compose.ui.graphics.Color.Black){Column {
             TextButton(onClick={zoom=null}){Text("Close zoom")}
-            AndroidView(modifier=Modifier.weight(1f).fillMaxWidth(),factory={ctx->WebView(ctx).apply{
+            AndroidView(modifier=Modifier.weight(1f).fillMaxWidth().drawWithContent{drawContent();drawRect(Color.Black.copy(alpha=1f-brightness))},factory={ctx->WebView(ctx).apply{
                 settings.javaScriptEnabled=false;settings.allowFileAccess=true;settings.builtInZoomControls=true;settings.displayZoomControls=false
                 loadDataWithBaseURL("file://${file.parent}/","<meta name='viewport' content='width=device-width,initial-scale=1'><img style='width:100%' src='${file.name}'>","text/html","UTF-8",null)
             }},onRelease={it.destroy()})

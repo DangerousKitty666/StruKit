@@ -1,5 +1,6 @@
 package com.structkit.app
 
+import androidx.activity.compose.BackHandler
 import android.content.Intent
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
@@ -54,6 +55,8 @@ private fun topicTint(id:String):Color=when(id){
     var query by rememberSaveable { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
     var sourcePage by remember { mutableStateOf<Int?>(null) }
+    val isPdf=referenceTopics[selected].second in listOf("access","dw144","htm0301")
+    BackHandler(enabled=isPdf && sourcePage==null) { selected=0;query="";expanded=false }
     val context = LocalContext.current
     val texts = remember { referenceTopics.map { (_,file) -> runCatching { context.assets.open("standards/$file.html").bufferedReader().use { it.readText() }.replace(Regex("<[^>]*>"), " ") }.getOrDefault("") } }
     val matches = remember(query) { referenceTopics.indices.filter { referenceTopics[it].first.contains(query, true) || texts[it].contains(query, true) } }
@@ -71,7 +74,7 @@ private fun topicTint(id:String):Color=when(id){
                 inner()
             } })
         Spacer(Modifier.height(2.dp))
-        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        Row(Modifier.fillMaxWidth(), verticalAlignment = if(isPdf) Alignment.Bottom else Alignment.CenterVertically) {
             Text("Standards", color = Color(0xFFD9DDE3), fontSize = 27.sp, modifier = Modifier.weight(1f))
             ToolDropdown(expanded,{expanded=it}) {
                 referenceTopics.forEachIndexed { i, topic -> DropdownMenuItem(modifier=Modifier.background(topicTint(topic.second)),text = { Text(topic.first, color = Color(0xFF9EC5E8), fontSize = 13.sp) }, onClick = { selected = i; expanded = false }) }
