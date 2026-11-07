@@ -1,0 +1,864 @@
+{
+  "record": {
+    "id": 61,
+    "name": "CFRP, epoxy matrix (isotropic)",
+    "folders": [
+      "Composites",
+      "Polymer matrix"
+    ],
+    "pages": 6,
+    "propertyCount": 106,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Composites\\C2.pdf"
+  },
+  "sections": [
+    {
+      "title": "General properties",
+      "rows": [
+        {
+          "label": "Density",
+          "estimate": false,
+          "value": "1.5e3 - 1.6e3 kg/m^3",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Price",
+          "estimate": true,
+          "value": "28.2 - 31.4 GBP/kg",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Date first used",
+          "estimate": false,
+          "value": "1963",
+          "icon": null,
+          "page": 1
+        }
+      ]
+    },
+    {
+      "title": "Mechanical properties",
+      "rows": [
+        {
+          "label": "Young's modulus",
+          "estimate": false,
+          "value": "69 - 150 GPa",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Shear modulus",
+          "estimate": false,
+          "value": "28 - 60 GPa",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Bulk modulus",
+          "estimate": false,
+          "value": "43 - 80 GPa",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Poisson's ratio",
+          "estimate": true,
+          "value": "0.305 - 0.307",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Yield strength (elastic limit)",
+          "estimate": false,
+          "value": "550 - 1.05e3 MPa",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Tensile strength",
+          "estimate": false,
+          "value": "550 - 1.05e3 MPa",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Compressive strength",
+          "estimate": false,
+          "value": "440 - 840 MPa",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Elongation",
+          "estimate": true,
+          "value": "0.32 - 0.35 % strain",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Hardness - Vickers",
+          "estimate": true,
+          "value": "10.8 - 21.5 HV",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Fatigue strength at 10^7 cycles",
+          "estimate": true,
+          "value": "150 - 300 MPa",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Fracture toughness",
+          "estimate": true,
+          "value": "6.12 - 20 MPa.m^0.5",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Mechanical loss coefficient (tan delta)",
+          "estimate": true,
+          "value": "0.0014 - 0.0033",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Thermal properties",
+      "rows": [
+        {
+          "label": "Glass temperature",
+          "estimate": false,
+          "value": "99.9 - 180 °C",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Maximum service temperature",
+          "estimate": true,
+          "value": "140 - 220 °C",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Minimum service temperature",
+          "estimate": true,
+          "value": "-123 - -73.2 °C",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Thermal conductor or insulator?",
+          "estimate": false,
+          "value": "Poor insulator",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Thermal conductivity",
+          "estimate": true,
+          "value": "1.28 - 2.6 W/m.°C",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Specific heat capacity",
+          "estimate": true,
+          "value": "902 - 1.04e3 J/kg.°C",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Thermal expansion coefficient",
+          "estimate": true,
+          "value": "1 - 4 μstrain/°C",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Electrical properties",
+      "rows": [
+        {
+          "label": "Electrical conductor or insulator?",
+          "estimate": false,
+          "value": "Poor conductor",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Electrical resistivity",
+          "estimate": true,
+          "value": "1.65e5 - 9.46e5 μohm.cm",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Optical properties",
+      "rows": [
+        {
+          "label": "Transparency",
+          "estimate": false,
+          "value": "Opaque",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Critical Materials Risk",
+      "rows": [
+        {
+          "label": "High critical material risk?",
+          "estimate": false,
+          "value": "No",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Processability",
+      "rows": [
+        {
+          "label": "Moldability",
+          "estimate": false,
+          "value": "4 - 5",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Machinability",
+          "estimate": false,
+          "value": "1 - 3",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Durability: water and aqueous solutions",
+      "rows": [
+        {
+          "label": "Water (fresh)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Water (salt)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Soils, acidic (peat)",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Soils, alkaline (clay)",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Wine",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Durability: acids",
+      "rows": [
+        {
+          "label": "Acetic acid (10%)",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Acetic acid (glacial)",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Citric acid (10%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Hydrochloric acid (10%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Hydrochloric acid (36%)",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Hydrofluoric acid (40%)",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Nitric acid (10%)",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Nitric acid (70%)",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Phosphoric acid (10%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Phosphoric acid (85%)",
+          "estimate": false,
+          "value": "Acceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Sulfuric acid (10%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Sulfuric acid (70%)",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 3
+        }
+      ]
+    },
+    {
+      "title": "Durability: alkalis",
+      "rows": [
+        {
+          "label": "Sodium hydroxide (10%)",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Sodium hydroxide (60%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        }
+      ]
+    },
+    {
+      "title": "Durability: fuels, oils and solvents",
+      "rows": [
+        {
+          "label": "Amyl acetate",
+          "estimate": false,
+          "value": "Acceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Benzene",
+          "estimate": false,
+          "value": "Acceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Carbon tetrachloride",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Chloroform",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Crude oil",
+          "estimate": false,
+          "value": "Acceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Diesel oil",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Lubricating oil",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Paraffin oil (kerosene)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Petrol (gasoline)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Silicone fluids",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Toluene",
+          "estimate": false,
+          "value": "Acceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Turpentine",
+          "estimate": false,
+          "value": "Acceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Vegetable oils (general)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "White spirit",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        }
+      ]
+    },
+    {
+      "title": "Durability: alcohols, aldehydes, ketones",
+      "rows": [
+        {
+          "label": "Acetaldehyde",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Acetone",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Ethyl alcohol (ethanol)",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Ethylene glycol",
+          "estimate": false,
+          "value": "Acceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Formaldehyde (40%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Glycerol",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Methyl alcohol (methanol)",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 3
+        }
+      ]
+    },
+    {
+      "title": "Durability: halogens and gases",
+      "rows": [
+        {
+          "label": "Chlorine gas (dry)",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Fluorine (gas)",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "O2 (oxygen gas)",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Sulfur dioxide (gas)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Durability: built environments",
+      "rows": [
+        {
+          "label": "Industrial atmosphere",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Rural atmosphere",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Marine atmosphere",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "UV radiation (sunlight)",
+          "estimate": false,
+          "value": "Good",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Durability: flammability",
+      "rows": [
+        {
+          "label": "Flammability",
+          "estimate": false,
+          "value": "Slow-burning",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Durability: thermal environments",
+      "rows": [
+        {
+          "label": "Tolerance to cryogenic temperatures",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Tolerance up to 150 C (302 F)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Tolerance up to 250 C (482 F)",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Tolerance up to 450 C (842 F)",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Tolerance up to 850 C (1562 F)",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Tolerance above 850 C (1562 F)",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Geo-economic data for principal component",
+      "rows": [
+        {
+          "label": "Annual world production, principal component",
+          "estimate": false,
+          "value": "2.8e4 - 2.85e4 tonne/yr",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Primary material production: energy, climate change and water",
+      "rows": [
+        {
+          "label": "Climate change (CO2-eq) (virgin grade production)",
+          "estimate": true,
+          "value": "48.6 - 53.5 kg/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Embodied energy (virgin grade production)",
+          "estimate": true,
+          "value": "694 - 765 MJ/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Water usage",
+          "estimate": true,
+          "value": "1.34e3 - 1.48e3 l/kg",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Material processing: energy",
+      "rows": [
+        {
+          "label": "Autoclave molding, embodied energy",
+          "estimate": true,
+          "value": "70.3 - 77.5 MJ/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Compression molding, embodied energy",
+          "estimate": true,
+          "value": "10.1 - 11.1 MJ/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Filament winding, embodied energy",
+          "estimate": true,
+          "value": "7.72 - 8.51 MJ/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Resin spray-up, embodied energy",
+          "estimate": true,
+          "value": "43.5 - 48 MJ/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Resin transfer molding (RTM), embodied energy",
+          "estimate": true,
+          "value": "34.4 - 37.9 MJ/kg",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Material processing: climate change",
+      "rows": [
+        {
+          "label": "Autoclave molding, climate change (CO2-eq)",
+          "estimate": true,
+          "value": "4.62 - 5.1 kg/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Compression molding, climate change (CO2-eq)",
+          "estimate": true,
+          "value": "0.662 - 0.731 kg/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Filament winding, climate change (CO2-eq)",
+          "estimate": true,
+          "value": "0.507 - 0.56 kg/kg",
+          "icon": null,
+          "page": 5
+        },
+        {
+          "label": "Resin spray-up, climate change (CO2-eq)",
+          "estimate": true,
+          "value": "2.85 - 3.14 kg/kg",
+          "icon": null,
+          "page": 5
+        },
+        {
+          "label": "Resin transfer molding (RTM), climate change (CO2-eq)",
+          "estimate": true,
+          "value": "2.26 - 2.5 kg/kg",
+          "icon": null,
+          "page": 5
+        }
+      ]
+    },
+    {
+      "title": "Recycling and end of life",
+      "rows": [
+        {
+          "label": "Recycle",
+          "estimate": false,
+          "value": "",
+          "icon": "61-p5-Image2.jpg",
+          "page": 5
+        },
+        {
+          "label": "Functional recycle",
+          "estimate": false,
+          "value": "",
+          "icon": "61-p5-Image2.jpg",
+          "page": 5
+        },
+        {
+          "label": "Combust for energy recovery",
+          "estimate": false,
+          "value": "",
+          "icon": "61-p5-Image3.jpg",
+          "page": 5
+        },
+        {
+          "label": "Heat of combustion (net)",
+          "estimate": true,
+          "value": "31.3 - 32.9 MJ/kg",
+          "icon": null,
+          "page": 5
+        },
+        {
+          "label": "Combustion CO2",
+          "estimate": true,
+          "value": "3.17 - 3.33 kg/kg",
+          "icon": null,
+          "page": 5
+        },
+        {
+          "label": "Landfill",
+          "estimate": false,
+          "value": "",
+          "icon": "61-p5-Image3.jpg",
+          "page": 5
+        },
+        {
+          "label": "Biodegrade",
+          "estimate": false,
+          "value": "",
+          "icon": "61-p5-Image2.jpg",
+          "page": 5
+        },
+        {
+          "label": "Toxicity rating",
+          "estimate": false,
+          "value": "Non-toxic",
+          "icon": null,
+          "page": 5
+        },
+        {
+          "label": "A renewable resource?",
+          "estimate": false,
+          "value": "",
+          "icon": "61-p5-Image2.jpg",
+          "page": 5
+        }
+      ]
+    }
+  ],
+  "summary": "Lightweight structural panels and moulded parts; the record is for an isotropic idealisation."
+}

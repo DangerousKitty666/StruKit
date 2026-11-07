@@ -1,0 +1,810 @@
+{
+  "record": {
+    "id": 53,
+    "name": "Aluminum nitride",
+    "folders": [
+      "Ceramics and concrete",
+      "Technical ceramics"
+    ],
+    "pages": 5,
+    "propertyCount": 99,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\CR-TECH2.pdf"
+  },
+  "sections": [
+    {
+      "title": "General properties",
+      "rows": [
+        {
+          "label": "Density",
+          "estimate": false,
+          "value": "3.27e3 - 3.33e3 kg/m^3",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Price",
+          "estimate": true,
+          "value": "78.5 - 125 GBP/kg",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Date first used",
+          "estimate": false,
+          "value": "1984",
+          "icon": null,
+          "page": 1
+        }
+      ]
+    },
+    {
+      "title": "Mechanical properties",
+      "rows": [
+        {
+          "label": "Young's modulus",
+          "estimate": false,
+          "value": "323 - 348 GPa",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Shear modulus",
+          "estimate": true,
+          "value": "129 - 139 GPa",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Bulk modulus",
+          "estimate": true,
+          "value": "215 - 232 GPa",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Poisson's ratio",
+          "estimate": false,
+          "value": "0.23 - 0.27",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Yield strength (elastic limit)",
+          "estimate": true,
+          "value": "218 - 242 MPa",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Tensile strength",
+          "estimate": true,
+          "value": "218 - 242 MPa",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Compressive strength",
+          "estimate": true,
+          "value": "2.18e3 - 2.42e3 MPa",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Elongation",
+          "estimate": true,
+          "value": "0.06 - 0.07 % strain",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Hardness - Vickers",
+          "estimate": false,
+          "value": "1.09e3 - 1.2e3 HV",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Fatigue strength at 10^7 cycles",
+          "estimate": true,
+          "value": "186 - 217 MPa",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Fracture toughness",
+          "estimate": false,
+          "value": "2.5 - 3.1 MPa.m^0.5",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Mechanical loss coefficient (tan delta)",
+          "estimate": true,
+          "value": "1e-5 - 3e-5",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Thermal properties",
+      "rows": [
+        {
+          "label": "Melting point",
+          "estimate": false,
+          "value": "2.4e3 - 2.51e3 °C",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Maximum service temperature",
+          "estimate": true,
+          "value": "1.73e3 - 1.82e3 °C",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Minimum service temperature",
+          "estimate": false,
+          "value": "-273 °C",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Thermal conductor or insulator?",
+          "estimate": false,
+          "value": "Good conductor",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Thermal conductivity",
+          "estimate": false,
+          "value": "163 - 177 W/m.°C",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Specific heat capacity",
+          "estimate": true,
+          "value": "781 - 795 J/kg.°C",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Thermal expansion coefficient",
+          "estimate": false,
+          "value": "4.6 - 4.8 μstrain/°C",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Electrical properties",
+      "rows": [
+        {
+          "label": "Electrical conductor or insulator?",
+          "estimate": false,
+          "value": "Good insulator",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Electrical resistivity",
+          "estimate": false,
+          "value": "3.16e19 - 3.16e20 μohm.cm",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Dielectric constant (relative permittivity)",
+          "estimate": false,
+          "value": "8.3 - 8.9",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Dissipation factor (dielectric loss tangent)",
+          "estimate": false,
+          "value": "0.008 - 0.0092",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Dielectric strength (dielectric breakdown)",
+          "estimate": true,
+          "value": "10 - 20 MV/m",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Optical properties",
+      "rows": [
+        {
+          "label": "Transparency",
+          "estimate": false,
+          "value": "Opaque",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Critical Materials Risk",
+      "rows": [
+        {
+          "label": "High critical material risk?",
+          "estimate": false,
+          "value": "Yes",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Notes",
+          "estimate": false,
+          "value": "Al (aluminum) added to the 2018 US critical minerals list",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Processability",
+      "rows": [
+        {
+          "label": "Moldability",
+          "estimate": false,
+          "value": "2 - 3",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Machinability",
+          "estimate": false,
+          "value": "1 - 2",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Durability: water and aqueous solutions",
+      "rows": [
+        {
+          "label": "Water (fresh)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Water (salt)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Soils, acidic (peat)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Soils, alkaline (clay)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Wine",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Durability: acids",
+      "rows": [
+        {
+          "label": "Acetic acid (10%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Acetic acid (glacial)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Citric acid (10%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Hydrochloric acid (10%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Hydrochloric acid (36%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Hydrofluoric acid (40%)",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Nitric acid (10%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Nitric acid (70%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Phosphoric acid (10%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Phosphoric acid (85%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Sulfuric acid (10%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Sulfuric acid (70%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        }
+      ]
+    },
+    {
+      "title": "Durability: alkalis",
+      "rows": [
+        {
+          "label": "Sodium hydroxide (10%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Sodium hydroxide (60%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        }
+      ]
+    },
+    {
+      "title": "Durability: fuels, oils and solvents",
+      "rows": [
+        {
+          "label": "Amyl acetate",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Benzene",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Carbon tetrachloride",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Chloroform",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Crude oil",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Diesel oil",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Lubricating oil",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Paraffin oil (kerosene)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Petrol (gasoline)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Silicone fluids",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Toluene",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Turpentine",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Vegetable oils (general)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "White spirit",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        }
+      ]
+    },
+    {
+      "title": "Durability: alcohols, aldehydes, ketones",
+      "rows": [
+        {
+          "label": "Acetaldehyde",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Acetone",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Ethyl alcohol (ethanol)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Ethylene glycol",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Formaldehyde (40%)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Glycerol",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Methyl alcohol (methanol)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Durability: halogens and gases",
+      "rows": [
+        {
+          "label": "Chlorine gas (dry)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Fluorine (gas)",
+          "estimate": false,
+          "value": "Acceptable",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "O2 (oxygen gas)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Sulfur dioxide (gas)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Durability: built environments",
+      "rows": [
+        {
+          "label": "Industrial atmosphere",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Rural atmosphere",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Marine atmosphere",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "UV radiation (sunlight)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Durability: flammability",
+      "rows": [
+        {
+          "label": "Flammability",
+          "estimate": false,
+          "value": "Non-flammable",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Durability: thermal environments",
+      "rows": [
+        {
+          "label": "Tolerance to cryogenic temperatures",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Tolerance up to 150 C (302 F)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Tolerance up to 250 C (482 F)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Tolerance up to 450 C (842 F)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Tolerance up to 850 C (1562 F)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Tolerance above 850 C (1562 F)",
+          "estimate": false,
+          "value": "Excellent",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Primary material production: energy, climate change and water",
+      "rows": [
+        {
+          "label": "Climate change (CO2-eq) (virgin grade production)",
+          "estimate": true,
+          "value": "12.1 - 13.3 kg/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Embodied energy (virgin grade production)",
+          "estimate": true,
+          "value": "168 - 185 MJ/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Water usage",
+          "estimate": true,
+          "value": "232 - 256 l/kg",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Material processing: energy",
+      "rows": [
+        {
+          "label": "Machining, grinding, embodied energy",
+          "estimate": true,
+          "value": "209 - 250 MJ/kg",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Material processing: climate change",
+      "rows": [
+        {
+          "label": "Machining, grinding, climate change (CO2-eq)",
+          "estimate": true,
+          "value": "13.7 - 16.4 kg/kg",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Recycling and end of life",
+      "rows": [
+        {
+          "label": "Recycle",
+          "estimate": false,
+          "value": "",
+          "icon": "53-p4-Image2.jpg",
+          "page": 4
+        },
+        {
+          "label": "Functional recycle",
+          "estimate": false,
+          "value": "",
+          "icon": "53-p4-Image2.jpg",
+          "page": 4
+        },
+        {
+          "label": "Combust for energy recovery",
+          "estimate": false,
+          "value": "",
+          "icon": "53-p5-Image2.jpg",
+          "page": 5
+        },
+        {
+          "label": "Landfill",
+          "estimate": false,
+          "value": "",
+          "icon": "53-p5-Image3.jpg",
+          "page": 5
+        },
+        {
+          "label": "Biodegrade",
+          "estimate": false,
+          "value": "",
+          "icon": "53-p5-Image2.jpg",
+          "page": 5
+        },
+        {
+          "label": "Toxicity rating",
+          "estimate": false,
+          "value": "Non-toxic",
+          "icon": null,
+          "page": 5
+        },
+        {
+          "label": "A renewable resource?",
+          "estimate": false,
+          "value": "",
+          "icon": "53-p5-Image2.jpg",
+          "page": 5
+        }
+      ]
+    }
+  ],
+  "summary": "Thermally conductive electrical substrates."
+}

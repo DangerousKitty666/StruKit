@@ -1,0 +1,1235 @@
+[
+  {
+    "id": 1,
+    "name": "Cast iron, ductile (nodular)",
+    "folders": [
+      "Metals and alloys",
+      "Ferrous"
+    ],
+    "pages": 7,
+    "propertyCount": 113,
+    "diagrams": 1
+  },
+  {
+    "id": 2,
+    "name": "Cast iron, gray",
+    "folders": [
+      "Metals and alloys",
+      "Ferrous"
+    ],
+    "pages": 6,
+    "propertyCount": 113,
+    "diagrams": 1
+  },
+  {
+    "id": 3,
+    "name": "High carbon steel",
+    "folders": [
+      "Metals and alloys",
+      "Ferrous"
+    ],
+    "pages": 7,
+    "propertyCount": 121,
+    "diagrams": 1
+  },
+  {
+    "id": 4,
+    "name": "Low alloy steel",
+    "folders": [
+      "Metals and alloys",
+      "Ferrous"
+    ],
+    "pages": 7,
+    "propertyCount": 120,
+    "diagrams": 1
+  },
+  {
+    "id": 5,
+    "name": "Low carbon steel",
+    "folders": [
+      "Metals and alloys",
+      "Ferrous"
+    ],
+    "pages": 7,
+    "propertyCount": 121,
+    "diagrams": 1
+  },
+  {
+    "id": 6,
+    "name": "Medium carbon steel",
+    "folders": [
+      "Metals and alloys",
+      "Ferrous"
+    ],
+    "pages": 7,
+    "propertyCount": 121,
+    "diagrams": 1
+  },
+  {
+    "id": 7,
+    "name": "Stainless steel",
+    "folders": [
+      "Metals and alloys",
+      "Ferrous"
+    ],
+    "pages": 7,
+    "propertyCount": 121,
+    "diagrams": 1
+  },
+  {
+    "id": 8,
+    "name": "Age-hardening wrought Al-alloys",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Aluminum and alloys"
+    ],
+    "pages": 7,
+    "propertyCount": 120,
+    "diagrams": 1
+  },
+  {
+    "id": 9,
+    "name": "Cast Al-alloys",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Aluminum and alloys"
+    ],
+    "pages": 7,
+    "propertyCount": 114,
+    "diagrams": 1
+  },
+  {
+    "id": 10,
+    "name": "Non age-hardening wrought Al-alloys",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Aluminum and alloys"
+    ],
+    "pages": 7,
+    "propertyCount": 120,
+    "diagrams": 1
+  },
+  {
+    "id": 11,
+    "name": "Brass",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Copper and alloys"
+    ],
+    "pages": 7,
+    "propertyCount": 122,
+    "diagrams": 1
+  },
+  {
+    "id": 12,
+    "name": "Bronze",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Copper and alloys"
+    ],
+    "pages": 7,
+    "propertyCount": 121,
+    "diagrams": 1
+  },
+  {
+    "id": 13,
+    "name": "Copper",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Copper and alloys"
+    ],
+    "pages": 6,
+    "propertyCount": 121,
+    "diagrams": 0
+  },
+  {
+    "id": 14,
+    "name": "Gold",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous"
+    ],
+    "pages": 6,
+    "propertyCount": 115,
+    "diagrams": 0
+  },
+  {
+    "id": 15,
+    "name": "Commercially pure lead",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Lead and alloys"
+    ],
+    "pages": 6,
+    "propertyCount": 121,
+    "diagrams": 0
+  },
+  {
+    "id": 16,
+    "name": "Lead alloys",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Lead and alloys"
+    ],
+    "pages": 7,
+    "propertyCount": 121,
+    "diagrams": 1
+  },
+  {
+    "id": 17,
+    "name": "Cast magnesium alloys",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Magnesium and alloys"
+    ],
+    "pages": 8,
+    "propertyCount": 115,
+    "diagrams": 1
+  },
+  {
+    "id": 18,
+    "name": "Wrought magnesium alloys",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Magnesium and alloys"
+    ],
+    "pages": 7,
+    "propertyCount": 119,
+    "diagrams": 1
+  },
+  {
+    "id": 19,
+    "name": "Nickel",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Nickel and alloys"
+    ],
+    "pages": 6,
+    "propertyCount": 121,
+    "diagrams": 0
+  },
+  {
+    "id": 20,
+    "name": "Nickel-based superalloys",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Nickel and alloys"
+    ],
+    "pages": 7,
+    "propertyCount": 121,
+    "diagrams": 1
+  },
+  {
+    "id": 21,
+    "name": "Nickel-chromium alloys",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Nickel and alloys"
+    ],
+    "pages": 7,
+    "propertyCount": 121,
+    "diagrams": 1
+  },
+  {
+    "id": 22,
+    "name": "Silver",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous"
+    ],
+    "pages": 6,
+    "propertyCount": 115,
+    "diagrams": 0
+  },
+  {
+    "id": 23,
+    "name": "Tin",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous"
+    ],
+    "pages": 6,
+    "propertyCount": 122,
+    "diagrams": 0
+  },
+  {
+    "id": 24,
+    "name": "Commercially pure titanium",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Titanium and alloys"
+    ],
+    "pages": 6,
+    "propertyCount": 121,
+    "diagrams": 0
+  },
+  {
+    "id": 25,
+    "name": "Titanium alloys",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Titanium and alloys"
+    ],
+    "pages": 7,
+    "propertyCount": 123,
+    "diagrams": 1
+  },
+  {
+    "id": 26,
+    "name": "Tungsten alloys",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous"
+    ],
+    "pages": 6,
+    "propertyCount": 121,
+    "diagrams": 0
+  },
+  {
+    "id": 27,
+    "name": "Commercially pure zinc",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Zinc and alloys"
+    ],
+    "pages": 6,
+    "propertyCount": 121,
+    "diagrams": 0
+  },
+  {
+    "id": 28,
+    "name": "Zinc die-casting alloys",
+    "folders": [
+      "Metals and alloys",
+      "Non-ferrous",
+      "Zinc and alloys"
+    ],
+    "pages": 7,
+    "propertyCount": 115,
+    "diagrams": 1
+  },
+  {
+    "id": 29,
+    "name": "Bitumen",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Binders and mortars"
+    ],
+    "pages": 4,
+    "propertyCount": 64,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C1.pdf"
+  },
+  {
+    "id": 30,
+    "name": "Cement (ordinary Portland)",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Binders and mortars"
+    ],
+    "pages": 7,
+    "propertyCount": 70,
+    "diagrams": 1,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C2.pdf"
+  },
+  {
+    "id": 31,
+    "name": "Plaster of Paris",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Binders and mortars"
+    ],
+    "pages": 4,
+    "propertyCount": 68,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C3.pdf"
+  },
+  {
+    "id": 32,
+    "name": "Ceramic tile",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Brick and tile"
+    ],
+    "pages": 5,
+    "propertyCount": 70,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C4.pdf"
+  },
+  {
+    "id": 33,
+    "name": "Common brick",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Brick and tile"
+    ],
+    "pages": 6,
+    "propertyCount": 73,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C5.pdf"
+  },
+  {
+    "id": 34,
+    "name": "Engineering brick",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Brick and tile"
+    ],
+    "pages": 5,
+    "propertyCount": 68,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C6.pdf"
+  },
+  {
+    "id": 35,
+    "name": "Facing brick",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Brick and tile"
+    ],
+    "pages": 5,
+    "propertyCount": 68,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C7.pdf"
+  },
+  {
+    "id": 36,
+    "name": "Refractory brick (low density)",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Brick and tile"
+    ],
+    "pages": 5,
+    "propertyCount": 72,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C8.pdf"
+  },
+  {
+    "id": 37,
+    "name": "Terracotta",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Brick and tile"
+    ],
+    "pages": 4,
+    "propertyCount": 67,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C9.pdf"
+  },
+  {
+    "id": 38,
+    "name": "Alkali-activated cement concrete",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Concrete"
+    ],
+    "pages": 5,
+    "propertyCount": 64,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C10.pdf"
+  },
+  {
+    "id": 39,
+    "name": "Asphalt concrete",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Concrete"
+    ],
+    "pages": 5,
+    "propertyCount": 71,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C11.pdf"
+  },
+  {
+    "id": 40,
+    "name": "Autoclaved aerated concrete (AAC)",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Concrete"
+    ],
+    "pages": 5,
+    "propertyCount": 71,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C12.pdf"
+  },
+  {
+    "id": 41,
+    "name": "Concrete (normal, Portland cement)",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Concrete"
+    ],
+    "pages": 5,
+    "propertyCount": 71,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C13.pdf"
+  },
+  {
+    "id": 42,
+    "name": "Concrete (structural lightweight)",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Concrete"
+    ],
+    "pages": 7,
+    "propertyCount": 69,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C14.pdf"
+  },
+  {
+    "id": 43,
+    "name": "High density concrete",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Concrete"
+    ],
+    "pages": 4,
+    "propertyCount": 70,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C15.pdf"
+  },
+  {
+    "id": 44,
+    "name": "High performance concrete",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Concrete"
+    ],
+    "pages": 6,
+    "propertyCount": 69,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C16.pdf"
+  },
+  {
+    "id": 45,
+    "name": "High volume fly ash concrete",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Concrete"
+    ],
+    "pages": 5,
+    "propertyCount": 69,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C17.pdf"
+  },
+  {
+    "id": 46,
+    "name": "Reactive powder concrete",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Concrete"
+    ],
+    "pages": 5,
+    "propertyCount": 68,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C18.pdf"
+  },
+  {
+    "id": 47,
+    "name": "Granite",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Stone"
+    ],
+    "pages": 4,
+    "propertyCount": 68,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C19.pdf"
+  },
+  {
+    "id": 48,
+    "name": "Limestone",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Stone"
+    ],
+    "pages": 4,
+    "propertyCount": 69,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C20.pdf"
+  },
+  {
+    "id": 49,
+    "name": "Marble",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Stone"
+    ],
+    "pages": 4,
+    "propertyCount": 69,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C21.pdf"
+  },
+  {
+    "id": 50,
+    "name": "Sandstone",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Stone"
+    ],
+    "pages": 4,
+    "propertyCount": 69,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C22.pdf"
+  },
+  {
+    "id": 51,
+    "name": "Slate",
+    "folders": [
+      "Ceramics and concrete",
+      "Concrete, stone and brick",
+      "Stone"
+    ],
+    "pages": 4,
+    "propertyCount": 68,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\C23.pdf"
+  },
+  {
+    "id": 52,
+    "name": "Alumina",
+    "folders": [
+      "Ceramics and concrete",
+      "Technical ceramics"
+    ],
+    "pages": 6,
+    "propertyCount": 105,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\CR-TECH1.pdf"
+  },
+  {
+    "id": 53,
+    "name": "Aluminum nitride",
+    "folders": [
+      "Ceramics and concrete",
+      "Technical ceramics"
+    ],
+    "pages": 5,
+    "propertyCount": 99,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\CR-TECH2.pdf"
+  },
+  {
+    "id": 54,
+    "name": "Boron carbide",
+    "folders": [
+      "Ceramics and concrete",
+      "Technical ceramics"
+    ],
+    "pages": 5,
+    "propertyCount": 98,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\CR-TECH3.pdf"
+  },
+  {
+    "id": 55,
+    "name": "Silicon",
+    "folders": [
+      "Ceramics and concrete",
+      "Technical ceramics"
+    ],
+    "pages": 6,
+    "propertyCount": 101,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\CR-TECH4.pdf"
+  },
+  {
+    "id": 56,
+    "name": "Silicon carbide",
+    "folders": [
+      "Ceramics and concrete",
+      "Technical ceramics"
+    ],
+    "pages": 6,
+    "propertyCount": 103,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\CR-TECH5.pdf"
+  },
+  {
+    "id": 57,
+    "name": "Silicon nitride",
+    "folders": [
+      "Ceramics and concrete",
+      "Technical ceramics"
+    ],
+    "pages": 6,
+    "propertyCount": 99,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\CR-TECH6.pdf"
+  },
+  {
+    "id": 58,
+    "name": "Tungsten carbides",
+    "folders": [
+      "Ceramics and concrete",
+      "Technical ceramics"
+    ],
+    "pages": 5,
+    "propertyCount": 98,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\CR-TECH7.pdf"
+  },
+  {
+    "id": 59,
+    "name": "Zirconia",
+    "folders": [
+      "Ceramics and concrete",
+      "Technical ceramics"
+    ],
+    "pages": 6,
+    "propertyCount": 106,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Ceramics\\CR-TECH8.pdf"
+  },
+  {
+    "id": 60,
+    "name": "Aluminum/Silicon carbide composite",
+    "folders": [
+      "Composites",
+      "Metal matrix"
+    ],
+    "pages": 5,
+    "propertyCount": 103,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Composites\\C1.pdf"
+  },
+  {
+    "id": 61,
+    "name": "CFRP, epoxy matrix (isotropic)",
+    "folders": [
+      "Composites",
+      "Polymer matrix"
+    ],
+    "pages": 6,
+    "propertyCount": 106,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Composites\\C2.pdf"
+  },
+  {
+    "id": 62,
+    "name": "Dough (Bulk) molding compound, DMC (BMC), polyester matrix",
+    "folders": [
+      "Composites",
+      "Polymer matrix"
+    ],
+    "pages": 5,
+    "propertyCount": 97,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Composites\\C3.pdf"
+  },
+  {
+    "id": 63,
+    "name": "GFRP, epoxy matrix (isotropic)",
+    "folders": [
+      "Composites",
+      "Polymer matrix"
+    ],
+    "pages": 6,
+    "propertyCount": 111,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Composites\\C4.pdf"
+  },
+  {
+    "id": 64,
+    "name": "Sheet molding compound, SMC, polyester matrix",
+    "folders": [
+      "Composites",
+      "Polymer matrix"
+    ],
+    "pages": 5,
+    "propertyCount": 97,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Composites\\C5.pdf"
+  },
+  {
+    "id": 65,
+    "name": "Acrylonitrile butadiene styrene (ABS)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 116,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P1.pdf"
+  },
+  {
+    "id": 66,
+    "name": "Cellulose polymers (CA)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 112,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P2.pdf"
+  },
+  {
+    "id": 67,
+    "name": "Ionomer (I)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 115,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P3.pdf"
+  },
+  {
+    "id": 68,
+    "name": "Polyamides (Nylons, PA)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 117,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P4.pdf"
+  },
+  {
+    "id": 69,
+    "name": "Polycarbonate (PC)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 114,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P5.pdf"
+  },
+  {
+    "id": 70,
+    "name": "Polyetheretherketone (PEEK)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 114,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P6.pdf"
+  },
+  {
+    "id": 71,
+    "name": "Polyethylene (PE)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 117,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P7.pdf"
+  },
+  {
+    "id": 72,
+    "name": "Polyethylene terephthalate (PET)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 117,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P8.pdf"
+  },
+  {
+    "id": 73,
+    "name": "Polyhydroxyalkanoates (PHA, PHB)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 111,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P9.pdf"
+  },
+  {
+    "id": 74,
+    "name": "Polylactide (PLA)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 113,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P10.pdf"
+  },
+  {
+    "id": 75,
+    "name": "Polymethyl methacrylate (Acrylic, PMMA)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 114,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P11.pdf"
+  },
+  {
+    "id": 76,
+    "name": "Polyoxymethylene (Acetal, POM)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 114,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P12.pdf"
+  },
+  {
+    "id": 77,
+    "name": "Polypropylene (PP)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 117,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P13.pdf"
+  },
+  {
+    "id": 78,
+    "name": "Polystyrene (PS)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 116,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P14.pdf"
+  },
+  {
+    "id": 79,
+    "name": "Polytetrafluoroethylene (Teflon, PTFE)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 111,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P15.pdf"
+  },
+  {
+    "id": 80,
+    "name": "Polyurethane (tpPUR)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 115,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P16.pdf"
+  },
+  {
+    "id": 81,
+    "name": "Polyvinylchloride (tpPVC)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 116,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P17.pdf"
+  },
+  {
+    "id": 82,
+    "name": "Starch-based thermoplastics (TPS)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermoplastics"
+    ],
+    "pages": 6,
+    "propertyCount": 113,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P18.pdf"
+  },
+  {
+    "id": 83,
+    "name": "Epoxies (EP)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermosets"
+    ],
+    "pages": 6,
+    "propertyCount": 111,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P19.pdf"
+  },
+  {
+    "id": 84,
+    "name": "Phenolics (PF)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermosets"
+    ],
+    "pages": 6,
+    "propertyCount": 111,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P20.pdf"
+  },
+  {
+    "id": 85,
+    "name": "Polyester (UP)",
+    "folders": [
+      "Polymers and elastomers",
+      "Polymers",
+      "Thermosets"
+    ],
+    "pages": 6,
+    "propertyCount": 112,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\P21.pdf"
+  },
+  {
+    "id": 86,
+    "name": "Butyl rubber (IIR)",
+    "folders": [
+      "Polymers and elastomers",
+      "Elastomers"
+    ],
+    "pages": 5,
+    "propertyCount": 107,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\ELASTO - P1.pdf"
+  },
+  {
+    "id": 87,
+    "name": "Ethylene vinyl acetate (EVA)",
+    "folders": [
+      "Polymers and elastomers",
+      "Elastomers"
+    ],
+    "pages": 6,
+    "propertyCount": 114,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\ELASTO - P2.pdf"
+  },
+  {
+    "id": 88,
+    "name": "Natural rubber (NR)",
+    "folders": [
+      "Polymers and elastomers",
+      "Elastomers"
+    ],
+    "pages": 5,
+    "propertyCount": 105,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\ELASTO - P3.pdf"
+  },
+  {
+    "id": 89,
+    "name": "Polychloroprene (Neoprene, CR)",
+    "folders": [
+      "Polymers and elastomers",
+      "Elastomers"
+    ],
+    "pages": 5,
+    "propertyCount": 105,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\ELASTO - P4.pdf"
+  },
+  {
+    "id": 90,
+    "name": "Polyisoprene rubber (IIR)",
+    "folders": [
+      "Polymers and elastomers",
+      "Elastomers"
+    ],
+    "pages": 5,
+    "propertyCount": 104,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\ELASTO - P5.pdf"
+  },
+  {
+    "id": 91,
+    "name": "Polyurethane (ePUR)",
+    "folders": [
+      "Polymers and elastomers",
+      "Elastomers"
+    ],
+    "pages": 5,
+    "propertyCount": 105,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\ELASTO - P6.pdf"
+  },
+  {
+    "id": 92,
+    "name": "Silicone elastomers (SI, Q)",
+    "folders": [
+      "Polymers and elastomers",
+      "Elastomers"
+    ],
+    "pages": 6,
+    "propertyCount": 105,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\ELASTO - P7.pdf"
+  },
+  {
+    "id": 93,
+    "name": "Carbon black reinforced styrene butadiene rubber (SBR)",
+    "folders": [
+      "Polymers and elastomers",
+      "Elastomers"
+    ],
+    "pages": 5,
+    "propertyCount": 99,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Polymers\\ELASTO - P8.pdf"
+  },
+  {
+    "id": 94,
+    "name": "Glulam",
+    "folders": [
+      "Wood and wood composites",
+      "Engineered wood"
+    ],
+    "pages": 5,
+    "propertyCount": 76,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Wood\\W1.pdf"
+  },
+  {
+    "id": 95,
+    "name": "Hardboard perpendicular to board",
+    "folders": [
+      "Wood and wood composites",
+      "Hardboard"
+    ],
+    "pages": 4,
+    "propertyCount": 78,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Wood\\W2.pdf"
+  },
+  {
+    "id": 96,
+    "name": "Hardwood (oak) transverse to the grain",
+    "folders": [
+      "Wood and wood composites",
+      "Hardwood (oak)"
+    ],
+    "pages": 6,
+    "propertyCount": 77,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Wood\\W3.pdf"
+  },
+  {
+    "id": 97,
+    "name": "Softwood (pine) transverse to the grain",
+    "folders": [
+      "Wood and wood composites",
+      "Softwood (pine)"
+    ],
+    "pages": 6,
+    "propertyCount": 78,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Wood\\W4.pdf"
+  },
+  {
+    "id": 98,
+    "name": "Medium density fiberboard perpendicular to board",
+    "folders": [
+      "Wood and wood composites",
+      "MDF"
+    ],
+    "pages": 4,
+    "propertyCount": 77,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Wood\\W5.pdf"
+  },
+  {
+    "id": 99,
+    "name": "Particleboard perpendicular to board",
+    "folders": [
+      "Wood and wood composites",
+      "Particleboard"
+    ],
+    "pages": 4,
+    "propertyCount": 77,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Wood\\W6.pdf"
+  },
+  {
+    "id": 100,
+    "name": "Plywood perpendicular to board",
+    "folders": [
+      "Wood and wood composites",
+      "Plywood"
+    ],
+    "pages": 4,
+    "propertyCount": 77,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Wood\\W7.pdf"
+  }
+]

@@ -1,0 +1,5 @@
+Revision 0.71 — 3 November 2026
+Based on the preserved working Android Revision 0.7.
+
+See README.md for changes, reference scope, installation and build instructions.
+The corrected home artwork is the steel-frame building from pic11 (2).png.

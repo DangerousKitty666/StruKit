@@ -1,0 +1,636 @@
+{
+  "record": {
+    "id": 96,
+    "name": "Hardwood (oak) transverse to the grain",
+    "folders": [
+      "Wood and wood composites",
+      "Hardwood (oak)"
+    ],
+    "pages": 6,
+    "propertyCount": 77,
+    "diagrams": 0,
+    "sourceFile": "C:\\Users\\gidro\\Desktop\\ENGINEERING APP\\RESOURCES\\METRIALS\\Wood\\W3.pdf"
+  },
+  "sections": [
+    {
+      "title": "General properties",
+      "rows": [
+        {
+          "label": "Density",
+          "estimate": false,
+          "value": "850 - 1.03e3 kg/m^3",
+          "icon": null,
+          "page": 1
+        },
+        {
+          "label": "Price",
+          "estimate": true,
+          "value": "5.06 - 8.15 GBP/kg",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Date first used",
+          "estimate": false,
+          "value": "-10000",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Material form that data applies to",
+      "rows": [
+        {
+          "label": "Bulk",
+          "estimate": false,
+          "value": "",
+          "icon": "96-p2-Image2.jpg",
+          "page": 2
+        },
+        {
+          "label": "Sheet",
+          "estimate": false,
+          "value": "",
+          "icon": "96-p2-Image2.jpg",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Building system",
+      "rows": [
+        {
+          "label": "Superstructure",
+          "estimate": false,
+          "value": "",
+          "icon": "96-p2-Image2.jpg",
+          "page": 2
+        },
+        {
+          "label": "Enclosure",
+          "estimate": false,
+          "value": "",
+          "icon": "96-p2-Image2.jpg",
+          "page": 2
+        },
+        {
+          "label": "Interiors",
+          "estimate": false,
+          "value": "",
+          "icon": "96-p2-Image2.jpg",
+          "page": 2
+        },
+        {
+          "label": "Services",
+          "estimate": false,
+          "value": "",
+          "icon": "96-p2-Image3.jpg",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Mechanical properties",
+      "rows": [
+        {
+          "label": "Young's modulus",
+          "estimate": true,
+          "value": "5 - 5.58 GPa",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Shear modulus",
+          "estimate": true,
+          "value": "0.517 - 0.71 GPa",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Bulk modulus",
+          "estimate": true,
+          "value": "2.52 - 2.82 GPa",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Bending modulus",
+          "estimate": false,
+          "value": "13.2 - 13.9 GPa",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Poisson's ratio",
+          "estimate": true,
+          "value": "0.02 - 0.04",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Yield strength (elastic limit)",
+          "estimate": true,
+          "value": "4.26 - 5.22 MPa",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Tensile strength",
+          "estimate": true,
+          "value": "7.1 - 8.7 MPa",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Compressive strength",
+          "estimate": true,
+          "value": "12.8 - 15.6 MPa",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Bending strength",
+          "estimate": false,
+          "value": "70 - 95 MPa",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Elongation",
+          "estimate": true,
+          "value": "0.42 - 0.51 % strain",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Hardness - Vickers",
+          "estimate": false,
+          "value": "10 - 12.2 HV",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Fatigue strength at 10^7 cycles",
+          "estimate": true,
+          "value": "2.13 - 2.61 MPa",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Fracture toughness",
+          "estimate": true,
+          "value": "0.821 - 1 MPa.m^0.5",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Mechanical loss coefficient (tan delta)",
+          "estimate": true,
+          "value": "0.011 - 0.014",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Thermal and combustion properties",
+      "rows": [
+        {
+          "label": "Thermal conductor or insulator?",
+          "estimate": false,
+          "value": "Good insulator",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Thermal resistivity",
+          "estimate": false,
+          "value": "5 - 6.13 m.°C/W",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Thermal expansion coefficient",
+          "estimate": true,
+          "value": "37.8 - 49.5 μstrain/°C",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Specific heat capacity",
+          "estimate": false,
+          "value": "1.66e3 - 1.71e3 J/kg.°C",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Maximum service temperature",
+          "estimate": false,
+          "value": "120 - 140 °C",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Minimum service temperature",
+          "estimate": false,
+          "value": "-73.2 - -23.2 °C",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Flammability",
+          "estimate": false,
+          "value": "Highly flammable",
+          "icon": null,
+          "page": 2
+        },
+        {
+          "label": "Emissivity",
+          "estimate": false,
+          "value": "0.81 - 0.9",
+          "icon": null,
+          "page": 2
+        }
+      ]
+    },
+    {
+      "title": "Hygro-thermal properties",
+      "rows": [
+        {
+          "label": "Water absorption",
+          "estimate": false,
+          "value": "12 - 30 %",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Frost resistance",
+          "estimate": false,
+          "value": "Good",
+          "icon": null,
+          "page": 3
+        }
+      ]
+    },
+    {
+      "title": "Electrical properties",
+      "rows": [
+        {
+          "label": "Electrical conductor or insulator?",
+          "estimate": false,
+          "value": "Poor insulator",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Electrical resistivity",
+          "estimate": true,
+          "value": "2.1e14 - 7e14 μohm.cm",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Dielectric constant (relative permittivity)",
+          "estimate": true,
+          "value": "5.03 - 6.14",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Dissipation factor (dielectric loss tangent)",
+          "estimate": true,
+          "value": "0.074 - 0.091",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Dielectric strength (dielectric breakdown)",
+          "estimate": true,
+          "value": "1 - 2 MV/m",
+          "icon": null,
+          "page": 3
+        }
+      ]
+    },
+    {
+      "title": "Natural color",
+      "rows": [
+        {
+          "label": "Transparency",
+          "estimate": false,
+          "value": "Opaque",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Transmissivity",
+          "estimate": false,
+          "value": "0 %",
+          "icon": null,
+          "page": 3
+        }
+      ]
+    },
+    {
+      "title": "Critical Materials Risk",
+      "rows": [
+        {
+          "label": "High critical material risk?",
+          "estimate": false,
+          "value": "No",
+          "icon": null,
+          "page": 3
+        }
+      ]
+    },
+    {
+      "title": "Acoustic properties",
+      "rows": [
+        {
+          "label": "Sound absorption",
+          "estimate": false,
+          "value": "Average",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Sound isolation",
+          "estimate": false,
+          "value": "Average",
+          "icon": null,
+          "page": 3
+        }
+      ]
+    },
+    {
+      "title": "Processability (scale 1 = impractical to 5 = excellent)",
+      "rows": [
+        {
+          "label": "Moldability",
+          "estimate": false,
+          "value": "2 - 3",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Machinability",
+          "estimate": false,
+          "value": "5",
+          "icon": null,
+          "page": 3
+        }
+      ]
+    },
+    {
+      "title": "Durability",
+      "rows": [
+        {
+          "label": "Water (fresh)",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Water (salt)",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Weak acids",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Strong acids",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Weak alkalis",
+          "estimate": false,
+          "value": "Acceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Strong alkalis",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Organic solvents",
+          "estimate": false,
+          "value": "Acceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "UV radiation (sunlight)",
+          "estimate": false,
+          "value": "Good",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Wear resistance",
+          "estimate": false,
+          "value": "Unacceptable",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Industrial atmosphere",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 3
+        },
+        {
+          "label": "Rural atmosphere",
+          "estimate": false,
+          "value": "Acceptable",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Marine atmosphere",
+          "estimate": false,
+          "value": "Limited use",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Primary material production: energy and climate change",
+      "rows": [
+        {
+          "label": "Climate change (CO2-eq) (virgin grade production)",
+          "estimate": true,
+          "value": "0.358 - 0.395 kg/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Embodied energy (virgin grade production)",
+          "estimate": true,
+          "value": "68.1 - 75.1 MJ/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Water Usage",
+          "estimate": true,
+          "value": "665 - 735 l/kg",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Material processing: energy",
+      "rows": [
+        {
+          "label": "Machining, coarse, embodied energy",
+          "estimate": true,
+          "value": "15.5 - 17.1 MJ/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Machining, fine, embodied energy",
+          "estimate": true,
+          "value": "17.2 - 19 MJ/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Machining, grinding, embodied energy",
+          "estimate": true,
+          "value": "19 - 21 MJ/kg",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Material processing: climate change",
+      "rows": [
+        {
+          "label": "Machining, coarse, climate change (CO2-eq)",
+          "estimate": true,
+          "value": "1.01 - 1.12 kg/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Machining, fine, climate change (CO2-eq)",
+          "estimate": true,
+          "value": "1.13 - 1.25 kg/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Machining, grinding, climate change (CO2-eq)",
+          "estimate": true,
+          "value": "1.24 - 1.37 kg/kg",
+          "icon": null,
+          "page": 4
+        }
+      ]
+    },
+    {
+      "title": "Recycling and end of life",
+      "rows": [
+        {
+          "label": "Recycle",
+          "estimate": false,
+          "value": "",
+          "icon": "96-p4-Image2.jpg",
+          "page": 4
+        },
+        {
+          "label": "Functional recycle",
+          "estimate": false,
+          "value": "",
+          "icon": "96-p4-Image3.jpg",
+          "page": 4
+        },
+        {
+          "label": "Climate change (CO2-eq), recycling",
+          "estimate": true,
+          "value": "0.0215 - 0.0237 kg/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Embodied energy, recycling",
+          "estimate": true,
+          "value": "0.681 - 0.751 MJ/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Recycle fraction in current supply",
+          "estimate": false,
+          "value": "1 %",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Combust for energy recovery",
+          "estimate": false,
+          "value": "",
+          "icon": "96-p4-Image2.jpg",
+          "page": 4
+        },
+        {
+          "label": "Heat of combustion (net)",
+          "estimate": true,
+          "value": "19.8 - 21.3 MJ/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Combustion CO2",
+          "estimate": true,
+          "value": "1.69 - 1.78 kg/kg",
+          "icon": null,
+          "page": 4
+        },
+        {
+          "label": "Landfill",
+          "estimate": false,
+          "value": "",
+          "icon": "96-p4-Image2.jpg",
+          "page": 4
+        },
+        {
+          "label": "Biodegrade",
+          "estimate": false,
+          "value": "",
+          "icon": "96-p4-Image2.jpg",
+          "page": 4
+        },
+        {
+          "label": "A renewable resource?",
+          "estimate": false,
+          "value": "",
+          "icon": "96-p4-Image2.jpg",
+          "page": 4
+        }
+      ]
+    }
+  ],
+  "summary": "Oak joinery and timber products. Values here are transverse to grain, not along-grain beam strengths."
+}

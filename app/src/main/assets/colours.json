@@ -1,0 +1,2977 @@
+[
+  {
+    "system": "BS 381C",
+    "code": "BS381C 101",
+    "name": "Sky blue",
+    "hex": "#83a89b",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 103",
+    "name": "Peacock blue",
+    "hex": "#3a6a72",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 104",
+    "name": "Azure blue",
+    "hex": "#3b5679",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 105",
+    "name": "Oxford blue",
+    "hex": "#39425a",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 106",
+    "name": "Royal blue",
+    "hex": "#383941",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 107",
+    "name": "Strong blue",
+    "hex": "#35769c",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 108",
+    "name": "Aircraft blue",
+    "hex": "#3c4876",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 109",
+    "name": "Middle blue / Anchusa",
+    "hex": "#2e607c",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 110",
+    "name": "Roundel blue",
+    "hex": "#404a72",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 112",
+    "name": "Arctic blue / Fiesta Blue",
+    "hex": "#67a4b3",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 113",
+    "name": "Deep saxe blue",
+    "hex": "#3c6774",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 166",
+    "name": "French blue",
+    "hex": "#4467a5",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 172",
+    "name": "Pale roundel blue",
+    "hex": "#98b6d2",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 175",
+    "name": "Light French blue",
+    "hex": "#4e83b6",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 210",
+    "name": "Sky",
+    "hex": "#adaf97",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 216",
+    "name": "Eau de Nil",
+    "hex": "#a5b884",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 217",
+    "name": "Sea green",
+    "hex": "#8aa061",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 218",
+    "name": "Grass green",
+    "hex": "#5a7e44",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 220",
+    "name": "Olive green",
+    "hex": "#4e563c",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 221",
+    "name": "Brilliant green",
+    "hex": "#497041",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 223",
+    "name": "Middle bronze green",
+    "hex": "#4e5140",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 224",
+    "name": "Deep bronze green",
+    "hex": "#45493e",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 225",
+    "name": "Light Brunswick green",
+    "hex": "#46633e",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 226",
+    "name": "Mid Brunswick green",
+    "hex": "#3a5341",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 227",
+    "name": "Deep Brunswick green",
+    "hex": "#394b40",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 228",
+    "name": "Emerald green / Viridian",
+    "hex": "#31825f",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 241",
+    "name": "Dark green",
+    "hex": "#56564b",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 262",
+    "name": "Bold green",
+    "hex": "#2f885b",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 267",
+    "name": "Deep chrome green / Traffic green",
+    "hex": "#42634e",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 280",
+    "name": "Verdigris green",
+    "hex": "#5b9571",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 283",
+    "name": "Aircraft grey green",
+    "hex": "#75816b",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 284",
+    "name": "Spruce green",
+    "hex": "#6b6c5b",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 285",
+    "name": "NATO green",
+    "hex": "#57564a",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 298",
+    "name": "Olive drab",
+    "hex": "#515041",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 309",
+    "name": "Canary yellow",
+    "hex": "#eac40a",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 310",
+    "name": "Primrose",
+    "hex": "#e7d367",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 315",
+    "name": "Grapefruit",
+    "hex": "#edd06a",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 320",
+    "name": "Light brown",
+    "hex": "#946b44",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 337",
+    "name": "Very dark drab",
+    "hex": "#555148",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 352",
+    "name": "Pale cream",
+    "hex": "#e3ca8e",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 353",
+    "name": "Deep cream",
+    "hex": "#f3c977",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 355",
+    "name": "Lemon",
+    "hex": "#edb212",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 356",
+    "name": "Golden yellow",
+    "hex": "#f2a600",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 358",
+    "name": "Light buff",
+    "hex": "#dcac6d",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 361",
+    "name": "Light stone",
+    "hex": "#be9e73",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 363",
+    "name": "Bold yellow",
+    "hex": "#f8bb00",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 365",
+    "name": "Vellum",
+    "hex": "#d8cead",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 366",
+    "name": "Light beige",
+    "hex": "#dec497",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 367",
+    "name": "Manilla",
+    "hex": "#e5d1ae",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 369",
+    "name": "Biscuit",
+    "hex": "#ebcaa0",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 380",
+    "name": "Camouflage desert sand",
+    "hex": "#ac9281",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 384",
+    "name": "Light straw",
+    "hex": "#d6c39a",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 388",
+    "name": "Beige",
+    "hex": "#cfb58e",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 389",
+    "name": "Camouflage beige",
+    "hex": "#9e9680",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 411",
+    "name": "Middle brown",
+    "hex": "#72523c",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 412",
+    "name": "Dark brown",
+    "hex": "#5c453d",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 414",
+    "name": "Golden brown",
+    "hex": "#99633a",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 420",
+    "name": "Dk cam'flage desert sand",
+    "hex": "#998170",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 436",
+    "name": "Dark camouflage brown",
+    "hex": "#564c47",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 445",
+    "name": "Venetian red",
+    "hex": "#7f473c",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 447",
+    "name": "Salmon pink",
+    "hex": "#da9f86",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 453",
+    "name": "Shell pink",
+    "hex": "#ddc5c3",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 454",
+    "name": "Pale roundel red",
+    "hex": "#c89092",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 499",
+    "name": "Service brown",
+    "hex": "#594b41",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 537",
+    "name": "Signal red",
+    "hex": "#b73d37",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 538",
+    "name": "Post office red / Cherry",
+    "hex": "#9d383a",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 539",
+    "name": "Currant red",
+    "hex": "#a9393a",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 541",
+    "name": "Maroon",
+    "hex": "#4c3b3c",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 542",
+    "name": "Ruby",
+    "hex": "#813f5a",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 557",
+    "name": "Light orange",
+    "hex": "#d77131",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 564",
+    "name": "Bold red",
+    "hex": "#b63a35",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 568",
+    "name": "Apricot",
+    "hex": "#dc842a",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 592",
+    "name": "International orange",
+    "hex": "#c44e33",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 593",
+    "name": "Rail red / Azo orange",
+    "hex": "#cb4734",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 626",
+    "name": "Camouflage grey",
+    "hex": "#969d9e",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 627",
+    "name": "Light aircraft grey",
+    "hex": "#b0b1aa",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 629",
+    "name": "Dark camouflage grey",
+    "hex": "#737a80",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 630",
+    "name": "French grey",
+    "hex": "#999d8d",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 631",
+    "name": "Light grey",
+    "hex": "#929b94",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 632",
+    "name": "Dark admiralty grey",
+    "hex": "#686e71",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 637",
+    "name": "Medium sea grey",
+    "hex": "#899194",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 638",
+    "name": "Dark sea grey",
+    "hex": "#686c71",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 642",
+    "name": "Night",
+    "hex": "#3e3f3f",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 676",
+    "name": "Light weatherwork grey",
+    "hex": "#9fa9ac",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 677",
+    "name": "Dark weatherwork grey",
+    "hex": "#686d74",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 692",
+    "name": "Smoke grey",
+    "hex": "#738c99",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 693",
+    "name": "Aircraft grey",
+    "hex": "#7f8582",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 694",
+    "name": "Dove grey",
+    "hex": "#8a8e88",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 697",
+    "name": "Light admiralty grey",
+    "hex": "#a8bdba",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 796",
+    "name": "Dark violet",
+    "hex": "#6b4f74",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 381C",
+    "code": "BS381C 797",
+    "name": "Light violet",
+    "hex": "#ae9ebb",
+    "source": "https://www.promain.co.uk/colour-charts-bs381c"
+  },
+  {
+    "system": "BS 4800",
+    "code": "00 A 01",
+    "name": "Portland Grey",
+    "hex": "#d5d4ce",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "00 A 05",
+    "name": "Goosewing Grey",
+    "hex": "#b1b0ae",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "00 A 09",
+    "name": "Flint grey / Flint",
+    "hex": "#828385",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "00 A 13",
+    "name": "Storm grey / Greyfriar",
+    "hex": "#5a5a5b",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "00 E 53",
+    "name": "Black",
+    "hex": "#2f2f30",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "00 E 55",
+    "name": "White",
+    "hex": "#f1f2ea",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "02 C 33",
+    "name": "Lupin pink / Candy floss / Pink wafer",
+    "hex": "#e4c0c4",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "02 C 37",
+    "name": "Clover pink / Corinth / Fontana",
+    "hex": "#a4717f",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "02 C 39",
+    "name": "Victoria plum / Aubergine / Plum",
+    "hex": "#764a57",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "02 C 40",
+    "name": "Deep plum / Loganberry",
+    "hex": "#57434b",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "04 B 15",
+    "name": "Rosepetal / Pastel pink / Dawn pink",
+    "hex": "#eaddd6",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "04 B 17",
+    "name": "Dusty pink / Tea rose / Tearose",
+    "hex": "#d7c4bd",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "04 B 21",
+    "name": "Sable / Sierra",
+    "hex": "#a8938c",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "04 C 31",
+    "name": "Pink",
+    "hex": "#f4e7e0",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "04 C 33",
+    "name": "Orchid pink / Parisian pink / Shell",
+    "hex": "#e7bdb4",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "04 C 37",
+    "name": "Autumn brown / Rosevale",
+    "hex": "#a66f67",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "04 C 39",
+    "name": "Brick red / Copperbeech",
+    "hex": "#7b4945",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "04 D 44",
+    "name": "Misty red / Tawny",
+    "hex": "#a1514d",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "04 D 45",
+    "name": "Dark cherry / Russet / Monarch",
+    "hex": "#873f3d",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "04 E 49",
+    "name": "Rose pink / Petal",
+    "hex": "#f5dbd4",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "04 E 51",
+    "name": "Salmon red / Lobster / Azalea",
+    "hex": "#e37363",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "04 E 53",
+    "name": "Poppy / Carnival red",
+    "hex": "#be443b",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "04 E 55",
+    "name": "Red",
+    "hex": "#c54937",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "04 E 56",
+    "name": "Carnival red",
+    "hex": "#b13c3c",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "04 E 58",
+    "name": "Purple",
+    "hex": "#6a4348",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "06 C 33",
+    "name": "Peach / Cameo",
+    "hex": "#e2c19f",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "06 C 35",
+    "name": "Light orange",
+    "hex": "#dca47f",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "06 C 37",
+    "name": "Leather brown / Brownstone",
+    "hex": "#a87456",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "06 C 39",
+    "name": "Saddle brown / Saddle",
+    "hex": "#72503b",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "06 C 40",
+    "name": "Brown",
+    "hex": "#5c4742",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "06 D 43",
+    "name": "Mid tan / Kalahari / Cinnamon",
+    "hex": "#c68446",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "06 D 45",
+    "name": "Teak / Mace",
+    "hex": "#8f5b3f",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "06 E 50",
+    "name": "Mellow apricot / Apricot",
+    "hex": "#fab878",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "06 E 51",
+    "name": "Mandarin orange / Clementine / Calendula",
+    "hex": "#f18f59",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "06 E 56",
+    "name": "Maori brown / Nectarine",
+    "hex": "#b56835",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "08 B 15",
+    "name": "Magnolia",
+    "hex": "#f2e8d7",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "08 B 17",
+    "name": "Honey beige / Fawn / Sandstone",
+    "hex": "#d8c9b6",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "08 B 21",
+    "name": "Antelope",
+    "hex": "#a49587",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "08 B 25",
+    "name": "Beaver brown / Beaver",
+    "hex": "#77685d",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "08 B 29",
+    "name": "Bitter chocolate / Vandyke",
+    "hex": "#524943",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "08 C 31",
+    "name": "Honeysuckle cream / Blush stone",
+    "hex": "#f0e0c6",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "08 C 33",
+    "name": "Beige",
+    "hex": "#dcc09b",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "08 C 35",
+    "name": "Fudge / Butterscotch / Bamboo",
+    "hex": "#cfa671",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "08 C 37",
+    "name": "Caramel / Bracken",
+    "hex": "#9e7545",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "08 D 41",
+    "name": "Yellow",
+    "hex": "#ebbf85",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "08 E 51",
+    "name": "Golden yellow / Amber / Goldcup",
+    "hex": "#eca20c",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "08 E 55",
+    "name": "Orange",
+    "hex": "#f99814",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 A 03",
+    "name": "Dawn grey / Sink grey / Flake grey",
+    "hex": "#c9c7bf",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 A 11",
+    "name": "Charcoal grey / Storm / Rhino",
+    "hex": "#6b6966",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 B 15",
+    "name": "Creamy white / Ivory / Gardenia",
+    "hex": "#f1e9d7",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 B 17",
+    "name": "Oatmeal / Greystone / Hopsack",
+    "hex": "#d1c9ac",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 B 25",
+    "name": "Turtle green / Turtle",
+    "hex": "#736c5a",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 B 29",
+    "name": "Vandyke brown / Ironstone",
+    "hex": "#4a4742",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 C 31",
+    "name": "Ivory / Champagne / Buttermilk",
+    "hex": "#eee1c0",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 C 33",
+    "name": "Vanilla / Pollen",
+    "hex": "#e4d29c",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 C 35",
+    "name": "Wheat / Golden bronze / Savannah",
+    "hex": "#c1aa69",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 C 39",
+    "name": "Dark olive / Saluki / Seaweed / Riverbed",
+    "hex": "#62553e",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 D 43",
+    "name": "Golden maize / Banana / Capricorn",
+    "hex": "#c4a336",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 D 45",
+    "name": "French mustard / Florida",
+    "hex": "#8f5b3f",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 E 49",
+    "name": "Pale primrose / Pale lemon / Jonquil",
+    "hex": "#e8e0a6",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 E 50",
+    "name": "Light grapefruit / Forsythia",
+    "hex": "#f0d168",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 E 53",
+    "name": "Sunflower yellow / Canary / Aztec",
+    "hex": "#e9c100",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "10 E 55",
+    "name": "Canary Yellow",
+    "hex": "#f5c418",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "12 B 15",
+    "name": "Sea foam / Seafoam",
+    "hex": "#e5e4d0",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "12 B 17",
+    "name": "Green Mist / Willow",
+    "hex": "#cacaac",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "12 B 21",
+    "name": "Mineral green / Opaline / Moorland",
+    "hex": "#999a80",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "12 B 25",
+    "name": "Spruce green / Thyme / Chive",
+    "hex": "#696a59",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "12 B 29",
+    "name": "Juniper Green",
+    "hex": "#474840",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "12 C 31",
+    "name": "Light yellow",
+    "hex": "#e5e5bf",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "12 C 33",
+    "name": "Green haze / Catkin",
+    "hex": "#c8ca94",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "12 C 37",
+    "name": "Green",
+    "hex": "#7b8044",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "12 C 39",
+    "name": "Ivy green / Orchard",
+    "hex": "#54583d",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "12 D 41",
+    "name": "Green",
+    "hex": "#cbcd7a",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "12 D 43",
+    "name": "Greengage / Sapling / Springleaf",
+    "hex": "#90953e",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "12 D 45",
+    "name": "Dark laurel / Tundra / Sherwood",
+    "hex": "#6a6c3c",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "12 E 51",
+    "name": "Pale lime / Citrine",
+    "hex": "#c8c83e",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "12 E 53",
+    "name": "Linden green / Linden",
+    "hex": "#99b03f",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "12 E 55",
+    "name": "Green",
+    "hex": "#7ba044",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "14 C 31",
+    "name": "Glacial green / Alpine",
+    "hex": "#d9e6d7",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "14 C 35",
+    "name": "Iceplant green / Braemar",
+    "hex": "#a0b4a3",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "14 C 39",
+    "name": "Holly green / Hollybush",
+    "hex": "#425e4f",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "14 C 40",
+    "name": "Moss green / Conifer",
+    "hex": "#414a45",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "14 E 49",
+    "name": "Light green",
+    "hex": "#d0e9d6",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "14 E 50",
+    "name": "Green",
+    "hex": "#afd7b9",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "14 E 51",
+    "name": "Bright green / Goblin / Garland",
+    "hex": "#5dad73",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "14 E 53",
+    "name": "Irish green / Avarice / Verona",
+    "hex": "#2b9368",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "16 C 33",
+    "name": "Duckegg / Duck egg blue",
+    "hex": "#b5cdc8",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "16 C 37",
+    "name": "Reef green / Orion",
+    "hex": "#5c8986",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "16 D 45",
+    "name": "Dark jade / Scarab",
+    "hex": "#20615e",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "16 E 50",
+    "name": "Turquoise",
+    "hex": "#9ed7d0",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "16 E 53",
+    "name": "Aquamarine / Seafarer / Lido",
+    "hex": "#1e948f",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "18 B 17",
+    "name": "Blue mink / Silver haze / Heron",
+    "hex": "#c5cdcb",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "18 B 21",
+    "name": "Squirrel grey / Tideway",
+    "hex": "#949c9c",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "18 B 25",
+    "name": "Dark admiralty grey / Merlin",
+    "hex": "#687074",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "18 B 29",
+    "name": "Raven",
+    "hex": "#43474b",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "18 C 31",
+    "name": "Ice blue / Spindrift",
+    "hex": "#e4e8e1",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "18 C 35",
+    "name": "Corvette blue / Pigeon",
+    "hex": "#99b1ba",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "18 C 39",
+    "name": "Fathom blue / Deep river / Dolphin",
+    "hex": "#3d5c69",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "18 E 49",
+    "name": "Crystal blue / Astral blue / Pinefrost",
+    "hex": "#d4e6e2",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "18 E 50",
+    "name": "Ribbon blue / Cirrus",
+    "hex": "#add4da",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "18 E 51",
+    "name": "Delphinium Blue / Mermaid / Larkspur",
+    "hex": "#4da6be",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "18 E 53",
+    "name": "Tartan blue / Cobalt blue / Regatta",
+    "hex": "#007a9f",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "20 C 33",
+    "name": "Porcelain blue / Pompadour",
+    "hex": "#bbcddb",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "20 C 37",
+    "name": "Larkspur blue / Viking",
+    "hex": "#6d87a0",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "20 C 40",
+    "name": "Duchess blue / Midnight",
+    "hex": "#3b4455",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "20 D 41",
+    "name": "Powder blue",
+    "hex": "#9eb9d4",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "20 D 45",
+    "name": "Sapphire blue / Maritime / Trafalgar",
+    "hex": "#3f5f84",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "20 E 51",
+    "name": "Cornflower blue / Corfu / Cornflower",
+    "hex": "#6ca4d3",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "20 E 53",
+    "name": "Blue",
+    "hex": "#3876ab",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "20 E 56",
+    "name": "Blue",
+    "hex": "#266492",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "22 B 15",
+    "name": "Pearl grey / Swansdown",
+    "hex": "#e3e3df",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "22 B 17",
+    "name": "Pale lavender / Haze / Dove",
+    "hex": "#c6c5cb",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "22 C 37",
+    "name": "Purple heather / Heather",
+    "hex": "#7d7a9b",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "22 D 41",
+    "name": "Purple",
+    "hex": "#b0b2d4",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "22 D 45",
+    "name": "Deep purple / Pageant",
+    "hex": "#5c5385",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "24 C 33",
+    "name": "Pale lilac / Mallow",
+    "hex": "#d1c2cd",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "24 C 39",
+    "name": "Regal violet / Regalia",
+    "hex": "#6a4f6e",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "BS 4800",
+    "code": "24 E 53",
+    "name": "Purple",
+    "hex": "#895f8f",
+    "source": "https://www.promain.co.uk/colour-charts-bs4800"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1000",
+    "name": "Green beige",
+    "hex": "#c9bb88",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1001",
+    "name": "Beige",
+    "hex": "#ccb083",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1002",
+    "name": "Sand yellow",
+    "hex": "#cdaa6d",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1003",
+    "name": "Signal yellow",
+    "hex": "#f2a900",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1004",
+    "name": "Golden yellow",
+    "hex": "#dd9f00",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1005",
+    "name": "Honey yellow",
+    "hex": "#c58f00",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1006",
+    "name": "Maize yellow",
+    "hex": "#db9100",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1007",
+    "name": "Daffodil yellow",
+    "hex": "#e28d00",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1011",
+    "name": "Brown beige",
+    "hex": "#ab814f",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1012",
+    "name": "Lemon yellow",
+    "hex": "#d6b025",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1013",
+    "name": "Oyster white",
+    "hex": "#e1dac6",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1014",
+    "name": "Ivory",
+    "hex": "#d9c59a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1015",
+    "name": "Light ivory",
+    "hex": "#e3d3b5",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1016",
+    "name": "Sulphur yellow",
+    "hex": "#e8de35",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1017",
+    "name": "Saffron yellow",
+    "hex": "#f0aa50",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1018",
+    "name": "Zinc yellow",
+    "hex": "#f2cb2d",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1019",
+    "name": "Grey beige",
+    "hex": "#a28f7a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1020",
+    "name": "Olive yellow",
+    "hex": "#9d8f64",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1021",
+    "name": "Rape yellow",
+    "hex": "#eeb700",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1023",
+    "name": "Traffic yellow",
+    "hex": "#efb700",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1024",
+    "name": "Ochre yellow",
+    "hex": "#b5904b",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1026",
+    "name": "Luminous yellow",
+    "hex": "#ffff00",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1027",
+    "name": "Curry",
+    "hex": "#a2800c",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1028",
+    "name": "Melon yellow",
+    "hex": "#ff9c00",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1032",
+    "name": "Broom yellow",
+    "hex": "#dba400",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1033",
+    "name": "Dahlia yellow",
+    "hex": "#f29b1b",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1034",
+    "name": "Pastel yellow",
+    "hex": "#e69d51",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1035",
+    "name": "Pearl beige",
+    "hex": "#8e8370",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1036",
+    "name": "Pearl gold",
+    "hex": "#7d653f",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 1037",
+    "name": "Sun yellow",
+    "hex": "#ea9300",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 2000",
+    "name": "Yellow orange",
+    "hex": "#d56f00",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 2001",
+    "name": "Red orange",
+    "hex": "#b6481c",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 2002",
+    "name": "Vermilion",
+    "hex": "#bc3823",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 2003",
+    "name": "Pastel orange",
+    "hex": "#f07829",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 2004",
+    "name": "Pure orange",
+    "hex": "#de5306",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 2005",
+    "name": "Luminous orange",
+    "hex": "#ff5e22",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 2007",
+    "name": "Luminous b't orange",
+    "hex": "#ffb700",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 2008",
+    "name": "Bright red orange",
+    "hex": "#e86b22",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 2009",
+    "name": "Traffic orange",
+    "hex": "#da530a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 2010",
+    "name": "Signal orange",
+    "hex": "#cc5d29",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 2011",
+    "name": "Deep orange",
+    "hex": "#dd6e0f",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 2012",
+    "name": "Salmon orange",
+    "hex": "#d1654e",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 2013",
+    "name": "Pearl orange",
+    "hex": "#8f3e25",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 2017",
+    "name": "RAL orange",
+    "hex": "#FC5500",
+    "source": "https://www.koyda.com/guides/ral-colour-chart/"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3000",
+    "name": "Flame red",
+    "hex": "#a42821",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3001",
+    "name": "Signal red",
+    "hex": "#982323",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3002",
+    "name": "Carmine red",
+    "hex": "#982222",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3003",
+    "name": "Ruby red",
+    "hex": "#841922",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3004",
+    "name": "Purple red",
+    "hex": "#691b23",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3005",
+    "name": "Wine red",
+    "hex": "#58181f",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3007",
+    "name": "Black red",
+    "hex": "#3d2022",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3009",
+    "name": "Oxide red",
+    "hex": "#663029",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3011",
+    "name": "Brown red",
+    "hex": "#772424",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3012",
+    "name": "Beige red",
+    "hex": "#c2856d",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3013",
+    "name": "Tomato red",
+    "hex": "#952e25",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3014",
+    "name": "Antique pink",
+    "hex": "#c97375",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3015",
+    "name": "Light pink",
+    "hex": "#d6a0a6",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3016",
+    "name": "Coral red",
+    "hex": "#a43c30",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3017",
+    "name": "Rose",
+    "hex": "#c8545d",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3018",
+    "name": "Strawberry red",
+    "hex": "#c43e4a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3020",
+    "name": "Traffic red",
+    "hex": "#b81d13",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3022",
+    "name": "Salmon pink",
+    "hex": "#cc6955",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3024",
+    "name": "Luminous red",
+    "hex": "#ff2a24",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3026",
+    "name": "Luminous bright red",
+    "hex": "#ff2620",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3027",
+    "name": "Raspberry red",
+    "hex": "#a9263d",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3028",
+    "name": "Pure red",
+    "hex": "#c92b26",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3031",
+    "name": "Orient red",
+    "hex": "#a43338",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3032",
+    "name": "Pearl ruby red",
+    "hex": "#6e1c24",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 3033",
+    "name": "Pearl pink",
+    "hex": "#a2392e",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 4001",
+    "name": "Red lilac",
+    "hex": "#836083",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 4002",
+    "name": "Red violet",
+    "hex": "#8c3c4b",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 4003",
+    "name": "Heather violet",
+    "hex": "#c4608c",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 4004",
+    "name": "Claret violet",
+    "hex": "#641d39",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 4005",
+    "name": "Blue lilac",
+    "hex": "#7b679a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 4006",
+    "name": "Traffic purple",
+    "hex": "#913073",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 4007",
+    "name": "Purple violet",
+    "hex": "#47243c",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 4008",
+    "name": "Signal violet",
+    "hex": "#874b83",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 4009",
+    "name": "Pastel violet",
+    "hex": "#9d8592",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 4010",
+    "name": "Telemagenta",
+    "hex": "#bb3e77",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 4011",
+    "name": "Pearl violet",
+    "hex": "#716287",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 4012",
+    "name": "Pearl blackberry",
+    "hex": "#6d6b7f",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5000",
+    "name": "Violet blue",
+    "hex": "#384e6f",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5001",
+    "name": "Green blue",
+    "hex": "#1d4c64",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5002",
+    "name": "Ultramarine blue",
+    "hex": "#1e367b",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5003",
+    "name": "Sapphire blue",
+    "hex": "#263855",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5004",
+    "name": "Black blue",
+    "hex": "#1a1e28",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5005",
+    "name": "Signal blue",
+    "hex": "#005287",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5007",
+    "name": "Brilliant blue",
+    "hex": "#426a8c",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5008",
+    "name": "Grey blue",
+    "hex": "#2d3a44",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5009",
+    "name": "Azure blue",
+    "hex": "#2d5e78",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5010",
+    "name": "Gentian blue",
+    "hex": "#004e7c",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5011",
+    "name": "Steel blue",
+    "hex": "#1e2b3d",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5012",
+    "name": "Light blue",
+    "hex": "#2e88b6",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5013",
+    "name": "Cobalt blue",
+    "hex": "#223053",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5014",
+    "name": "Pigeon blue",
+    "hex": "#687c96",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5015",
+    "name": "Sky blue",
+    "hex": "#0b7bb0",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5017",
+    "name": "Traffic blue",
+    "hex": "#005a8c",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5018",
+    "name": "Turquoise blue",
+    "hex": "#1b8b8c",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5019",
+    "name": "Capri blue",
+    "hex": "#105d84",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5020",
+    "name": "Ocean blue",
+    "hex": "#00414b",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5021",
+    "name": "Water blue",
+    "hex": "#007576",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5022",
+    "name": "Night blue",
+    "hex": "#2b2c5a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5023",
+    "name": "Distant blue",
+    "hex": "#4a698d",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5024",
+    "name": "Pastel blue",
+    "hex": "#6793ac",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5025",
+    "name": "Pearl gentian blue",
+    "hex": "#2c697c",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 5026",
+    "name": "Pearl night blue",
+    "hex": "#1b2f52",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6000",
+    "name": "Patina green",
+    "hex": "#3b745f",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6001",
+    "name": "Emerald green",
+    "hex": "#316834",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6002",
+    "name": "Leaf green",
+    "hex": "#2d5a27",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6003",
+    "name": "Olive green",
+    "hex": "#4e533b",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6004",
+    "name": "Blue green",
+    "hex": "#084442",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6005",
+    "name": "Moss green",
+    "hex": "#104232",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6006",
+    "name": "Grey olive",
+    "hex": "#3b392e",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6007",
+    "name": "Bottle green",
+    "hex": "#2a3222",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6008",
+    "name": "Brown green",
+    "hex": "#36342a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6009",
+    "name": "Fir green",
+    "hex": "#27362a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6010",
+    "name": "Grass green",
+    "hex": "#486f38",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6011",
+    "name": "Reseda green",
+    "hex": "#697d58",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6012",
+    "name": "Black green",
+    "hex": "#303d3a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6013",
+    "name": "Reed green",
+    "hex": "#7a765a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6014",
+    "name": "Yellow olive",
+    "hex": "#464135",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6015",
+    "name": "Black green",
+    "hex": "#3c3d36",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6016",
+    "name": "Turquoise green",
+    "hex": "#006a4c",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6017",
+    "name": "May green",
+    "hex": "#53803f",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6018",
+    "name": "Yellow green",
+    "hex": "#599a39",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6019",
+    "name": "Pastel green",
+    "hex": "#b6ceac",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6020",
+    "name": "Chrome green",
+    "hex": "#36422f",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6021",
+    "name": "Pale green",
+    "hex": "#879a77",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6022",
+    "name": "Olive drab",
+    "hex": "#393327",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6024",
+    "name": "Traffic green",
+    "hex": "#008450",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6025",
+    "name": "Fern green",
+    "hex": "#5a6e3b",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6026",
+    "name": "Opal green",
+    "hex": "#005f4e",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6027",
+    "name": "Light green",
+    "hex": "#80bab5",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6028",
+    "name": "Pine green",
+    "hex": "#305442",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6029",
+    "name": "Mint green",
+    "hex": "#00703c",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6032",
+    "name": "Signal green",
+    "hex": "#1c8051",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6033",
+    "name": "Mint turquoise",
+    "hex": "#48877f",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6034",
+    "name": "Pastel turquoise",
+    "hex": "#7cadac",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6035",
+    "name": "Pearl green",
+    "hex": "#134d24",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6036",
+    "name": "Pearl opal green",
+    "hex": "#07584b",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6037",
+    "name": "Pure green",
+    "hex": "#008c27",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6038",
+    "name": "Luminous green",
+    "hex": "#00b612",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 6039",
+    "name": "Fibrous green",
+    "hex": "#B3C43E",
+    "source": "https://www.koyda.com/guides/ral-colour-chart/"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7000",
+    "name": "Squirrel grey",
+    "hex": "#7b888e",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7001",
+    "name": "Silver grey",
+    "hex": "#8d969d",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7002",
+    "name": "Olive grey",
+    "hex": "#7f7863",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7003",
+    "name": "Moss grey",
+    "hex": "#787769",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7004",
+    "name": "Signal grey",
+    "hex": "#9b9b9b",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7005",
+    "name": "Mouse grey",
+    "hex": "#6b6e6b",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7006",
+    "name": "Beige grey",
+    "hex": "#756a5d",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7008",
+    "name": "Khaki grey",
+    "hex": "#725f3c",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7009",
+    "name": "Green grey",
+    "hex": "#5c6058",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7010",
+    "name": "Tarpaulin grey",
+    "hex": "#585c56",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7011",
+    "name": "Iron grey",
+    "hex": "#53595d",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7012",
+    "name": "Basalt grey",
+    "hex": "#585d5e",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7013",
+    "name": "Brown grey",
+    "hex": "#565044",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7015",
+    "name": "Slate grey",
+    "hex": "#505359",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7016",
+    "name": "Anthracite grey",
+    "hex": "#383e42",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7021",
+    "name": "Black grey",
+    "hex": "#303234",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7022",
+    "name": "Umbra grey",
+    "hex": "#4c4a44",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7023",
+    "name": "Concrete grey",
+    "hex": "#7f8076",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7024",
+    "name": "Graphite grey",
+    "hex": "#46494f",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7026",
+    "name": "Granite grey",
+    "hex": "#384345",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7030",
+    "name": "Stone grey",
+    "hex": "#918e85",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7031",
+    "name": "Blue grey",
+    "hex": "#5d686d",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7032",
+    "name": "Pebble grey",
+    "hex": "#b4b0a1",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7033",
+    "name": "Cement grey",
+    "hex": "#7e8274",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7034",
+    "name": "Yellow grey",
+    "hex": "#90886e",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7035",
+    "name": "Light grey",
+    "hex": "#c5c7c4",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7036",
+    "name": "Platinum grey",
+    "hex": "#979392",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7037",
+    "name": "Dusty grey",
+    "hex": "#7a7b7a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7038",
+    "name": "Agate grey",
+    "hex": "#afb1a9",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7039",
+    "name": "Quartz grey",
+    "hex": "#6a665e",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7040",
+    "name": "Window grey",
+    "hex": "#989ea1",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7042",
+    "name": "Traffic grey A",
+    "hex": "#8e9291",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7043",
+    "name": "Traffic grey B",
+    "hex": "#4f5250",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7044",
+    "name": "Silk grey",
+    "hex": "#b6b3a8",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7045",
+    "name": "Telegrey 1",
+    "hex": "#8e9295",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7046",
+    "name": "Telegrey 2",
+    "hex": "#7f868a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7047",
+    "name": "Telegrey 4",
+    "hex": "#c8c8c7",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 7048",
+    "name": "Pearl mouse grey",
+    "hex": "#807b73",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8000",
+    "name": "Green brown",
+    "hex": "#866a3e",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8001",
+    "name": "Ochre brown",
+    "hex": "#99632b",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8002",
+    "name": "Signal brown",
+    "hex": "#774d3e",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8003",
+    "name": "Clay brown",
+    "hex": "#7c4b27",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8004",
+    "name": "Copper brown",
+    "hex": "#8a4931",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8007",
+    "name": "Fawn brown",
+    "hex": "#6d462a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8008",
+    "name": "Olive brown",
+    "hex": "#6f4a25",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8011",
+    "name": "Nut brown",
+    "hex": "#583826",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8012",
+    "name": "Red brown",
+    "hex": "#64332b",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8014",
+    "name": "Sepia brown",
+    "hex": "#483526",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8015",
+    "name": "Chestnut brown",
+    "hex": "#5d2f27",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8016",
+    "name": "Mahogany brown",
+    "hex": "#4b2b20",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8017",
+    "name": "Chocolate brown",
+    "hex": "#432f29",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8019",
+    "name": "Grey brown",
+    "hex": "#3d3635",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8022",
+    "name": "Black brown",
+    "hex": "#1a1618",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8023",
+    "name": "Orange brown",
+    "hex": "#a05729",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8024",
+    "name": "Beige brown",
+    "hex": "#765038",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8025",
+    "name": "Pale brown",
+    "hex": "#735847",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8028",
+    "name": "Terra brown",
+    "hex": "#4f3a2a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 8029",
+    "name": "Pearl copper",
+    "hex": "#7d4031",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 9001",
+    "name": "Cream",
+    "hex": "#e7e1d2",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 9002",
+    "name": "Grey white",
+    "hex": "#d6d5ca",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 9003",
+    "name": "Signal white",
+    "hex": "#ecece7",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 9004",
+    "name": "Signal black",
+    "hex": "#2b2b2c",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 9005",
+    "name": "Jet black",
+    "hex": "#0e0e10",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 9006",
+    "name": "White aluminium",
+    "hex": "#a1a1a0",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 9007",
+    "name": "Grey aluminium",
+    "hex": "#868581",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 9010",
+    "name": "Pure white",
+    "hex": "#f0ede1",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 9011",
+    "name": "Graphite black",
+    "hex": "#27292b",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 9012",
+    "name": "Cleanroom white",
+    "hex": "#F8F2E1",
+    "source": "https://www.koyda.com/guides/ral-colour-chart/"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 9016",
+    "name": "Traffic white",
+    "hex": "#f0f1ea",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 9017",
+    "name": "Traffic black",
+    "hex": "#2a292a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 9018",
+    "name": "Papyrus white",
+    "hex": "#c7cbc4",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 9022",
+    "name": "Pearl light grey",
+    "hex": "#858583",
+    "source": "https://www.promain.co.uk/colour-charts"
+  },
+  {
+    "system": "RAL Classic",
+    "code": "RAL 9023",
+    "name": "Pearl dark grey",
+    "hex": "#797b7a",
+    "source": "https://www.promain.co.uk/colour-charts"
+  }
+]
