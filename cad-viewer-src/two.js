@@ -5,6 +5,9 @@ import {Color} from 'three';
 import {$,state,status,busy,fail,configure,validate,ready,reset} from './common.js';
 if(new URLSearchParams(location.search).get('mode')==='3d'){import('./three.js');}else{
  configure('2D viewer','.dwg,.dxf','2D DWG / ASCII DXF model-space preview using LibreDWG and dxf-viewer. DWG is converted locally in memory. Layouts, external references, custom/proxy objects and some dimensions/hatches are not fully supported. Fonts may be substituted; line patterns and widths can differ. Do not use the preview as a fabrication or dimensional verification drawing.','Drag to pan · pinch to zoom · Fit resets the view');
+ document.body.classList.add('two-d');$('tools3').append($('status'));$('drawer').classList.add('parts-drawer');
+ document.addEventListener('pointerdown',e=>{if(!e.target.closest('#drawer,#list'))$('drawer').hidden=true},true);
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')$('drawer').hidden=true});
  let viewer,worker,timer,sequence=0,rows=[],messages=[],measurement=null,angle=0,features=[],nearFeatures=()=>[];
  function clear(){features=[];nearFeatures=()=>[];measurement?.reset();measurement=null;$('measurement-panel')?.remove();$('measurement-overlay')?.remove();angle=0;worker?.terminate();worker=null;clearTimeout(timer);viewer?.Destroy();viewer=null;}
  function fit(){const b=viewer?.GetBounds(),o=viewer?.GetOrigin();if(!b)return;angle=0;viewer.GetCamera().up.set(0,1,0);viewer.FitView(b.minX-o.x,b.maxX-o.x,b.minY-o.y,b.maxY-o.y);rebase();}

@@ -147,7 +147,7 @@ class MainActivity : ComponentActivity() {
                 }
                 Column {
                     Text("StruKit", color = ink, fontWeight = FontWeight.Bold, fontSize = 20.sp, letterSpacing = 1.6.sp)
-                    Text("Revision 0.788 A", color = secondaryInk, fontSize = 11.sp)
+                    Text("Revision 0.789 A", color = secondaryInk, fontSize = 11.sp)
                 }
                 Spacer(Modifier.weight(1f))
                 Image(painter = painterResource(R.drawable.strukit_logo), contentDescription = "StruKit logo",
@@ -169,8 +169,8 @@ class MainActivity : ComponentActivity() {
                 "Building drafter" -> BuildingDrafter(profiles.filter { it.family in setOf("IPE", "HEA", "HEB") }.map { DraftMember("${it.family} ${it.designation.removePrefix(it.family).trim()}", it.mass.toDouble(), it.h.toDouble(),it.b.toDouble(),it.tw.toDouble(),it.tf.toDouble()) })
                 "Standards" -> StandardsTool()
                 "Material library" -> MetalsPilot(materialPins)
-                "Electricity" -> ReferencePage("tool-electricity.html", Modifier.fillMaxSize())
-                "HVAC" -> ReferencePage("tool-hvac.html", Modifier.fillMaxSize())
+                "Electricity" -> EngineeringPage("Electricity") { screen = "Home" }
+                "HVAC" -> EngineeringPage("HVAC") { screen = "Home" }
                 "2D viewer" -> CadViewer(false,incoming?.takeIf{!it.is3d})
                 "3D viewer" -> CadViewer(true,incoming?.takeIf{it.is3d})
             }

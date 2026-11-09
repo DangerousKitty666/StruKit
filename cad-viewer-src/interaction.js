@@ -48,7 +48,7 @@ export function measurement({canvas,pick,project,enabled,unit,is3d,featurePick=(
  $('pin-measure').disabled=!current;state.pinnedDimensions=pins.length;draw();}
  function pinList(){$('pin-items').replaceChildren();for(const pin of pins){const row=document.createElement('div');row.textContent='#'+pin.id+' '+describe(pin).text+' ';const b=document.createElement('button');b.textContent='Delete';b.onclick=()=>{pins=pins.filter(p=>p!==pin);pinList();refresh()};row.append(b);$('pin-items').append(row)}}
  function clear(){points=[];features=[];hoverFeature=null;hover=null;refresh()}
- function setActive(v){active=v;state.measuring=v;box.hidden=!v;$('measure').classList.toggle('active',v);$('measure').setAttribute('aria-pressed',String(v));clear();syncControls()}
+ function setActive(v){if(v)document.dispatchEvent(new Event('viewer-measure-open'));active=v;state.measuring=v;box.hidden=!v;$('measure').classList.toggle('active',v);$('measure').setAttribute('aria-pressed',String(v));clear();syncControls()}
  $('measure').onclick=()=>state.ready&&setActive(!active);$('close-measure').onclick=()=>setActive(false);$('clear-measure').onclick=clear;
  $('pin-measure').onclick=()=>{if(current){if(pins.length>=30){$('measure-result').textContent='30 pinned dimensions. Delete one first.';return}pins.push({...current,id:nextPin++});pinList();clear()}};
  $('measure-mode').onchange=()=>{$('feature-kind-row').hidden=mode()==='points';clear()};$('feature-kind').onchange=clear;$('measure-input').onchange=syncControls;
@@ -61,3 +61,4 @@ export function measurement({canvas,pick,project,enabled,unit,is3d,featurePick=(
  canvas.addEventListener('pointercancel',()=>down=null);canvas.addEventListener('pointerleave',()=>{hover=null;hoverFeature=null;delete state.hoverFeature;draw()});refresh();
  return {draw,refresh:()=>{pinList();refresh()},reset:()=>{penSeen=false;pins=[];pinList();setActive(false)},get active(){return active},get navigationEnabled(){return !active||penOnly()}};
 }
+

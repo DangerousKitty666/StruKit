@@ -107,11 +107,14 @@ private fun topicTint(id:String):Color=when(id){
     }
 }
 
-@Composable internal fun ReferencePage(file: String, modifier: Modifier, query: String = "", onSource: ((Int) -> Unit)? = null, onPin: ((String,String)->Unit)? = null, flatPanel:Boolean=false,navigation:Int=0) {
+@Composable internal fun ReferencePage(file: String, modifier: Modifier, query: String = "", onSource: ((Int) -> Unit)? = null, onPin: ((String,String)->Unit)? = null, flatPanel:Boolean=false,navigation:Int=0,toolTab:String?=null,onViewReady:((WebView)->Unit)?=null) {
     val liveQuery by rememberUpdatedState(query)
+    val liveToolTab by rememberUpdatedState(toolTab)
     var previousNavigation by remember(file){mutableIntStateOf(navigation)}
     AndroidView(modifier = modifier, factory = { context ->
         WebView(context).apply {
+            layoutParams=android.view.ViewGroup.LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT,android.view.ViewGroup.LayoutParams.MATCH_PARENT)
+            onViewReady?.invoke(this)
             setBackgroundColor(if(flatPanel)android.graphics.Color.TRANSPARENT else 0xFF08090B.toInt())
             settings.javaScriptEnabled = true // App-owned reference HTML only; external links open outside this WebView.
             settings.allowFileAccess = true
@@ -122,7 +125,7 @@ private fun topicTint(id:String):Color=when(id){
             isVerticalFadingEdgeEnabled = true
             setFadingEdgeLength((14 * resources.displayMetrics.density).toInt())
             webViewClient = object : WebViewClient() {
-                override fun onPageFinished(view:WebView,url:String){view.evaluateJavascript("window.strukitSearch?.("+org.json.JSONObject.quote(liveQuery)+")",null)}
+                override fun onPageFinished(view:WebView,url:String){liveToolTab?.let{view.evaluateJavascript("window.strukitSelectTab?.("+org.json.JSONObject.quote(it)+")",null)};view.evaluateJavascript("window.strukitSearch?.("+org.json.JSONObject.quote(liveQuery)+")",null)}
                 override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
                     val uri = request.url
                     if(uri.scheme == "strukit" && uri.host == "pin") { onPin?.invoke(uri.getQueryParameter("label").orEmpty(),uri.getQueryParameter("value").orEmpty());return true }
@@ -132,6 +135,7 @@ private fun topicTint(id:String):Color=when(id){
                 }
             }
             var html = context.assets.open("standards/$file").bufferedReader().use { it.readText() }
+            if(toolTab!=null) html += "<style>body{padding:4px 8px 16px!important}#tabs,#title{display:none!important}</style>"
             if(flatPanel) html += "<style>body,details,summary,.row{background:transparent!important;border:0!important;box-shadow:none!important}body{margin:0!important;padding:0!important;font-size:16px!important}.label,.value{font-size:16px!important}.row{padding:8px 0!important}h1{display:none}summary{padding-left:0!important}</style>"
             if(onPin!=null) html += """<script>document.querySelectorAll('.row').forEach(function(r){r.style.touchAction='manipulation';r.addEventListener('dblclick',function(e){e.preventDefault();location.href='strukit://pin?label='+encodeURIComponent(r.querySelector('.label').innerText)+'&value='+encodeURIComponent(r.querySelector('.value').innerText || 'See source marker');});});</script>"""
             if(query.isNotBlank()) {
@@ -144,6 +148,7 @@ private fun topicTint(id:String):Color=when(id){
             loadDataWithBaseURL("file:///android_asset/standards/$subdir", html, "text/html", "UTF-8", null)
         }
     },update={view->
+        toolTab?.let{view.evaluateJavascript("window.strukitSelectTab?.("+org.json.JSONObject.quote(it)+")",null)}
         if(view.tag!=query){view.tag=query;view.evaluateJavascript("window.strukitSearch?.("+org.json.JSONObject.quote(query)+")",null)}
         if(navigation!=previousNavigation){view.evaluateJavascript("window.strukitSearchNext?.("+(if(navigation>previousNavigation)1 else -1)+")",null);previousNavigation=navigation}
     }, onRelease = { it.stopLoading(); it.destroy() })

@@ -26,6 +26,8 @@ import org.json.JSONArray
     var grade by remember { mutableStateOf("S355") }
     var dead by remember { mutableStateOf("0.35") };var snow by remember { mutableStateOf("1.0") };var wind by remember { mutableStateOf("0.5") }
     var manual by remember { mutableStateOf(false) }
+    var ukRate by remember { mutableStateOf("1.55") };var ltRate by remember { mutableStateOf("1.40") }
+    var purchaseAllowance by remember { mutableStateOf("5") }
     Row(Modifier.fillMaxSize().padding(start=12.dp,end=8.dp), horizontalArrangement=Arrangement.spacedBy(8.dp)) {
         Column(Modifier.weight(1f).fillMaxHeight()) {
             Text("Building drafter", color=updateInk,fontSize=26.sp)
@@ -83,6 +85,23 @@ import org.json.JSONArray
                         ResultLine("Rafter mass", "${fixed(rafterKg)} kg")
                         ResultLine("One support assembly", "≈ ${fixed((columnKg+rafterKg)/frame.frames)} kg")
                         ResultLine("Main members total", "≈ ${fixed(columnKg+rafterKg)} kg")
+                        Spacer(Modifier.height(12.dp))
+                        Text("Estimated main-frame material cost",color=updateBlue,fontSize=16.sp)
+                        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(10.dp)) {
+                            Column(Modifier.weight(1f)){NumberInput("UK rate · £/kg",ukRate){ukRate=it}}
+                            Column(Modifier.weight(1f)){NumberInput("LT rate · €/kg",ltRate){ltRate=it}}
+                        }
+                        NumberInput("Purchase / cutting allowance (%)",purchaseAllowance){purchaseAllowance=it}
+                        val ur=decimal(ukRate);val lr=decimal(ltRate);val waste=decimal(purchaseAllowance)
+                        val cost=if(ur!=null&&lr!=null&&waste!=null)draftMaterialCost(columnKg+rafterKg,ur,lr,waste)else null
+                        if(cost!=null){
+                            ResultLine("Steel purchase allowance included", "${fixed(cost.purchasedKg)} kg")
+                            ResultLine("UK material estimate", "£${fixed(cost.uk)}")
+                            ResultLine("LT material estimate", "€${fixed(cost.lt)}")
+                            ResultLine("Per m² of footprint · UK / LT", "£${fixed(cost.uk/frame.area)} / €${fixed(cost.lt/frame.area)}")
+                        }else Text("Enter positive rates and a purchase allowance from 0 to 100%.",color=updateBlue,fontSize=12.sp)
+                        Text("Columns + rafters only, ex VAT. Defaults are indicative rates; enter supplier rates for $grade. Excludes secondary steel, plates/bolts, fabrication, coating, transport, erection, cladding and foundations. This is not the cost of a complete building.",color=updateMuted,fontSize=11.sp)
+                        Spacer(Modifier.height(8.dp))
                         Text("${chosenCol.name} columns / ${chosenBeam.name} rafters · $grade. ${if(manual)"Manual selections are not checked." else "Lightest available sections meeting this screening model."} Mass excludes purlins, rails, bracing, haunches, plates, bolts, cladding, foundations and waste.",color=updateMuted,fontSize=12.sp)
                         } else Text("No schedule generated. Change geometry/loads or seek a different structural scheme. Screening range: span ≤40 m, highest level ≤12 m, slope ≤30°, loads 0–10 kN/m² and positive gravity load.",color=updateBlue,fontSize=12.sp)
                         suggestedCol?.let{ResultLine("Column model deflection / limit","${fixed(it.deflectionMm)} / ${fixed(it.limitMm)} mm")}

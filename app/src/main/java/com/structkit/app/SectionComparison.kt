@@ -82,5 +82,5 @@ internal data class SectionPin(val section: String, val property: String, val va
         }
         HorizontalDivider(color=updateBlue.copy(alpha=.18f))
     }
-    Text("Estimates / m · ex VAT; delivery excluded.\nUnavailable = no reliable price data.",color=updateMuted,fontSize=10.sp,maxLines=2,modifier=Modifier.padding(top=10.dp))
+    Text((if(Regex("^(IPE|IPN|HEA|HEB|HEM)\\b").containsMatchIn(section))"Budget / $unit · ex VAT; delivery excluded.\nIndicative kg/m × rate; obtain a beam quote."else "Estimates / $unit · ex VAT; delivery excluded.\nUnavailable = no reliable price data."),color=updateMuted,fontSize=10.sp,maxLines=2,modifier=Modifier.padding(top=10.dp))
 }

@@ -50,7 +50,7 @@ internal object PriceCatalog {
         repeat(4){
             val connection=uri.toURL().openConnection() as HttpURLConnection
             try{connection.connectTimeout=8000;connection.readTimeout=10000;connection.instanceFollowRedirects=false
-                connection.setRequestProperty("User-Agent","StruKit/0.788 (public price reference)")
+                connection.setRequestProperty("User-Agent","StruKit/0.789 (public price reference)")
                 val code=connection.responseCode
                 if(code in 300..399){val next=uri.resolve(connection.getHeaderField("Location") ?: error("Missing redirect"));require(next.scheme=="https"&&next.host.removePrefix("www.")==uri.host.removePrefix("www.")){"Supplier redirect needs browser"};uri=next}
                 else {if(code!=200)error("HTTP $code");val data=connection.inputStream.use{it.readBytesBounded(4*1024*1024)};val charset=Regex("charset=([^; ]+)",RegexOption.IGNORE_CASE).find(connection.contentType.orEmpty())?.groupValues?.get(1)?.trim('"')?.let{runCatching{charset(it)}.getOrNull()} ?: Charsets.UTF_8

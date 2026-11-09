@@ -1,0 +1,11 @@
+Android 0.789 A / versionCode 22
+All 73 I/H-section per-metre calculations: PASS
+Price matching and PDF search regression checks: PASS
+Building Drafter material-cost arithmetic and invalid inputs: PASS
+Engineering tool dialogs and tab bridge: PASS
+View/Section menus, section controls, camera conversion, measurement typography and 2D layout: PASS
+Final Android build: PASS
+APK signing certificate matches previous releases
+All bundled viewer/reference assets match current source byte-for-byte
+Physical Android installation/native rail appearance: not tested on a connected phone
+SHA-256: 359079e9920d596edf87876c2bb62e9a40a43608dc2c6e999708e843c80de4f2

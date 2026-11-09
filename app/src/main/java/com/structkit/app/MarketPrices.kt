@@ -18,6 +18,10 @@ internal fun marketEstimate(quotes:List<PriceQuote>,section:String,grade:String,
     val means=exact.groupBy{it.supplier}.values.mapNotNull{rows->rows.mapNotNull(::netPrice).takeIf{it.isNotEmpty()}?.average()}
     if(means.isNotEmpty())return MarketEstimate(means.average(),means.size,"Comparable catalogue average")
     if(grade.startsWith("SS")||!mass.isFinite()||mass<=0)return null
+    if(Regex("^(IPE|IPN|HEA|HEB|HEM)\\b").containsMatchIn(section.trim().uppercase())) {
+        if(unit!="m")return null
+        return MarketEstimate(mass*(if(country=="UK")1.55 else 1.40),0,"Beam budget: kg/m × indicative cost/kg; not a supplier quote")
+    }
     // Keep the previous budget method, recalibrated only from dimensionally known carbon hollow sections.
     fun hollowMass(name:String):Double? {
         val key=sectionKey(name);val nums=Regex("[0-9]+(?:\\.[0-9]+)?").findAll(key).map{it.value.toDouble()}.toList()
