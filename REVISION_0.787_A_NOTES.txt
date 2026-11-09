@@ -1,0 +1,38 @@
+StruKit Revision 0.787 A — build 20
+9 November 2026. Local APK only; nothing uploaded to GitHub.
+
+Changes against the requested list
+1. Replaced supplier-by-supplier controls with a spaced Grade / UK estimate / LT estimate table, thin dividers and pinnable values. Refresh normalises explicit per-metre prices to ex VAT, averages listings within each supplier and then averages suppliers equally. Exact size/grade observations take priority. Carbon grades retain the previous mass-based indicative budget method where exact observations are missing; fresh comparable carbon hollow-section observations recalibrate that budget rate. Stainless cells without an exact size/grade observation say Not available. The table is an estimate, not a stock guarantee: sparse public data cannot establish a complete UK/LT market average or prove availability for every grade/size. Baseline estimates and limitations are stated below the table. All nine supplier sources remain in the refresh dialog.
+2. Price-update dialog now uses the blue/dark app palette with slight transparency.
+3. Separate 2D/3D WebView sessions retain loaded models, camera and measurements while navigating between tools. A Close file button clears a model manually. Sessions are cleared when the Activity's ViewModel is cleared or the app process closes. This does not preserve files after Android kills the app process.
+4. 2D defaults to mm; other unit choices remain available.
+5. Expanded selectable DXF geometry: ellipses, sampled splines, mirrored planar entities, non-uniformly transformed arcs, solid outlines and dimension blocks. Curved edges now work with the line/edge filter. Removed duplicate snap points, raised the feature-index ceiling and added a world-space spatial grid. The supplied HVAC DWG previously hit 100,000 indexed features; it now loads 371,699 without truncation. Unsupported/proxy entities are still not guaranteed selectable. Sampled curves are approximate.
+6. Compact measurement panel: Pin dimension and Close aligned at the top; Clear at bottom right; pinned dimensions listed directly without an expander. Long lists scroll with the panel.
+7. 3D defaults to Solid with lines.
+8. Parts drawer opens on the left with a translucent background.
+9. Ported the Windows hole-saw solid model and orthographic side view, including D/H dimensions.
+10. PDF viewport has rounded corners; dimmer uses a blue half-disc icon; compact search includes a Contents button. Contents targets detected for the three bundled PDFs (access PDF page 3, DW144 page 8, HTM page 11). Original PDF files are unchanged.
+11. Standards heading/Select row uses the same fixed height for PDF and non-PDF sections.
+12. Top search includes PDF text, highlighted matching document cards and previous/next controls. HTML pages use WebView text highlighting; PDF pages use word-position rectangles for both top and bottom queries. Previous/next PDF results navigate matching pages, highlighting all matching words on each page. Added reusable word/Contents index generation for future bundled PDFs; image-only scanned text still needs OCR before it can be searched.
+13. Electricity/HVAC tabs moved to a fixed, fading right-hand vertical rail. Added original explanatory diagrams for calculators; retained the circuit builder's own circuit diagram and symbol library.
+
+Checks
+- Android compile and APK build passed; versionName 0.787 A / versionCode 20.
+- APK signature verified against previous builds.
+- Existing CAD measurements, unit conversion, pen/finger interaction, feature-to-feature geometry, pins, STEP names, rotation and camera regression passed.
+- Supplied HVAC DWG opened: 59 layers, 371,699 indexed features, no truncation or reader warnings.
+- Close file, default mm, default Solid with lines, left Parts drawer and header layouts at 320/360/390/800 px passed.
+- Added ellipse perimeter, cubic-spline length, mirrored-circle and curved-edge filter checks.
+- Price averaging checks cover equal retailer weighting, UK/LT VAT normalisation, missing stainless observations and the previous carbon baseline.
+- PDF word-span tests cover case-insensitive and multi-word matches. Contents/highlight rectangles rendered and visually checked. Existing PDFs retained unchanged.
+- Electricity/HVAC calculations and all subtool layouts passed narrow-screen checks; no horizontal overflow or JavaScript errors.
+- Hole-saw geometry rendered from the same Android scene/renderer for visual review.
+
+Phone checks still needed
+No physical phone was connected. Please test navigation away from and back to both viewers, S Pen behavior, and native PDF controls on your device. Browser tests do not replace these device checks.
+
+Technical reference for DXF ellipse coordinate handling:
+https://help.autodesk.com/cloudhelp/2024/ENU/AutoCAD-DXF/files/GUID-107CB04F-AD4D-4D2F-8EC9-AC90888063AB.htm
+
+GitHub upload
+Keep the APK filename StruKit-0.787-A-vc20.apk so the in-app updater recognises build 20. Upload it yourself when ready; no GitHub actions were performed.

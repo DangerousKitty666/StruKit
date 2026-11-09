@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.sp
     }
 }
 @Composable private fun HoleToolDiagram(drill: Boolean, modifier: Modifier) {
+    if(!drill){HoleSawSolid(modifier);return}
     Canvas(modifier) {
         val factor = minOf(size.width / 320, size.height / 205)
         scale(factor, factor, Offset.Zero) {

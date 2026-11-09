@@ -1,5 +1,7 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>:root{color-scheme:dark;font:14px system-ui;color:#d9dde3;background:#08090b}*{box-sizing:border-box}body{margin:0;padding:8px 10px 24px}h1{font-size:25px;margin:2px 0 12px}h2{font-size:18px}p,small{line-height:1.55;color:#aeb9c6}button,select,input{font:inherit;color:#a8cbe8;background:#10161d;border:1px solid #59758b;border-radius:9px;padding:10px;min-height:40px}button{cursor:pointer;margin:3px}button.active{background:#243a4c;border-color:#a8cbe8}input,select{width:100%;margin:5px 0 12px}label{display:block;margin:8px 0;color:#b8c7d5}.help{padding:0;border:0;background:none;text-align:left;min-height:24px}.card{border-radius:14px;background:#14171b;padding:14px;margin-bottom:12px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px}.result-row{display:flex;justify-content:space-between;gap:18px;border-bottom:1px solid #303b47;padding:10px 0}.result-row strong{text-align:right;color:#a8cbe8}small{display:block;margin-top:14px}#tabs{display:flex;gap:3px;overflow-x:auto;margin-bottom:14px;padding-bottom:7px}#tabs button{white-space:nowrap}.component{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;border-bottom:1px solid #384657;padding:10px 0}.component b{grid-column:1/-1}.circuit-svg{width:100%;max-height:340px;stroke:#a8cbe8;fill:none;stroke-width:1.5}.circuit-svg text{fill:#d9dde3;stroke:none;font:12px system-ui}.symbol{display:flex;gap:20px;align-items:center;padding:10px}.symbol svg{width:70px;height:40px;fill:none;stroke:#a8cbe8;stroke-width:1.5}dialog{color:#d9dde3;background:#182632ed;border:1px solid #9ec5e8;border-radius:14px;max-width:90%;line-height:1.6}dialog::backdrop{background:#0008}a{color:#9ec5e8}</style></head><body><h1 id="title"></h1><nav id="tabs"></nav><main id="content"></main><details><summary>Calculation references</summary><p><a href="https://openstax.org/books/university-physics-volume-2/pages/15-3-rlc-series-circuits-with-ac">OpenStax: AC circuits</a><br><a href="https://www.electrical-installation.org/enwiki/Definition_of_reactive_power">Electrical Installation Guide: single/three-phase power</a></p></details><dialog id="helpDialog"><p id="helpText"></p><form method="dialog"><button>Close</button></form></dialog><script>(() => {
-  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0786a\StruKit_Revision_0.786_A\engineering-tools-src\ac.js
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>:root{color-scheme:dark;font:14px system-ui;color:#d9dde3;background:#08090b}*{box-sizing:border-box}body{margin:0;padding:8px 10px 24px}h1{font-size:25px;margin:2px 0 12px}h2{font-size:18px}p,small{line-height:1.55;color:#aeb9c6}button,select,input{font:inherit;color:#a8cbe8;background:#10161d;border:1px solid #59758b;border-radius:9px;padding:10px;min-height:40px}button{cursor:pointer;margin:3px}button.active{background:#243a4c;border-color:#a8cbe8}input,select{width:100%;margin:5px 0 12px}label{display:block;margin:8px 0;color:#b8c7d5}.help{padding:0;border:0;background:none;text-align:left;min-height:24px}.card{border-radius:14px;background:#14171b;padding:14px;margin-bottom:12px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px}.result-row{display:flex;justify-content:space-between;gap:18px;border-bottom:1px solid #303b47;padding:10px 0}.result-row strong{text-align:right;color:#a8cbe8}small{display:block;margin-top:14px}#tabs{display:flex;gap:3px;overflow-x:auto;margin-bottom:14px;padding-bottom:7px}#tabs button{white-space:nowrap}.component{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;border-bottom:1px solid #384657;padding:10px 0}.component b{grid-column:1/-1}.circuit-svg{width:100%;max-height:340px;stroke:#a8cbe8;fill:none;stroke-width:1.5}.circuit-svg text{fill:#d9dde3;stroke:none;font:12px system-ui}.symbol{display:flex;gap:20px;align-items:center;padding:10px}.symbol svg{width:70px;height:40px;fill:none;stroke:#a8cbe8;stroke-width:1.5}dialog{color:#d9dde3;background:#182632ed;border:1px solid #9ec5e8;border-radius:14px;max-width:90%;line-height:1.6}dialog::backdrop{background:#0008}a{color:#9ec5e8}
+body{padding-right:68px}#tabs{position:fixed;right:7px;top:48px;bottom:8px;width:51px;display:flex;flex-direction:column;gap:6px;overflow-y:auto;overflow-x:hidden;padding:14px 0;z-index:5;mask-image:linear-gradient(transparent,#000 14px,#000 calc(100% - 14px),transparent)}#tabs button{flex:0 0 84px;width:47px;min-height:84px;margin:0;writing-mode:vertical-rl;transform:rotate(180deg);padding:5px;font-size:11px;border-radius:9px;text-align:center}h1{font-size:23px}.card{padding:10px}.grid{grid-template-columns:1fr}.result-row{gap:8px;font-size:12px}.tool-diagram{width:100%;height:145px;background:#14171b;border-radius:12px;margin-bottom:10px}.tool-diagram text{fill:#a8cbe8;font:12px system-ui}.tool-diagram path,.tool-diagram line,.tool-diagram rect,.tool-diagram circle{stroke:#9ec5e8;stroke-width:1.5;fill:none}.tool-diagram .warm{stroke:#ecaa79}.tool-diagram .cool{stroke:#79bbdf}@media(min-width:600px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tool-diagram{height:180px}}
+</style></head><body><h1 id="title"></h1><nav id="tabs"></nav><main id="content"></main><details><summary>Calculation references</summary><p><a href="https://openstax.org/books/university-physics-volume-2/pages/15-3-rlc-series-circuits-with-ac">OpenStax: AC circuits</a><br><a href="https://www.electrical-installation.org/enwiki/Definition_of_reactive_power">Electrical Installation Guide: single/three-phase power</a></p></details><dialog id="helpDialog"><p id="helpText"></p><form method="dialog"><button>Close</button></form></dialog><script>(() => {
+  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0787a\StruKit_Revision_0.787_A\engineering-tools-src\ac.js
   var add = (a, b) => [a[0] + b[0], a[1] + b[1]];
   var neg = (a) => [-a[0], -a[1]];
   var mul = (a, b) => [a[0] * b[0] - a[1] * b[1], a[0] * b[1] + a[1] * b[0]];
@@ -95,7 +97,7 @@
     return { apparent, active: apparent * pf, reactive: apparent * Math.sqrt(Math.max(0, 1 - pf * pf)) };
   }
 
-  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0786a\StruKit_Revision_0.786_A\engineering-tools-src\core.js
+  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0787a\StruKit_Revision_0.787_A\engineering-tools-src\core.js
   function positive(...values) {
     if (values.some((v) => !Number.isFinite(v) || v <= 0)) throw Error("Enter positive values in every required field.");
   }
@@ -163,7 +165,29 @@
     return { nodes: Object.fromEntries(["0", ...nodes].map((n) => [n, voltage(n)])), results, powerBalance: results.reduce((s, e) => s + e.p, 0), residual };
   }
 
-  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0786a\StruKit_Revision_0.786_A\engineering-tools-src\ui.js
+  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0787a\StruKit_Revision_0.787_A\engineering-tools-src\diagrams.js
+  function toolDiagram(tool, tab) {
+    const head = '<svg class="tool-diagram" role="img" aria-label="' + tab + ' schematic" viewBox="0 0 300 145">', end = '<text x="12" y="134">' + tab + " \xB7 schematic</text></svg>";
+    if (["Circuit builder", "Symbols"].includes(tab)) return "";
+    const circuit2 = '<path d="M45 75V35H115m45 0h95v70H45V85"/><circle cx="45" cy="80" r="18"/><path d="M34 80h22m-11-11v22"/><rect x="115" y="26" width="45" height="18"/><text x="128" y="20">R</text><text x="14" y="55">V</text><path d="M195 35h30m-8-5 8 5-8 5"/><text x="200" y="22">I \u2192</text>';
+    const maps = {
+      "Calculator": circuit2,
+      "Equation check": circuit2,
+      "AC / mains": '<path d="M20 65H280M40 20V110"/><path class="cool" d="M40 65Q60 5 80 65T120 65T160 65T200 65T240 65"/><path class="warm" d="M60 65Q80 25 100 65T140 65T180 65T220 65T260 65"/><text x="50" y="20">Voltage</text><text x="170" y="20">Current \xB7 phase \u03C6</text><text x="270" y="83">t</text>',
+      "Voltage drop": '<path d="M45 35H95m100 0h60v70h-60m-100 0H45Z"/><rect x="95" y="28" width="100" height="14"/><rect x="95" y="98" width="100" height="14"/><text x="110" y="20">Cable \xB7 L, A</text><text x="112" y="76">\u0394V = I Rloop</text>',
+      "Energy": '<rect x="35" y="25" width="75" height="80"/><circle cx="73" cy="65" r="25"/><path d="M73 45v20l16 10"/><text x="140" y="55">Power \xD7 time</text><text x="140" y="85">E = P t</text>',
+      "RC timing": '<path d="M35 20V110H275"/><path class="cool" d="M35 110C75 35 130 30 270 30"/><path stroke-dasharray="4 4" d="M35 59H105V110"/><text x="110" y="75">\u03C4 = RC</text><text x="8" y="20">Vc</text><text x="278" y="114">t</text>',
+      "Ducts": '<path d="M35 50h150v55H35ZM35 50l55-28h150l-55 28m0 55 55-28V22"/><path class="cool" d="M70 77h75m-10-7 10 7-10 7"/><text x="90" y="68">Q</text><text x="95" y="119">width a</text><text x="10" y="85">b</text>',
+      "Air moisture": '<path d="M40 25v65a15 15 0 1 0 20 0V25a10 10 0 0 0-20 0"/><path class="warm" d="M50 42v58"/><path class="cool" d="M145 25C140 40 120 58 120 76a25 25 0 0 0 50 0c0-18-20-36-25-51Z"/><text x="185" y="55">T dry bulb</text><text x="185" y="80">RH \xB7 water</text>',
+      "Heat transfer": '<rect x="120" y="20" width="55" height="90"/><path class="warm" d="M25 65h85m-10-8 10 8-10 8"/><path class="cool" d="M185 65h85m-10-8 10 8-10 8"/><text x="28" y="42">T hot</text><text x="210" y="42">T cold</text><text x="132" y="72">k</text><text x="130" y="120">L</text>',
+      "Airflow": '<path d="M40 50h220v60H40Zm0 0 60-30h220l-60 30m0 60 60-30V20"/><path class="cool" d="M70 80h100m-12-7 12 7-12 7"/><text x="90" y="70">Q = room V \xD7 ACH</text>',
+      "Canopy": '<path d="M60 75 90 35h120l30 40ZM140 35V15h20v20M70 110h160"/><path class="warm" d="M100 106V85m-5 5 5-5 5 5m40 16V85m-5 5 5-5 5 5m40 16V85m-5 5 5-5 5 5"/><text x="100" y="64">Capture airflow</text>',
+      "DW/144": '<path d="M40 50h170v55H40ZM40 50l40-25h170l-40 25m0 55 40-25V25M120 50v55m0-55 40-25"/><text x="60" y="80">Duct</text><text x="137" y="80">Joint</text>'
+    };
+    return head + (maps[tab] || circuit2) + end;
+  }
+
+  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0787a\StruKit_Revision_0.787_A\engineering-tools-src\ui.js
   var $ = (id) => document.getElementById(id);
   var fmt = (n, d = 3) => Number.isFinite(n) ? n.toLocaleString(void 0, { maximumFractionDigits: d }) : "\u2014";
   function field(id, label, value, help) {
@@ -191,6 +215,8 @@
       b.onclick = () => {
         nav.querySelectorAll("button").forEach((x) => x.classList.toggle("active", x === b));
         render(tab);
+        const diagram2 = toolDiagram(title, tab);
+        if (diagram2) $("content").insertAdjacentHTML("afterbegin", diagram2);
       };
       nav.append(b);
     }
@@ -212,7 +238,7 @@
     $("calculate").click();
   }
 
-  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0786a\StruKit_Revision_0.786_A\engineering-tools-src\electricity.js
+  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0787a\StruKit_Revision_0.787_A\engineering-tools-src\electricity.js
   var circuit = [{ id: 1, type: "V", a: "1", b: "0", value: 12, closed: true }, { id: 2, type: "R", a: "1", b: "2", value: 1e3, closed: true }, { id: 3, type: "R", a: "2", b: "0", value: 2e3, closed: true }];
   var nextId = 4;
   var analysis = "DC";

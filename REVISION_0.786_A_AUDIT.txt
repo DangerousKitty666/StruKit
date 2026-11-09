@@ -46,5 +46,3 @@ No physical Android phone was connected. Native layouts, file-manager intents an
 
 GitHub handoff
 Upload StruKit-0.786-A-vc19.apk (keep this exact filename) as the release APK. The updater uses vc19 to recognize a newer build even though the displayed revision stays 0.786 A. Do not use the earlier vc18 APK. Source export: StruKit_0.786_A_GitHub_vc19.
-
-Additional interaction verification: simulated finger drag navigated the 3D model in pen-only measurement mode without altering the measured distance.

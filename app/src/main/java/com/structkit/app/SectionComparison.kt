@@ -57,24 +57,30 @@ internal data class SectionPin(val section: String, val property: String, val va
         Text(value, color = updateBlue, fontSize = 15.sp)
     }
 }
+@OptIn(ExperimentalFoundationApi::class)
 @Composable internal fun SectionPrices(section: String, mass: Double, plate: Boolean, pin: (SectionPin) -> Unit) {
-    SupplierPriceOptions(section)
-    var lt by remember { mutableStateOf("1.40") }
-    var uk by remember { mutableStateOf("1.55") }
-    var rates by remember { mutableStateOf(false) }
-    val unit = if (plate) "m²" else "m"
-    Text("INDICATIVE MATERIAL COST · ex VAT", color = updateMuted, fontSize = 11.sp)
-    Row(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
-        decimal(lt)?.takeIf { it >= 0 }?.let { PinnableValue(section, "LT · estimate / $unit", "€${fixed(it * mass)}", pin) }
-        decimal(uk)?.takeIf { it >= 0 }?.let { PinnableValue(section, "UK · estimate / $unit", "£${fixed(it * mass)}", pin) }
+    val context=androidx.compose.ui.platform.LocalContext.current
+    LaunchedEffect(Unit){PriceCatalog.load(context)}
+    val hollow=listOf("RHS","SHS","CHS").any{section.startsWith(it)}
+    val grades=if(hollow)listOf("S235","S275","S355","SS 304","SS 316") else if(section.startsWith("Purlin"))listOf("Galvanised") else listOf("S235","S275","S355")
+    val unit=if(plate)"m²"else"m"
+    Spacer(Modifier.height(12.dp))
+    Row(Modifier.fillMaxWidth().padding(vertical=10.dp)){
+        Text("Grade",Modifier.weight(.75f),color=updateMuted,fontSize=12.sp)
+        Text("UK estimate / $unit",Modifier.weight(1f),color=updateMuted,fontSize=12.sp,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
+        Text("LT estimate / $unit",Modifier.weight(1f),color=updateMuted,fontSize=12.sp,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
     }
-    Text("Mass × indicative kg rate, not a quotation for this section. Excludes fabrication, coating, cutting, delivery and VAT. Plate is priced per m².", color = updateMuted, fontSize = 11.sp)
-    TextButton(onClick = { rates = !rates }, contentPadding = PaddingValues(0.dp)) { Text(if (rates) "Close rates & sources ▴" else "Rates & sources ▾", fontSize = 11.sp) }
-    if (rates) {
-        NumberInput("LT estimate €/kg, ex VAT", lt) { lt = it }
-        NumberInput("UK estimate £/kg, ex VAT", uk) { uk = it }
-        Text("Reference check 5 Nov 2026. LT rate ≈ €1.40/kg: Lankava RHS 100×50×3 at €11.49/m incl. VAT, divided by 1.21 and idealised 6.7824 kg/m. UK £1.55/kg: Liontek UB 203×102×23 at £35.65/m ex VAT. Applying these reference rates to other families is a budget extrapolation; replace with a supplier's rate for the grade, section and quantity.", color = updateMuted, fontSize = 11.sp)
-        SourceLink("LT reference · Lankava", "https://www.lankava.lt/staciakampis-vamzdis-100x50x3-mm")
-        SourceLink("UK reference · Liontek", "https://www.liontek.co.uk/product-category/universal-beams-structural-steel/universal-beam/")
+    HorizontalDivider(color=updateBlue.copy(alpha=.3f))
+    grades.forEach{grade->
+        Row(Modifier.fillMaxWidth().padding(vertical=10.dp),verticalAlignment=androidx.compose.ui.Alignment.CenterVertically){
+            Text(grade,Modifier.weight(.75f),color=updateMuted,fontSize=14.sp)
+            listOf("UK","LT").forEach{country->
+                val estimate=marketEstimate(PriceCatalog.quotes,section,grade,country,mass,unit)
+                val value=estimate?.let{(if(country=="UK")"£"else"€")+fixed(it.amount)} ?: "Not available"
+                Text(value,Modifier.weight(1f).combinedClickable(onClick={},onDoubleClick={if(estimate!=null)pin(SectionPin(section,"$grade · $country / $unit",value))}),color=updateInk,fontSize=15.sp,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
+            }
+        }
+        HorizontalDivider(color=updateBlue.copy(alpha=.18f))
     }
+    Text("Indicative · ex VAT. Exact comparable listings are averaged per supplier. Where these are missing, carbon grades share a mass-based budget estimate, not a verified grade premium. Stainless availability requires an exact listed size. Delivery/cutting excluded.",color=updateMuted,fontSize=10.sp,modifier=Modifier.padding(top=10.dp))
 }

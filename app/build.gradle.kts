@@ -7,7 +7,7 @@ android {
     signingConfigs { getByName("debug") { storeFile = file("C:/Users/gidro/.android/debug.keystore") } }
     namespace = "com.structkit.app"
     compileSdk = 35
-    defaultConfig { applicationId = "com.structkit.app"; minSdk = 26; targetSdk = 35; versionCode = 19; versionName = "0.786 A" }
+    defaultConfig { applicationId = "com.structkit.app"; minSdk = 26; targetSdk = 35; versionCode = 20; versionName = "0.787 A" }
     buildFeatures { compose = true }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
     kotlinOptions { jvmTarget = "17" }

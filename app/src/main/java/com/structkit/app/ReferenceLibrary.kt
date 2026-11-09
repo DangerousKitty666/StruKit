@@ -54,27 +54,33 @@ private fun topicTint(id:String):Color=when(id){
     var selected by rememberSaveable { mutableIntStateOf(0) }
     var query by rememberSaveable { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
+    var navigation by remember{mutableIntStateOf(0)}
     var sourcePage by remember { mutableStateOf<Int?>(null) }
     val isPdf=referenceTopics[selected].second in listOf("access","dw144","htm0301")
     BackHandler(enabled=isPdf && sourcePage==null) { selected=0;query="";expanded=false }
     val context = LocalContext.current
-    val texts = remember { referenceTopics.map { (_,file) -> runCatching { context.assets.open("standards/$file.html").bufferedReader().use { it.readText() }.replace(Regex("<[^>]*>"), " ") }.getOrDefault("") } }
+    val texts = remember { referenceTopics.map { (_,file) -> runCatching { if(file in listOf("access","dw144","htm0301"))context.assets.open("standards/$file.search.json").bufferedReader().use{it.readText()}else context.assets.open("standards/$file.html").bufferedReader().use { it.readText() }.replace(Regex("<[^>]*>"), " ") }.getOrDefault("") } }
     val matches = remember(query) { referenceTopics.indices.filter { referenceTopics[it].first.contains(query, true) || texts[it].contains(query, true) } }
     if (sourcePage != null) {
         PublicationViewer("standards/${referenceTopics[selected].second}.pdf", referenceTopics[selected].first, sourcePage!!) { sourcePage = null }
         return
     }
     Column(Modifier.fillMaxSize().padding(horizontal = 12.dp)) {
+        Row(verticalAlignment=Alignment.CenterVertically){
         BasicTextField(query, { query = it }, singleLine = true,
             textStyle = TextStyle(color = Color(0xFFD9DDE3), fontSize = 14.sp),
             cursorBrush = SolidColor(Color(0xFF9EC5E8)),
-            modifier = Modifier.fillMaxWidth().height(40.dp).border(1.dp, Color(0xFF48515C), RoundedCornerShape(9.dp)).padding(horizontal = 12.dp),
+            modifier = Modifier.weight(1f).height(40.dp).border(1.dp, Color(0xFF48515C), RoundedCornerShape(9.dp)).padding(horizontal = 12.dp),
             decorationBox = { inner -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.CenterStart) {
                 if(query.isEmpty()) Text("Search standards & paragraphs", color = Color(0xFF9EA6B2), fontSize = 14.sp)
                 inner()
             } })
+        if(query.isNotBlank()){
+            TextButton(onClick={navigation--},modifier=Modifier.width(32.dp),contentPadding=PaddingValues(0.dp)){Text("‹")}
+            TextButton(onClick={navigation++},modifier=Modifier.width(32.dp),contentPadding=PaddingValues(0.dp)){Text("›")}
+        }}
         Spacer(Modifier.height(0.dp))
-        Row(Modifier.fillMaxWidth().then(if(isPdf)Modifier.height(36.dp)else Modifier), verticalAlignment = Alignment.CenterVertically) {
+        Row(Modifier.fillMaxWidth().height(42.dp), verticalAlignment = Alignment.CenterVertically) {
             Text("Standards", color = Color(0xFFD9DDE3), fontSize = 27.sp, modifier = Modifier.weight(1f))
             ToolDropdown(expanded,{expanded=it}) {
                 referenceTopics.forEachIndexed { i, topic -> DropdownMenuItem(modifier=Modifier.background(topicTint(topic.second)),text = { Text(topic.first, color = Color(0xFF9EC5E8), fontSize = 13.sp) }, onClick = { selected = i; expanded = false }) }
@@ -84,25 +90,27 @@ private fun topicTint(id:String):Color=when(id){
         if(query.isNotBlank()) {
             Text("${matches.size} matching topics · open one to see matching sections", fontSize = 11.sp, color = Color(0xFF9EA6B2))
             Column(Modifier.fillMaxWidth().heightIn(max = 130.dp).fadedVerticalScroll(rememberScrollState())) {
-                matches.forEach { i -> TextButton(onClick = { selected = i }) { Text(referenceTopics[i].first) } }
+                matches.forEach { i -> TextButton(onClick = { selected = i },modifier=Modifier.fillMaxWidth().padding(vertical=2.dp).background(if(i==selected)Color(0xAA294A62)else Color(0x66305269),RoundedCornerShape(7.dp))) { Text(highlightText(referenceTopics[i].first,query),color=updateBlue) } }
             }
         }
         key(selected) {
             when(val file=referenceTopics[selected].second) {
-                "access","dw144","htm0301"->ContinuousPdf("standards/$file.pdf",Modifier.weight(1f),referenceTopics[selected].first)
+                "access","dw144","htm0301"->ContinuousPdf("standards/$file.pdf",Modifier.weight(1f),referenceTopics[selected].first,query,navigation)
                 "colour"->ColourLibrary(Modifier.weight(1f))
-                "guarding"->Column(Modifier.weight(1f)) { Text("Original ISO 14120 PDF not supplied. Existing guide retained below.",color=updateBlue,fontSize=12.sp);ReferencePage("guarding.html",Modifier.weight(1f),query) }
-                else->ReferencePage("$file.html",Modifier.weight(1f).fillMaxWidth(),query)
+                "guarding"->Column(Modifier.weight(1f)) { Text("Original ISO 14120 PDF not supplied. Existing guide retained below.",color=updateBlue,fontSize=12.sp);ReferencePage("guarding.html",Modifier.weight(1f),query,navigation=navigation) }
+                else->ReferencePage("$file.html",Modifier.weight(1f).fillMaxWidth(),query,navigation=navigation)
             }
         }
     }
 }
 
-@Composable internal fun ReferencePage(file: String, modifier: Modifier, query: String = "", onSource: ((Int) -> Unit)? = null, onPin: ((String,String)->Unit)? = null, flatPanel:Boolean=false) {
+@Composable internal fun ReferencePage(file: String, modifier: Modifier, query: String = "", onSource: ((Int) -> Unit)? = null, onPin: ((String,String)->Unit)? = null, flatPanel:Boolean=false,navigation:Int=0) {
+    val liveQuery by rememberUpdatedState(query)
+    var previousNavigation by remember(file){mutableIntStateOf(navigation)}
     AndroidView(modifier = modifier, factory = { context ->
         WebView(context).apply {
             setBackgroundColor(if(flatPanel)android.graphics.Color.TRANSPARENT else 0xFF08090B.toInt())
-            settings.javaScriptEnabled = onPin != null || file in setOf("tool-electricity.html", "tool-hvac.html")
+            settings.javaScriptEnabled = true // App-owned reference HTML only; external links open outside this WebView.
             settings.allowFileAccess = true
             settings.allowContentAccess = false
             settings.builtInZoomControls = true
@@ -111,6 +119,7 @@ private fun topicTint(id:String):Color=when(id){
             isVerticalFadingEdgeEnabled = true
             setFadingEdgeLength((14 * resources.displayMetrics.density).toInt())
             webViewClient = object : WebViewClient() {
+                override fun onPageFinished(view:WebView,url:String){view.findAllAsync(liveQuery)}
                 override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
                     val uri = request.url
                     if(uri.scheme == "strukit" && uri.host == "pin") { onPin?.invoke(uri.getQueryParameter("label").orEmpty(),uri.getQueryParameter("value").orEmpty());return true }
@@ -130,6 +139,11 @@ private fun topicTint(id:String):Color=when(id){
             val subdir = file.substringBeforeLast('/', "").let { if(it.isEmpty()) "" else "$it/" }
             loadDataWithBaseURL("file:///android_asset/standards/$subdir", html, "text/html", "UTF-8", null)
         }
+    },update={view->
+        val q=org.json.JSONObject.quote(query)
+        view.evaluateJavascript("document.querySelectorAll('details').forEach(d=>{if($q && d.textContent.toLowerCase().includes($q.toLowerCase()))d.open=true})",null)
+        if(view.tag!=query){view.tag=query;view.findAllAsync(query)}
+        if(navigation!=previousNavigation){view.findNext(navigation>previousNavigation);previousNavigation=navigation}
     }, onRelease = { it.stopLoading(); it.destroy() })
 }
 
@@ -145,4 +159,8 @@ private fun topicTint(id:String):Color=when(id){
         }
         ToolTabRail(names, selected, { if(it == "Aluminium") "Alu" else it }) { selected = it }
     }
+}
+
+private fun highlightText(text:String,query:String):androidx.compose.ui.text.AnnotatedString=androidx.compose.ui.text.buildAnnotatedString{
+ append(text);if(query.isNotBlank()){var from=0;while(from<text.length){val i=text.indexOf(query,from,true);if(i<0)break;addStyle(androidx.compose.ui.text.SpanStyle(background=Color(0xFF47677C),color=Color.White),i,i+query.length);from=i+query.length}}
 }

@@ -1,8 +1,9 @@
+import {toolDiagram} from './diagrams.js';
 export const $=id=>document.getElementById(id);
 export const fmt=(n,d=3)=>Number.isFinite(n)?n.toLocaleString(undefined,{maximumFractionDigits:d}):'—';
 export function field(id,label,value,help){return `<label><button class="help" type="button" data-help="${id}">${label} ⓘ</button><input id="${id}" type="number" step="any" value="${value}"></label>`;}
 export function select(id,label,options){return `<label>${label}<select id="${id}">${options.map(o=>`<option>${o}</option>`).join('')}</select></label>`}
 export function num(id){const t=$(id).value.trim();if(!t)throw Error('Complete all inputs.');const v=Number(t);if(!Number.isFinite(v))throw Error('Enter finite numbers.');return v}
 export function output(rows,note=''){$('result').innerHTML=rows.map(([label,value])=>`<div class="result-row"><span>${label}</span><strong>${value}</strong></div>`).join('')+`<small>${note}</small>`;}
-export function setup(title,tabs,render){$('title').textContent=title;const nav=$('tabs');for(const tab of tabs){const b=document.createElement('button');b.textContent=tab;b.onclick=()=>{nav.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));render(tab)};nav.append(b)}nav.firstChild.click();}
+export function setup(title,tabs,render){$('title').textContent=title;const nav=$('tabs');for(const tab of tabs){const b=document.createElement('button');b.textContent=tab;b.onclick=()=>{nav.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));render(tab);const diagram=toolDiagram(title,tab);if(diagram)$('content').insertAdjacentHTML('afterbegin',diagram)};nav.append(b)}nav.firstChild.click();}
 export function form(html,calculate,help={}){$('content').innerHTML=`<section class="card">${html}<button id="calculate">Calculate</button></section><section id="result" class="card" aria-live="polite"></section>`;document.querySelectorAll('[data-help]').forEach(b=>b.onclick=()=>{ $('helpText').textContent=help[b.dataset.help]||b.textContent.replace(' ⓘ','');$('helpDialog').showModal()});$('calculate').onclick=()=>{try{calculate()}catch(e){$('result').textContent=e.message}};$('calculate').click();}

@@ -12,8 +12,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
 import java.io.ByteArrayInputStream
 
+internal class CadSessions : androidx.lifecycle.ViewModel() {
+    val views=mutableMapOf<Boolean,WebView>()
+    val incomingIds=mutableMapOf<Boolean,Long?>()
+    override fun onCleared(){views.values.forEach{it.stopLoading();it.webChromeClient=null;it.destroy()};views.clear()}
+}
 /** Local HTTPS origin for bundled CAD code. CAD requests stay local even though the updater can use the Internet. */
 @Composable internal fun CadViewer(is3d:Boolean,incoming:IncomingCad?=null) {
+    val activity=androidx.compose.ui.platform.LocalContext.current as androidx.activity.ComponentActivity
+    val sessions=remember(activity){androidx.lifecycle.ViewModelProvider(activity)[CadSessions::class.java]}
     var pending by remember { mutableStateOf<ValueCallback<Array<Uri>>?>(null) }
     val picker=rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         val uri=if(result.resultCode==Activity.RESULT_OK)result.data?.data else null
@@ -21,8 +28,17 @@ import java.io.ByteArrayInputStream
     }
     DisposableEffect(Unit){onDispose{pending?.onReceiveValue(null);pending=null}}
     key(is3d,incoming?.id) {
-        AndroidView(modifier=Modifier.fillMaxSize(),factory={context->
-            object:WebView(context) {
+        AndroidView(modifier=Modifier.fillMaxSize(),factory={hostContext->
+            val context=hostContext.applicationContext
+            val cached=sessions.views[is3d]
+            if(cached!=null && (incoming==null || sessions.incomingIds[is3d]==incoming.id)){
+                (cached.parent as? android.view.ViewGroup)?.removeView(cached)
+                (cached.context as android.content.MutableContextWrapper).baseContext=hostContext
+                cached.onResume()
+                return@AndroidView cached
+            }
+            cached?.destroy()
+            object:WebView(android.content.MutableContextWrapper(hostContext)) {
                 private var registered=false
                 private val penReceiver=object:android.content.BroadcastReceiver(){override fun onReceive(c:android.content.Context?,i:Intent?){if(i?.hasExtra("penInsert")==true&&!i.getBooleanExtra("penInsert",true))post{evaluateJavascript("window.activatePenMeasure?.()",null)}}}
                 override fun onAttachedToWindow(){super.onAttachedToWindow();if(!registered){val filter=android.content.IntentFilter("com.samsung.pen.INSERT");if(android.os.Build.VERSION.SDK_INT>=33)context.registerReceiver(penReceiver,filter,android.content.Context.RECEIVER_EXPORTED)else context.registerReceiver(penReceiver,filter);registered=true}}
@@ -63,7 +79,11 @@ import java.io.ByteArrayInputStream
                     }
                     private fun blocked()=WebResourceResponse("text/plain","UTF-8",403,"Unavailable",emptyMap(),ByteArrayInputStream("Local viewer resources only".toByteArray()))
                 }
-                webChromeClient=object:WebChromeClient() {
+                loadUrl("https://cad.strukit.local/viewer/index.html?mode=${if(is3d)"3d"else"2d"}")
+            }.also{sessions.views[is3d]=it;sessions.incomingIds[is3d]=incoming?.id}
+        },update={view->
+            view.onResume()
+            view.webChromeClient=object:WebChromeClient() {
                     override fun onShowFileChooser(webView:WebView,callback:ValueCallback<Array<Uri>>,params:FileChooserParams):Boolean {
                         pending?.onReceiveValue(null);pending=callback
                         // CAD MIME labels vary between cloud/file providers; validate extension in viewer.
@@ -72,9 +92,8 @@ import java.io.ByteArrayInputStream
                         return true
                     }
                 }
-                loadUrl("https://cad.strukit.local/viewer/index.html?mode=${if(is3d)"3d"else"2d"}")
-            }
-        },onRelease={it.stopLoading();it.loadUrl("about:blank");it.webChromeClient=null;it.destroy()})
+
+        },onRelease={it.webChromeClient=null;it.onPause();(it.context as android.content.MutableContextWrapper).baseContext=activity.applicationContext})
     }
 }
 
