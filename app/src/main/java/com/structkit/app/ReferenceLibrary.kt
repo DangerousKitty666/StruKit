@@ -37,7 +37,7 @@ import androidx.compose.ui.window.PopupPositionProvider
 import androidx.compose.ui.window.PopupProperties
 
 private val referenceTopics = listOf(
-    "Overview" to "overview", "Colour" to "colour",
+    "Overview" to "overview", "Colour" to "colour", "Noise" to "noise",
     "Air" to "air", "Dynamics" to "dynamics", "Material properties" to "properties", "Insulation" to "insulation", "Pumps" to "pumps", "Basics" to "basics", "HVAC systems" to "hvac",
     "Design formulas" to "design", "Math formulas" to "math",
     "Regs - LT" to "regs-lt", "Regs - UK" to "regs-uk",
@@ -73,8 +73,8 @@ private fun topicTint(id:String):Color=when(id){
                 if(query.isEmpty()) Text("Search standards & paragraphs", color = Color(0xFF9EA6B2), fontSize = 14.sp)
                 inner()
             } })
-        Spacer(Modifier.height(2.dp))
-        Row(Modifier.fillMaxWidth(), verticalAlignment = if(isPdf) Alignment.Bottom else Alignment.CenterVertically) {
+        Spacer(Modifier.height(0.dp))
+        Row(Modifier.fillMaxWidth().then(if(isPdf)Modifier.height(36.dp)else Modifier), verticalAlignment = Alignment.CenterVertically) {
             Text("Standards", color = Color(0xFFD9DDE3), fontSize = 27.sp, modifier = Modifier.weight(1f))
             ToolDropdown(expanded,{expanded=it}) {
                 referenceTopics.forEachIndexed { i, topic -> DropdownMenuItem(modifier=Modifier.background(topicTint(topic.second)),text = { Text(topic.first, color = Color(0xFF9EC5E8), fontSize = 13.sp) }, onClick = { selected = i; expanded = false }) }
@@ -102,7 +102,7 @@ private fun topicTint(id:String):Color=when(id){
     AndroidView(modifier = modifier, factory = { context ->
         WebView(context).apply {
             setBackgroundColor(if(flatPanel)android.graphics.Color.TRANSPARENT else 0xFF08090B.toInt())
-            settings.javaScriptEnabled = onPin != null
+            settings.javaScriptEnabled = onPin != null || file in setOf("tool-electricity.html", "tool-hvac.html")
             settings.allowFileAccess = true
             settings.allowContentAccess = false
             settings.builtInZoomControls = true

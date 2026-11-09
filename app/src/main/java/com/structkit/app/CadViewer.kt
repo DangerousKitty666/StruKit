@@ -13,16 +13,21 @@ import androidx.compose.ui.viewinterop.AndroidView
 import java.io.ByteArrayInputStream
 
 /** Local HTTPS origin for bundled CAD code. CAD requests stay local even though the updater can use the Internet. */
-@Composable internal fun CadViewer(is3d:Boolean) {
+@Composable internal fun CadViewer(is3d:Boolean,incoming:IncomingCad?=null) {
     var pending by remember { mutableStateOf<ValueCallback<Array<Uri>>?>(null) }
     val picker=rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         val uri=if(result.resultCode==Activity.RESULT_OK)result.data?.data else null
         pending?.onReceiveValue(uri?.let{arrayOf(it)});pending=null
     }
     DisposableEffect(Unit){onDispose{pending?.onReceiveValue(null);pending=null}}
-    key(is3d) {
+    key(is3d,incoming?.id) {
         AndroidView(modifier=Modifier.fillMaxSize(),factory={context->
-            WebView(context).apply {
+            object:WebView(context) {
+                private var registered=false
+                private val penReceiver=object:android.content.BroadcastReceiver(){override fun onReceive(c:android.content.Context?,i:Intent?){if(i?.hasExtra("penInsert")==true&&!i.getBooleanExtra("penInsert",true))post{evaluateJavascript("window.activatePenMeasure?.()",null)}}}
+                override fun onAttachedToWindow(){super.onAttachedToWindow();if(!registered){val filter=android.content.IntentFilter("com.samsung.pen.INSERT");if(android.os.Build.VERSION.SDK_INT>=33)context.registerReceiver(penReceiver,filter,android.content.Context.RECEIVER_EXPORTED)else context.registerReceiver(penReceiver,filter);registered=true}}
+                override fun onDetachedFromWindow(){if(registered){context.unregisterReceiver(penReceiver);registered=false};super.onDetachedFromWindow()}
+            }.apply {
                 layoutParams = android.view.ViewGroup.LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.MATCH_PARENT)
                 setBackgroundColor(0xFF08090B.toInt())
                 settings.javaScriptEnabled=true
@@ -33,6 +38,12 @@ import java.io.ByteArrayInputStream
                 settings.javaScriptCanOpenWindowsAutomatically=false
                 settings.setSupportMultipleWindows(false)
                 webViewClient=object:WebViewClient() {
+                    override fun onPageFinished(view:WebView,url:String){
+                        if(incoming!=null&&url.startsWith("https://cad.strukit.local/viewer/index.html")){
+                            val name=org.json.JSONObject.quote(incoming.name)
+                            view.evaluateJavascript("""(()=>{let tries=0;const timer=setInterval(async()=>{if(!window.openViewerFile){if(++tries>200)clearInterval(timer);return}clearInterval(timer);try{const r=await fetch('/viewer/incoming/${incoming.id}');if(!r.ok)throw Error('Cannot read shared file');const b=await r.blob();window.openViewerFile(new File([b],$name));}catch(e){document.getElementById('status').textContent=e.message}},50)})()""",null)
+                        }
+                    }
                     override fun shouldOverrideUrlLoading(view:WebView,request:WebResourceRequest):Boolean =
                         request.url.scheme!="https" || request.url.host!="cad.strukit.local"
                     override fun shouldInterceptRequest(view:WebView,request:WebResourceRequest):WebResourceResponse? {
@@ -40,6 +51,10 @@ import java.io.ByteArrayInputStream
                         // Blob and content URLs are handled by WebView. Everything else stays local.
                         if(u.scheme=="blob" || u.scheme=="content" || u.scheme=="data")return null
                         val path=u.path.orEmpty()
+                        if(incoming!=null&&u.scheme=="https"&&u.host=="cad.strukit.local"&&path=="/viewer/incoming/${incoming.id}")return try {
+                            val bytes=context.contentResolver.openInputStream(incoming.uri)?.use{input->val out=java.io.ByteArrayOutputStream();val buf=ByteArray(65536);var n=input.read(buf);while(n!=-1){if(out.size()+n>50*1024*1024)throw java.io.IOException("File exceeds 50 MB");out.write(buf,0,n);n=input.read(buf)};out.toByteArray()} ?: throw java.io.IOException("File unavailable")
+                            WebResourceResponse("application/octet-stream",null,ByteArrayInputStream(bytes))
+                        }catch(_:Exception){blocked()}
                         if(u.scheme!="https"||u.host!="cad.strukit.local"||!path.startsWith("/viewer/")||path.split('/').any{it==".."}||path.contains('\\'))return blocked()
                         return try {
                             val mime=when(path.substringAfterLast('.')){"html"->"text/html";"js"->"application/javascript";"css"->"text/css";"wasm"->"application/wasm";"ttf"->"font/ttf";else->"text/plain"}

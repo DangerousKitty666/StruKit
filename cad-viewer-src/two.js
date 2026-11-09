@@ -9,7 +9,7 @@ if(new URLSearchParams(location.search).get('mode')==='3d'){import('./three.js')
  function clear(){features=[];measurement?.reset();measurement=null;$('measurement-panel')?.remove();$('measurement-overlay')?.remove();angle=0;worker?.terminate();worker=null;clearTimeout(timer);viewer?.Destroy();viewer=null;}
  function fit(){const b=viewer?.GetBounds(),o=viewer?.GetOrigin();if(!b)return;angle=0;viewer.GetCamera().up.set(0,1,0);viewer.FitView(b.minX-o.x,b.maxX-o.x,b.minY-o.y,b.maxY-o.y);rebase();}
  // dxf-viewer 1.0.50 pins the control up-vector when constructed. Recreate only its controls after roll.
- function rebase(){viewer._CreateControls();viewer.controls.enabled=!measurement?.active;viewer.Render();$('angle').textContent=Math.round(angle)+'°';state.rotation=angle;measurement?.draw();}
+ function rebase(){viewer._CreateControls();viewer.controls.enabled=measurement?.navigationEnabled??true;viewer.Render();$('angle').textContent=Math.round(angle)+'°';state.rotation=angle;measurement?.draw();}
  function rotate(degrees){if(!viewer)return;angle=(angle+degrees+360)%360;const c=viewer.GetCamera(),rad=angle*Math.PI/180;c.up.set(-Math.sin(rad),Math.cos(rad),0);c.lookAt(c.position.x,c.position.y,0);rebase();}
  navigation(false,fit,rotate,()=>{});
  $('unitsRow').hidden=false;$('units').insertAdjacentHTML('afterbegin','<option value="raw">drawing units</option>');$('units').value='raw';$('units').onchange=()=>measurement?.refresh();

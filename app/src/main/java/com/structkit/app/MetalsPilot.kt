@@ -110,17 +110,18 @@ private fun LazyListScope.materialTree(records: List<MetalRecord>, path: List<St
     candidates.mapNotNull { it.folders.getOrNull(depth) }.distinct().forEach { folder ->
         val next=path+folder
         val key=next.joinToString("/")
-        item(key="folder-$key") { MetalFolder(folder,key in expanded,depth.coerceAtMost(3)) { toggle(key) } }
+        item(key="folder-$key") { MetalFolder(folder,key in expanded,depth.coerceAtMost(3),next.first()) { toggle(key) } }
         if(key in expanded) materialTree(records,next,expanded,toggle,choose)
     }
 }
 
-@Composable private fun MetalFolder(name:String,open:Boolean,depth:Int,click:()->Unit) {
-    Text((if(open) "▾  " else "▸  ")+name,color=metalBlue,fontSize=16.sp,
-        modifier=Modifier.fillMaxWidth().padding(start=(depth*12).dp).background(Color(0xFF172431),RoundedCornerShape(10.dp)).border(1.dp,Color(0xFF49647B),RoundedCornerShape(10.dp)).clickable(onClick=click).padding(13.dp))
+@Composable private fun MetalFolder(name:String,open:Boolean,depth:Int,family:String,click:()->Unit) {
+    val tint=materialFamilyTint(family)
+    Text((if(open) "▾  " else "▸  ")+name,color=tint,fontSize=16.sp,
+        modifier=Modifier.fillMaxWidth().padding(start=(depth*12).dp).background(tint.copy(alpha=if(depth==0).20f else .10f),RoundedCornerShape(10.dp)).border(1.dp,tint.copy(alpha=.65f),RoundedCornerShape(10.dp)).clickable(onClick=click).padding(13.dp))
 }
 @Composable private fun MetalRecordButton(r:MetalRecord,depth:Int,click:()->Unit) {
-    Column(Modifier.fillMaxWidth().padding(start=(depth*12).dp).background(Color(0xFF14171B),RoundedCornerShape(9.dp)).clickable(onClick=click).padding(12.dp)) {
+    Column(Modifier.fillMaxWidth().padding(start=(depth*12).dp).background(materialFamilyTint(r.folders.firstOrNull().orEmpty()).copy(alpha=.08f),RoundedCornerShape(9.dp)).border(1.dp,materialFamilyTint(r.folders.firstOrNull().orEmpty()).copy(alpha=.35f),RoundedCornerShape(9.dp)).clickable(onClick=click).padding(12.dp)) {
         Text(r.name,color=metalInk,fontSize=15.sp)
         Text("Properties · diagrams · source",color=Color(0xFFA5AFBB),fontSize=10.sp)
     }
@@ -169,4 +170,12 @@ private fun LazyListScope.materialTree(records: List<MetalRecord>, path: List<St
             TextButton(onClick={page++},enabled=page<record.pages-1){Text("Next ›")}
         }
     }
+}
+
+private fun materialFamilyTint(name:String):Color = when {
+ name.contains("metal",true)->Color(0xFF91C8F0)
+ name.contains("polymer",true)||name.contains("plastic",true)->Color(0xFFC4A1E8)
+ name.contains("ceramic",true)||name.contains("glass",true)->Color(0xFFE6B277)
+ name.contains("hybrid",true)||name.contains("wood",true)->Color(0xFF8CD0A1)
+ else->Color(0xFF7ACFD4)
 }

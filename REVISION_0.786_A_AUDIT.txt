@@ -1,0 +1,50 @@
+StruKit 0.786 A — replacement build 19
+Audit date: 9 November 2026
+Supersedes incomplete build 18. Nothing uploaded to GitHub.
+
+Original request audit (original numbering retained)
+1. Z purlin shifted further right and fitted to a wider drawing coordinate area. C/HAT branches unchanged.
+2. PDF brightness starts at 45%, scoped to the opened document and reset when closed/reopened.
+3. PDF bottom bar opacity reduced from 235/255 to 176/255 (25% reduction).
+4. Standards/PDF heading spacing reduced; freed height goes to the PDF viewing area.
+5. Bottom field says 'search in pdf'; compact aligned search/page fields with counter between them.
+6. Removed 2D offline-viewing copy. Retained an empty status element needed by the viewer runtime.
+7. Compact viewer buttons and responsive header layout prevent clipping at narrow widths.
+8. Measurement close button is at the panel's upper right.
+10. Pen-only measurements leave finger navigation enabled; fingers do not set measurement points.
+12. Samsung pen-removal receiver opens pen-only measurement. First pen hover is a fallback. Manual closing is respected after the first hover. Actual S25 Ultra broadcast behavior requires a phone test.
+13. Selected 3D parts use purple highlighting.
+14. Material family/subsection navigation uses distinct family colours.
+15. 3D View menu: Solid, Wireframe, Solid with lines. Camera menu: Normal perspective and Projected orthographic.
+16. Feature-to-feature measurements support lines, points, circle/hole centres and 3D mesh surfaces.
+17. Android file-open/share associations handle supported CAD filenames and MIME types. Real file-manager behavior needs device confirmation.
+18. Default measurement mode is Feature.
+19. Navigation labels use compact forms including FR, R and TOP.
+21. Electricity: electrical calculators, equation checker, DC circuit builder/tester, AC RMS circuit solver with resistors/capacitors/inductors/sources/switches/wires, single-phase and balanced three-phase power, energy, voltage drop and RC tools. AC is steady-state sinusoidal analysis, not a full transient/protection-design simulator.
+22. Reusable PDF text/footer/page-label indexing added. Existing access standard, DW144 and HTM 03-01 reindexed without changing their PDFs. HTM printed page 1 correctly maps to PDF page 17; all following numbered pages checked. Scans without readable page numbers fall back to physical PDF numbering; this is not OCR.
+23. Dashed guide follows the pen from feature A before feature B is selected.
+24. Light, View and Camera are grouped menus. Solid-with-lines retains STEP face boundaries, including tangent boundaries where provided by the source model. OBJ/STL have no original CAD face topology to recover perfectly.
+25. 3D surfaces are selectable and highlighted differently from light-blue edges.
+26. Multiple dimensions can be pinned, individually deleted and kept while navigating. Cleared on file closure/replacement; maximum 30 pins per file.
+27. HVAC includes duct sizing, air moisture/psychrometrics, heat transfer, canopy calculations and property explanation pop-ups. Workbook calculations checked; source links included. DW144 remains available as its original PDF.
+28. Added Noise section: real-world sound ranges, visual chart, exposure-duration table and primary NIDCD/NIOSH sources.
+29. Added persistent supplier-price catalogue and Update prices refresh. All nine requested suppliers are listed and checked. Exact section, material/grade, currency, VAT, observation date and source are kept separate. Stainless hollow-section options and S235/S275/S355 beam-grade options are provided. IMPORTANT: verified price coverage is partial, not every supplier/section/grade. Bundled observations contain 17 Kovas hollow-section prices with unspecified grade and 8 metals4U 304 SHS prices. No verified I/H grade-price series was available. Blocked/dynamic/ambiguous pages remain unavailable or quote-required; no price is invented or inferred from another grade. Generic budget estimates are labelled separately. Refresh retains the last verified observation if a supplier cannot be read.
+30. Hole/shaft tolerance diagram adapted from the Windows implementation: hatched section, distinct shaft/hole colours, dimension extensions, min/max size labels and separated deviation plot.
+
+Verification completed
+- Android assembleDebug succeeded for versionName 0.786 A, versionCode 19.
+- APK signature verified; signing certificate matches previous releases.
+- Production price parser tests: exact size normalization, live Kovas rows, grade preservation, explicit UK per-metre price, rejection of ambiguous whole-item/from prices.
+- Engineering numerical checks: workbook duct calculation, psychrometrics, DC, AC resistance/reactance/phase/power balance and floating-circuit rejection.
+- Viewer browser regression: measured known 100 mm geometry, unit conversion, simulated pen input, feature distances, surfaces, dashed guide, multiple pins, STEP component names, camera modes, close zoom and portrait/landscape retention.
+- Geometry checks: line/circle/block features, finite line/surface distances, hole centres and tangent face boundaries.
+- Electricity/HVAC tabs and Noise chart checked at 360 px width with no JavaScript errors or horizontal overflow.
+- PDF printed-page sequences checked; original PDF file hashes unchanged.
+
+Verification boundaries
+No physical Android phone was connected. Native layouts, file-manager intents and Samsung pen removal require the user's device check. Browser pen simulation does not certify Samsung hardware behavior. CAD dimensions are based on imported geometry/meshes and source units, not certified manufacturing metrology. Supplier restrictions prevent claiming universal live pricing.
+
+GitHub handoff
+Upload StruKit-0.786-A-vc19.apk (keep this exact filename) as the release APK. The updater uses vc19 to recognize a newer build even though the displayed revision stays 0.786 A. Do not use the earlier vc18 APK. Source export: StruKit_0.786_A_GitHub_vc19.
+
+Additional interaction verification: simulated finger drag navigated the 3D model in pen-only measurement mode without altering the measured distance.

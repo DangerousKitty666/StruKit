@@ -89,7 +89,19 @@ internal class ComparisonSession : ViewModel() {
     val materialPins = mutableStateListOf<SectionPin>()
 }
 
+internal data class IncomingCad(val uri:android.net.Uri,val name:String,val is3d:Boolean,val id:Long=System.nanoTime())
 class MainActivity : ComponentActivity() {
+    private var incoming by mutableStateOf<IncomingCad?>(null)
+    private fun acceptCad(intent:android.content.Intent?) {
+        if(intent?.action !in listOf(android.content.Intent.ACTION_VIEW,android.content.Intent.ACTION_SEND))return
+        val uri=intent?.data ?: intent?.getParcelableExtra<android.net.Uri>(android.content.Intent.EXTRA_STREAM) ?: return
+        if(uri.scheme !in listOf("content","file"))return
+        val name=runCatching{contentResolver.query(uri,arrayOf(android.provider.OpenableColumns.DISPLAY_NAME),null,null,null)?.use{c->if(c.moveToFirst())c.getString(0) else null}}.getOrNull() ?: uri.lastPathSegment.orEmpty()
+        val ext=name.substringAfterLast('.').lowercase()
+        if(ext !in listOf("dwg","dxf","step","stp","stl","obj")){android.widget.Toast.makeText(this,"Choose DWG, DXF, STEP, STL or OBJ",android.widget.Toast.LENGTH_LONG).show();return}
+        incoming=IncomingCad(uri,name,ext !in listOf("dwg","dxf"))
+    }
+    override fun onNewIntent(intent:android.content.Intent){super.onNewIntent(intent);setIntent(intent);acceptCad(intent)}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.statusBarColor = android.graphics.Color.rgb(8, 9, 11)
@@ -101,12 +113,14 @@ class MainActivity : ComponentActivity() {
         val referenceData = assets.open("profiles.csv").bufferedReader().use { it.readText() }
         val sections = loadProfiles(referenceData)
         val session = ViewModelProvider(this)[ComparisonSession::class.java]
-        setContent { StructKit(sections, session.pins, session.materialPins) }
+        acceptCad(intent)
+        setContent { StructKit(sections, session.pins, session.materialPins,incoming) }
     }
 }
 
-@Composable private fun StructKit(profiles: List<Profile>, pins: MutableList<SectionPin>, materialPins: MutableList<SectionPin>) {
+@Composable private fun StructKit(profiles: List<Profile>, pins: MutableList<SectionPin>, materialPins: MutableList<SectionPin>,incoming:IncomingCad?) {
     var screen by rememberSaveable { mutableStateOf("Home") }
+    LaunchedEffect(incoming?.id){if(incoming!=null)screen=if(incoming.is3d)"3D viewer" else "2D viewer"}
     val landscapeViewer = (screen == "2D viewer" || screen == "3D viewer") &&
         androidx.compose.ui.platform.LocalConfiguration.current.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE
     val activity = androidx.compose.ui.platform.LocalContext.current as android.app.Activity
@@ -133,7 +147,7 @@ class MainActivity : ComponentActivity() {
                 }
                 Column {
                     Text("StruKit", color = ink, fontWeight = FontWeight.Bold, fontSize = 20.sp, letterSpacing = 1.6.sp)
-                    Text("Revision 0.785 A", color = secondaryInk, fontSize = 11.sp)
+                    Text("Revision 0.786 A", color = secondaryInk, fontSize = 11.sp)
                 }
                 Spacer(Modifier.weight(1f))
                 Image(painter = painterResource(R.drawable.strukit_logo), contentDescription = "StruKit logo",
@@ -155,8 +169,10 @@ class MainActivity : ComponentActivity() {
                 "Building drafter" -> BuildingDrafter(profiles.filter { it.family in setOf("IPE", "HEA", "HEB") }.map { DraftMember("${it.family} ${it.designation.removePrefix(it.family).trim()}", it.mass.toDouble(), it.h.toDouble(),it.b.toDouble(),it.tw.toDouble(),it.tf.toDouble()) })
                 "Standards" -> StandardsTool()
                 "Material library" -> MetalsPilot(materialPins)
-                "2D viewer" -> CadViewer(false)
-                "3D viewer" -> CadViewer(true)
+                "Electricity" -> ReferencePage("tool-electricity.html", Modifier.fillMaxSize())
+                "HVAC" -> ReferencePage("tool-hvac.html", Modifier.fillMaxSize())
+                "2D viewer" -> CadViewer(false,incoming?.takeIf{!it.is3d})
+                "3D viewer" -> CadViewer(true,incoming?.takeIf{it.is3d})
             }
             }
         }
@@ -192,7 +208,11 @@ class MainActivity : ComponentActivity() {
         Spacer(Modifier.height(12.dp))
         ToolCard("10", "Material library", "100 materials · grade comparisons · original diagrams") { onOpen("Material library") }
         Spacer(Modifier.height(12.dp))
-        ToolCard("11", "Steel connections", "I / H joints · diagrams · detail checks") { onOpen("Steel connections") }
+        ToolCard("11", "Electricity", "DC & AC circuits · mains power · equations") { onOpen("Electricity") }
+        Spacer(Modifier.height(8.dp))
+        ToolCard("12", "HVAC", "Duct sizing · air moisture · heat transfer") { onOpen("HVAC") }
+        Spacer(Modifier.height(8.dp))
+        ToolCard("13", "Steel connections", "I / H joints · diagrams · detail checks") { onOpen("Steel connections") }
         Spacer(Modifier.height(22.dp))
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text("About", color = subtleInk, fontSize = 10.sp, letterSpacing = 1.sp,
@@ -231,6 +251,8 @@ class MainActivity : ComponentActivity() {
         fun line(x:Float,y:Float,a:Float,b:Float) = drawLine(accent,Offset(x*u,y*u),Offset(a*u,b*u),1.5f*u)
         fun box(x:Float,y:Float,w:Float,h:Float) = drawRect(accent,Offset(x*u,y*u),Size(w*u,h*u),style=Stroke(1.5f*u))
         when(name) {
+            "Electricity" -> {line(27f,4f,12f,26f);line(12f,26f,25f,26f);line(25f,26f,21f,44f);line(21f,44f,38f,20f);line(38f,20f,26f,20f);line(26f,20f,27f,4f)}
+            "HVAC" -> {box(6f,12f,36f,24f);for(y in 18..30 step 6)line(10f,y.toFloat(),38f,y.toFloat())}
             "2D viewer" -> {box(5f,7f,38f,34f);box(12f,15f,24f,18f);line(12f,11f,36f,11f);line(8f,15f,8f,33f)}
             "3D viewer" -> {box(8f,18f,24f,24f);box(17f,7f,24f,24f);line(8f,18f,17f,7f);line(32f,18f,41f,7f);line(32f,42f,41f,31f);line(8f,42f,17f,31f)}
             "Steel profiles & other" -> { box(6f,7f,36f,5f);box(21f,12f,6f,24f);box(6f,36f,36f,5f) }
@@ -261,7 +283,7 @@ class MainActivity : ComponentActivity() {
     val listState = rememberLazyListState()
     LaunchedEffect(family) { listState.scrollToItem(0) }
     Column(Modifier.fillMaxSize()) {
-        Text("Steel profiles & other",color=ink,fontSize=23.sp,modifier=Modifier.padding(horizontal=8.dp))
+        Row(Modifier.fillMaxWidth().padding(horizontal=8.dp),verticalAlignment=Alignment.CenterVertically){Text("Steel profiles & other",color=ink,fontSize=23.sp,modifier=Modifier.weight(1f));PriceUpdateButton()}
         ComparisonTray(pins, { pins.remove(it); pinFull=false }) { pin ->
             val entry=profiles.find { (if(it.designation.startsWith(it.family))it.designation else "${it.family} ${it.designation}")==pin.section }
             if(entry!=null) {

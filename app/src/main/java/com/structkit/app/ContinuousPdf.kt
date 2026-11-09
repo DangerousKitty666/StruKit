@@ -41,8 +41,7 @@ import java.io.File
 
 @Composable internal fun ContinuousPdf(asset:String,modifier:Modifier=Modifier,title:String="") {
     val context=LocalContext.current
-    val preferences=remember { context.getSharedPreferences("pdf-viewer",android.content.Context.MODE_PRIVATE) }
-    var brightness by remember { mutableFloatStateOf(preferences.getFloat("brightness",.8f).coerceIn(.25f,1f)) }
+    var brightness by remember(asset) { mutableFloatStateOf(.45f) }
     var showBrightness by remember { mutableStateOf(false) }
     var barHeight by remember { mutableIntStateOf(0) }
     val density=LocalDensity.current
@@ -50,6 +49,8 @@ import java.io.File
     val scope=rememberCoroutineScope();val scroll=rememberLazyListState()
     var pages by remember(asset){mutableStateOf<List<String>>(emptyList())}
     var pdf by remember(asset){mutableStateOf<File?>(null)};var error by remember(asset){mutableStateOf<String?>(null)}
+    var pageLabels by remember(asset){mutableStateOf<List<String>>(emptyList())}
+    var usePrinted by remember(asset){mutableStateOf(true)}
     var jump by remember(asset){mutableStateOf("")}
     var pageError by remember(asset){mutableStateOf<String?>(null)}
     var zoom by remember(asset){mutableStateOf<File?>(null)}
@@ -59,7 +60,8 @@ import java.io.File
             if(!f.exists()) context.assets.open(asset).use{input->f.outputStream().use{input.copyTo(it)}}
             val data=JSONArray(context.assets.open(asset.removeSuffix(".pdf")+".search.json").bufferedReader().use{it.readText()})
             f to (0 until data.length()).map{data.getString(it)}
-        };pdf=result.first;pages=result.second }catch(e:Exception){error="Cannot open PDF: ${e.message}"}
+        };pdf=result.first;pages=result.second
+            pageLabels=runCatching { val o=org.json.JSONObject(context.assets.open(asset.removeSuffix(".pdf")+".labels.json").bufferedReader().use{it.readText()});val a=o.getJSONArray("labels");List(a.length()){a.optString(it)} }.getOrElse{inferPdfLabels(pages)} }catch(e:Exception){error="Cannot open PDF: ${e.message}"}
     }
     val matches=remember(query,pages){if(query.isBlank())emptyList() else pages.indices.filter{pages[it].contains(query,true)}}
     Column(modifier.fillMaxSize()) {
@@ -74,21 +76,19 @@ import java.io.File
                 }
             }
             Column(Modifier.align(Alignment.BottomCenter).fillMaxWidth().onSizeChanged{barHeight=it.height}) {
-                Box(Modifier.fillMaxWidth().height(12.dp).background(Brush.verticalGradient(listOf(Color.Transparent,Color(0xEB08090B)))))
-                Column(Modifier.fillMaxWidth().background(Color(0xEB08090B)).padding(start=2.dp,end=2.dp,bottom=2.dp)) {
+                Box(Modifier.fillMaxWidth().height(12.dp).background(Brush.verticalGradient(listOf(Color.Transparent,Color(0xB008090B)))))
+                Column(Modifier.fillMaxWidth().background(Color(0xB008090B)).padding(start=2.dp,end=2.dp,bottom=2.dp)) {
                     if(showBrightness) Row(Modifier.fillMaxWidth().height(40.dp),verticalAlignment=Alignment.CenterVertically) {
                         Text("PDF ${(brightness*100).toInt()}%",color=updateMuted,fontSize=11.sp)
-                        Slider(value=brightness,onValueChange={brightness=it;preferences.edit().putFloat("brightness",it).apply()},valueRange=.25f..1f,
+                        Slider(value=brightness,onValueChange={brightness=it},valueRange=.25f..1f,
                             modifier=Modifier.weight(1f).semantics{contentDescription="PDF brightness"})
                     }
                     Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) {
-                        CompactPdfField(query,{query=it;hit=0},"search in off",Modifier.weight(1f))
+                        CompactPdfField(query,{query=it;hit=0},"search in pdf",Modifier.weight(1f))
                         Spacer(Modifier.width(5.dp))
-                        Column(Modifier.width(64.dp),horizontalAlignment=Alignment.CenterHorizontally) {
-                            Text(if(pages.isEmpty()) "– / –" else "${scroll.firstVisibleItemIndex+1} / ${pages.size}",color=updateMuted,fontSize=10.sp)
-                            CompactPdfField(jump,{jump=it;pageError=null},"Page",Modifier.fillMaxWidth(),true)
-                        }
-                        TextButton(modifier=Modifier.width(38.dp).height(36.dp),contentPadding=PaddingValues(0.dp),onClick={val n=jump.toIntOrNull();if(n!=null&&n in 1..pages.size){scope.launch{scroll.scrollToItem(n-1)};pageError=null}else pageError="Enter page 1–${pages.size}"},enabled=pages.isNotEmpty()){Text("Go",fontSize=12.sp)}
+                        Text(if(pages.isEmpty()) "– / –" else if(usePrinted) "${pageLabels.getOrNull(scroll.firstVisibleItemIndex).orEmpty().ifEmpty{"—"}}\nPDF ${scroll.firstVisibleItemIndex+1}/${pages.size}" else "PDF\n${scroll.firstVisibleItemIndex+1}/${pages.size}",color=updateMuted,fontSize=9.sp,modifier=Modifier.padding(horizontal=4.dp).clickable{usePrinted=!usePrinted})
+                        CompactPdfField(jump,{jump=it;pageError=null},if(usePrinted)"Page" else "PDF",Modifier.width(54.dp),false)
+                        TextButton(modifier=Modifier.width(38.dp).height(36.dp),contentPadding=PaddingValues(0.dp),onClick={val index=if(usePrinted)pageLabels.indexOfFirst{it.isNotBlank()&&it.equals(jump.trim(),true)} else (jump.toIntOrNull()?.minus(1) ?: -1);if(index in pages.indices){scope.launch{scroll.scrollToItem(index)};pageError=null}else pageError="Page not found. Tap counter to switch printed / PDF pages."},enabled=pages.isNotEmpty()){Text("Go",fontSize=12.sp)}
                         TextButton(modifier=Modifier.width(36.dp).height(36.dp).semantics{contentDescription="Adjust PDF brightness"},contentPadding=PaddingValues(0.dp),onClick={showBrightness=!showBrightness}){Text("☀",fontSize=20.sp)}
                     }
                     if(pageError!=null||query.isNotBlank()) Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.SpaceBetween) {
@@ -134,4 +134,17 @@ import java.io.File
         keyboardOptions=androidx.compose.foundation.text.KeyboardOptions(keyboardType=if(numeric)androidx.compose.ui.text.input.KeyboardType.Number else androidx.compose.ui.text.input.KeyboardType.Text),
         modifier=modifier.height(36.dp).border(1.dp,updateMuted,RoundedCornerShape(5.dp)).padding(horizontal=10.dp),
         decorationBox={inner->Box(Modifier.fillMaxSize(),contentAlignment=Alignment.CenterStart){if(value.isEmpty())Text(hint,color=updateMuted,fontSize=13.sp);inner()}})
+}
+
+// Fallback for newly bundled PDFs without a label sidecar. Require a repeated offset,
+// never infer from a single number in a table or paragraph.
+internal fun inferPdfLabels(pages:List<String>):List<String> {
+    val votes=mutableMapOf<Int,Int>()
+    pages.forEachIndexed { i,text ->
+        val lines=text.lines().map{it.trim()}.filter{it.isNotEmpty()}
+        (lines.take(3)+lines.takeLast(5)).mapNotNull{it.toIntOrNull()}.filter{it in 1..pages.size}.distinct().forEach{n->val offset=i+1-n;votes[offset]=(votes[offset]?:0)+1}
+    }
+    val candidate=votes.maxByOrNull{it.value}
+    if(candidate==null||candidate.value<maxOf(3,pages.size/5))return List(pages.size){""}
+    return List(pages.size){i->if(i+1>candidate.key)(i+1-candidate.key).toString() else ""}
 }

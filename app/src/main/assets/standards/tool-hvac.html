@@ -1,0 +1,131 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>:root{color-scheme:dark;font:14px system-ui;color:#d9dde3;background:#08090b}*{box-sizing:border-box}body{margin:0;padding:8px 10px 24px}h1{font-size:25px;margin:2px 0 12px}h2{font-size:18px}p,small{line-height:1.55;color:#aeb9c6}button,select,input{font:inherit;color:#a8cbe8;background:#10161d;border:1px solid #59758b;border-radius:9px;padding:10px;min-height:40px}button{cursor:pointer;margin:3px}button.active{background:#243a4c;border-color:#a8cbe8}input,select{width:100%;margin:5px 0 12px}label{display:block;margin:8px 0;color:#b8c7d5}.help{padding:0;border:0;background:none;text-align:left;min-height:24px}.card{border-radius:14px;background:#14171b;padding:14px;margin-bottom:12px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px}.result-row{display:flex;justify-content:space-between;gap:18px;border-bottom:1px solid #303b47;padding:10px 0}.result-row strong{text-align:right;color:#a8cbe8}small{display:block;margin-top:14px}#tabs{display:flex;gap:3px;overflow-x:auto;margin-bottom:14px;padding-bottom:7px}#tabs button{white-space:nowrap}.component{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;border-bottom:1px solid #384657;padding:10px 0}.component b{grid-column:1/-1}.circuit-svg{width:100%;max-height:340px;stroke:#a8cbe8;fill:none;stroke-width:1.5}.circuit-svg text{fill:#d9dde3;stroke:none;font:12px system-ui}.symbol{display:flex;gap:20px;align-items:center;padding:10px}.symbol svg{width:70px;height:40px;fill:none;stroke:#a8cbe8;stroke-width:1.5}dialog{color:#d9dde3;background:#182632ed;border:1px solid #9ec5e8;border-radius:14px;max-width:90%;line-height:1.6}dialog::backdrop{background:#0008}a{color:#9ec5e8}</style></head><body><h1 id="title"></h1><nav id="tabs"></nav><main id="content"></main><details><summary>Calculation references</summary><p><a href="https://www.engineeringtoolbox.com/humidity-ratio-air-d_686.html">Engineering ToolBox: humidity ratio</a><br><a href="https://www.engineeringtoolbox.com/equivalent-diameter-d_205.html">Equivalent duct diameter</a><br><a href="https://www.engineeringtoolbox.com/conductive-heat-transfer-d_428.html">Heat conduction</a><br><a href="https://psychrometrics.github.io/psychrolib/api_docs.html">Psychrometric relationships</a></p></details><dialog id="helpDialog"><p id="helpText"></p><form method="dialog"><button>Close</button></form></dialog><script>(() => {
+  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0786a\StruKit_Revision_0.786_A\engineering-tools-src\core.js
+  function positive(...values) {
+    if (values.some((v) => !Number.isFinite(v) || v <= 0)) throw Error("Enter positive values in every required field.");
+  }
+  function duct({ q, a, b, d, shape, n = 1, rho = 1.2, rough = 0.09, length = 1 }) {
+    positive(q, n, rho, length);
+    if (!Number.isInteger(n)) throw Error("Duct count must be a whole number.");
+    let area, dh, de;
+    if (shape === "Round") {
+      positive(d);
+      area = Math.PI * (d / 1e3) ** 2 / 4;
+      dh = d / 1e3;
+      de = d;
+    } else {
+      positive(a, b);
+      area = a * b / 1e6;
+      dh = 2 * a * b / (a + b) / 1e3;
+      de = 1.3 * (a * b) ** 0.625 / (a + b) ** 0.25;
+    }
+    if (rough < 0 || !Number.isFinite(rough)) throw Error("Roughness cannot be negative.");
+    const v = q / (area * n), re = rho * v * dh / 181e-7, f = re < 2300 ? 64 / re : 1 / (-1.8 * Math.log10((rough / 1e3 / dh / 3.7) ** 1.11 + 6.9 / re)) ** 2;
+    return { area, totalArea: area * n, v, dh: dh * 1e3, de, equalArea: Math.sqrt(4 * area / Math.PI) * 1e3, re, friction: f * length / dh * rho * v * v / 2, transition: re >= 2300 && re < 4e3 };
+  }
+  function saturation(t) {
+    const k = t + 273.15;
+    return Math.exp(-5800.2206 / k + 1.3914993 - 0.048640239 * k + 41764768e-12 * k * k - 14452093e-15 * k * k * k + 6.5459673 * Math.log(k));
+  }
+  function moistAir(t, rh, p) {
+    if (!Number.isFinite(t) || t < 0 || t > 60 || !Number.isFinite(rh) || rh < 0 || rh > 100 || !Number.isFinite(p) || p < 60 || p > 110) throw Error("Use 0\u201360 \xB0C, 0\u2013100% RH and 60\u2013110 kPa absolute pressure.");
+    const pv = saturation(t) * rh / 100, pa = p * 1e3;
+    if (pv >= pa) throw Error("Vapour pressure exceeds total pressure.");
+    const w = 0.621945 * pv / (pa - pv), absolute = pv / (461.52 * (t + 273.15)) * 1e3, h = 1.006 * t + w * (2501 + 1.86 * t);
+    let dew = null;
+    if (pv >= saturation(0)) {
+      let lo = 0, hi = t;
+      for (let i = 0; i < 60; i++) {
+        const m = (lo + hi) / 2;
+        if (saturation(m) < pv) lo = m;
+        else hi = m;
+      }
+      dew = (lo + hi) / 2;
+    }
+    return { w: w * 1e3, absolute, h, pv, dew, rho: (pa - pv) / (287.042 * (t + 273.15)) + pv / (461.52 * (t + 273.15)) };
+  }
+
+  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0786a\StruKit_Revision_0.786_A\engineering-tools-src\ui.js
+  var $ = (id) => document.getElementById(id);
+  var fmt = (n, d = 3) => Number.isFinite(n) ? n.toLocaleString(void 0, { maximumFractionDigits: d }) : "\u2014";
+  function field(id, label, value, help2) {
+    return `<label><button class="help" type="button" data-help="${id}">${label} \u24D8</button><input id="${id}" type="number" step="any" value="${value}"></label>`;
+  }
+  function select(id, label, options) {
+    return `<label>${label}<select id="${id}">${options.map((o) => `<option>${o}</option>`).join("")}</select></label>`;
+  }
+  function num(id) {
+    const t = $(id).value.trim();
+    if (!t) throw Error("Complete all inputs.");
+    const v = Number(t);
+    if (!Number.isFinite(v)) throw Error("Enter finite numbers.");
+    return v;
+  }
+  function output(rows, note = "") {
+    $("result").innerHTML = rows.map(([label, value]) => `<div class="result-row"><span>${label}</span><strong>${value}</strong></div>`).join("") + `<small>${note}</small>`;
+  }
+  function setup(title, tabs, render) {
+    $("title").textContent = title;
+    const nav = $("tabs");
+    for (const tab of tabs) {
+      const b = document.createElement("button");
+      b.textContent = tab;
+      b.onclick = () => {
+        nav.querySelectorAll("button").forEach((x) => x.classList.toggle("active", x === b));
+        render(tab);
+      };
+      nav.append(b);
+    }
+    nav.firstChild.click();
+  }
+  function form(html, calculate, help2 = {}) {
+    $("content").innerHTML = `<section class="card">${html}<button id="calculate">Calculate</button></section><section id="result" class="card" aria-live="polite"></section>`;
+    document.querySelectorAll("[data-help]").forEach((b) => b.onclick = () => {
+      $("helpText").textContent = help2[b.dataset.help] || b.textContent.replace(" \u24D8", "");
+      $("helpDialog").showModal();
+    });
+    $("calculate").onclick = () => {
+      try {
+        calculate();
+      } catch (e) {
+        $("result").textContent = e.message;
+      }
+    };
+    $("calculate").click();
+  }
+
+  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0786a\StruKit_Revision_0.786_A\engineering-tools-src\hvac.js
+  var help = { q: "Air volume per second through all parallel ducts. 1 m\xB3/s = 1,000 L/s = 3,600 m\xB3/h.", a: "Internal duct width in millimetres.", b: "Internal duct depth in millimetres.", d: "Internal diameter in millimetres.", n: "Identical parallel ducts sharing the total airflow equally.", rho: "Air mass per unit volume. 1.2 kg/m\xB3 is a reference value, not a constant for every temperature or altitude.", rough: "Absolute internal roughness in millimetres; choose a value appropriate to the duct surface.", len: "Straight duct length. Fittings, terminals and equipment losses must be added separately.", t: "Dry-bulb temperature: air temperature measured by a dry, shielded sensor, without evaporative cooling.", rh: "Relative humidity: vapour pressure as a percentage of saturation vapour pressure at the same temperature.", p: "Absolute local air pressure, not gauge pressure. Altitude changes the mass of dry air in a given volume.", area: "Actual heat-transfer surface area, in m\xB2.", k: "Thermal conductivity in W/(m\xB7K). Use a value for the actual material and temperature.", thick: "Heat-flow path thickness, in metres.", delta: "Temperature difference in kelvins. A difference of 1 K equals a difference of 1 \xB0C.", flow: "Mass flow in kg/s; do not enter volume flow here.", cp: "Specific heat capacity in J/(kg\xB7K).", room: "Room floor area in m\xB2.", height: "Clear room height in metres.", ach: "Air changes per hour = hourly air volume divided by room volume.", vel: "Mean face/duct air velocity in m/s." };
+  setup("HVAC", ["Ducts", "Air moisture", "Heat transfer", "Airflow", "Canopy", "DW/144"], (tab) => {
+    if (tab === "Ducts") form(select("shape", "Duct shape", ["Rectangular", "Round"]) + field("q", "Total flow \xB7 m\xB3/s", 1) + field("a", "Width \xB7 mm", 500) + field("b", "Depth \xB7 mm", 300) + field("d", "Diameter \xB7 mm", 400) + field("n", "Parallel ducts", 1) + field("rho", "Air density \xB7 kg/m\xB3", 1.2) + field("rough", "Roughness \xB7 mm", 0.09) + field("len", "Straight length \xB7 m", 10), () => {
+      const r = duct({ q: num("q"), a: num("a"), b: num("b"), d: num("d"), shape: $("shape").value, n: num("n"), rho: num("rho"), rough: num("rough"), length: num("len") });
+      output([["Area per duct", fmt(r.area) + " m\xB2"], ["Mean velocity", fmt(r.v) + " m/s"], ["Equal-area round diameter", fmt(r.equalArea, 1) + " mm"], ["Equal-friction equivalent diameter", fmt(r.de, 1) + " mm"], ["Hydraulic diameter", fmt(r.dh, 1) + " mm"], ["Reynolds number", fmt(r.re, 0)], ["Straight-duct friction estimate", fmt(r.friction) + " Pa"]], `A = ab or \u03C0d\xB2/4; v = Q/(nA). Equal-area and equal-friction diameters serve different purposes. Darcy\u2013Weisbach loss uses hydraulic diameter and Haaland friction factor above laminar flow. ${r.transition ? "TRANSITIONAL FLOW: friction estimate is uncertain." : ""} Excludes fittings/equipment; rectangular-duct friction is approximate.`);
+    }, help);
+    if (tab === "Air moisture") form(field("t", "Dry bulb \xB7 \xB0C", 20) + field("rh", "Relative humidity \xB7 %", 50) + field("p", "Absolute pressure \xB7 kPa", 101.325), () => {
+      const r = moistAir(num("t"), num("rh"), num("p"));
+      output([["Humidity ratio", fmt(r.w) + " g/kg dry air"], ["Water content per volume", fmt(r.absolute) + " g/m\xB3"], ["Moist-air enthalpy", fmt(r.h) + " kJ/kg dry air"], ["Dew point", r.dew == null ? "Below 0 \xB0C / outside this solver" : fmt(r.dew) + " \xB0C"], ["Moist-air density", fmt(r.rho) + " kg/m\xB3"]], "Ideal moist-air model; 0\u201360 \xB0C dry bulb. W = 0.621945 pv/(p\u2212pv); h = 1.006T + W(2501+1.86T). Saturation pressure follows the ASHRAE liquid-water relation.");
+    }, help);
+    if (tab === "Heat transfer") form(select("heat", "Method", ["Conduction", "Overall U-value", "Fluid sensible heat"]) + field("area", "Surface area \xB7 m\xB2", 10) + field("k", "Conductivity \xB7 W/(m\xB7K)", 0.04) + field("thick", "Thickness \xB7 m", 0.1) + field("u", "U-value \xB7 W/(m\xB2\xB7K)", 0.4) + field("delta", "Temperature difference \xB7 K", 20) + field("flow", "Mass flow \xB7 kg/s", 1) + field("cp", "Specific heat \xB7 J/(kg\xB7K)", 1005), () => {
+      positive(num("area"), num("k"), num("thick"), num("u"), num("flow"), num("cp"));
+      const mode = $("heat").value, q = mode === "Conduction" ? num("k") * num("area") * num("delta") / num("thick") : mode === "Overall U-value" ? num("u") * num("area") * num("delta") : num("flow") * num("cp") * num("delta");
+      output([["Heat transfer rate", fmt(q) + " W"], ["Kilowatts", fmt(q / 1e3) + " kW"]], mode === "Conduction" ? "q = kA\u0394T/t. Plane homogeneous layer; excludes surface resistances." : mode === "Overall U-value" ? "q = UA\u0394T. U must include the intended layers and surface resistances." : "q = \u1E41cp\u0394T. Sensible heat only; no phase change or moisture latent load.");
+    }, help);
+    if (tab === "Airflow") form(field("room", "Floor area \xB7 m\xB2", 45) + field("height", "Room height \xB7 m", 2.8) + field("ach", "Required air changes \xB7 h\u207B\xB9", 6) + field("pressure", "Pitot differential pressure \xB7 Pa", 5) + field("rho", "Air density \xB7 kg/m\xB3", 1.2) + field("filterA", "Filter width \xB7 mm", 1072) + field("filterB", "Filter height \xB7 mm", 553), () => {
+      positive(num("room"), num("height"), num("rho"), num("filterA"), num("filterB"));
+      if (num("ach") < 0 || num("pressure") < 0) throw Error("ACH and differential pressure cannot be negative.");
+      const vol = num("room") * num("height"), q = vol * num("ach") / 3600, area = num("filterA") * num("filterB") / 1e6;
+      output([["Room volume", fmt(vol) + " m\xB3"], ["Required flow", fmt(q) + " m\xB3/s"], ["Required flow", fmt(q * 1e3) + " L/s"], ["Pitot ideal velocity", fmt(Math.sqrt(2 * num("pressure") / num("rho"))) + " m/s"], ["Filter face area", fmt(area) + " m\xB2"], ["Filter face velocity at required flow", fmt(q / area) + " m/s"]], "ACH = 3600Q/V. Pitot v = \u221A(2\u0394p/\u03C1), coefficient 1 assumed. These are geometry/flow calculations; select room criteria and traverse methods from the project specification.");
+    }, help);
+    if (tab === "Canopy") form(select("zones", "Zones", ["Single", "Dual"]) + field("x", "Canopy X \xB7 mm", 3200) + field("y", "Canopy Y \xB7 mm", 3200) + field("zx", "Central zone X \xB7 mm", 2080) + field("zy", "Central zone Y \xB7 mm", 2080) + field("v1", "Central face velocity \xB7 m/s", 0.45) + field("v2", "Outer face velocity \xB7 m/s", 0.45) + field("units", "Outer / booster units", 4) + field("ahu", "AHU supply \xB7 m\xB3/s", 1.41), () => {
+      positive(num("x"), num("y"), num("zx"), num("zy"), num("v1"), num("v2"), num("units"));
+      if (!Number.isInteger(num("units")) || num("ahu") < 0) throw Error("Use a whole positive unit count and non-negative AHU flow.");
+      const total = num("x") * num("y") / 1e6, dual = $("zones").value === "Dual", central = dual ? num("zx") * num("zy") / 1e6 : total;
+      if (dual && (num("zx") > num("x") || num("zy") > num("y"))) throw Error("Central zone must fit inside the canopy.");
+      const q1 = central * num("v1"), q2 = (total - central) * num("v2"), deficit = q1 - num("ahu");
+      output([["Central flow", fmt(q1) + " m\xB3/s"], ["Outer flow", fmt(q2) + " m\xB3/s"], ["Total face flow", fmt(q1 + q2) + " m\xB3/s"], ["AHU deficit / surplus", fmt(deficit) + " m\xB3/s"], ["Duty per unit", fmt((dual ? q2 : Math.max(0, deficit)) / num("units")) + " m\xB3/s"]], "Transferred from the supplied canopy workbook: Q = face area \xD7 velocity. Negative AHU deficit means excess supply. No unvalidated fixed 0.07 m/s velocity-decay correction is applied. This is not a kitchen capture or clinical-cleanliness certification model.");
+    }, help);
+    if (tab === "DW/144") {
+      $("content").innerHTML = `<section class="card"><h2>DW/144 \u2014 construction reference</h2><p>The calculator uses internal duct area to relate flow and mean velocity. A calculated size alone does not determine sheet thickness, reinforcement, joint type, leakage class or pressure suitability.</p><p>Use the original DW/144 document in Standards for pressure/velocity classes, rectangular and circular construction tables, joints and stiffening. Define the pressure of each duct section; do not substitute fan pressure for every duct section.</p><p>Equal-area conversions in the workbook preserve velocity at equal flow. They do not guarantee equal pressure loss.</p><small>Source: supplied DW/144, general notes (printed page 10) and construction tables. Workbook: Duct Size Calculator, Canopy Sizing Calculator, Room Volumes, Filter Sizes and Sensor Equations.</small></section>`;
+    }
+  });
+})();
+</script></body></html>

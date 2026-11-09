@@ -9,3 +9,16 @@ const shape=new THREE.Shape();shape.moveTo(-50,-40);shape.lineTo(50,-40);shape.l
 const geo=new THREE.ExtrudeGeometry(shape,{depth:4,bevelEnabled:false,curveSegments:32});const mf=meshFeatures(geo);const circles=mf.features.filter(f=>f.kind==='circle');assert.equal(circles.length,2);for(const c of circles)assert(Math.abs(c.radius-10)<.0001);assert(mf.features.some(f=>f.kind==='line'&&Math.abs(f.length-100)<.001));
 console.log('Passed: DXF exact line, circle, bulge arc, transformed block; mesh plate edges and both 20 mm hole rims.');
 
+import {featureDistance} from './measure-geometry.js';
+const point=(x,y,z=0)=>new THREE.Vector3(x,y,z),edge=(a,b)=>({kind:'line',points:[a,b],length:a.distanceTo(b)});
+const near=(a,b)=>assert(Math.abs(a-b)<1e-8,`${a} != ${b}`);
+near(featureDistance(edge(point(0,0),point(10,0)),edge(point(2,5),point(8,5))).distance,5);
+near(featureDistance(edge(point(0,0),point(10,0)),edge(point(5,-5,3),point(5,5,3))).distance,3);
+near(featureDistance({kind:'circle',center:point(0,0),points:[],radius:5},{kind:'circle',center:point(30,40),points:[],radius:3}).distance,50);
+const tri=[point(0,0),point(10,0),point(0,10)];const surf=t=>({kind:'surface',points:t.flat(),triangles:t,approximate:true});
+near(featureDistance(surf([tri]),surf([tri.map(p=>p.clone().add(point(0,0,4)))])).distance,4);
+near(featureDistance(edge(point(2,2,-5),point(2,2,5)),surf([tri])).distance,0);
+near(featureDistance({kind:'point',points:[point(2,2,7)]},surf([tri])).distance,7);
+const plane=new THREE.PlaneGeometry(10,10);plane.userData.brepFaces=[{first:0,last:0},{first:1,last:1}];
+assert(meshFeatures(plane).features.some(f=>Math.abs(f.length-Math.sqrt(200))<1e-8),'STEP face boundary must be drawn even at a tangent / coplanar join');
+console.log('Passed feature-to-feature: parallel/skew lines, hole centres, separated surfaces, surface crossing, point/surface; tangent face boundary retained.');

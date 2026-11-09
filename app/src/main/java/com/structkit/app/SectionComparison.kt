@@ -58,6 +58,7 @@ internal data class SectionPin(val section: String, val property: String, val va
     }
 }
 @Composable internal fun SectionPrices(section: String, mass: Double, plate: Boolean, pin: (SectionPin) -> Unit) {
+    SupplierPriceOptions(section)
     var lt by remember { mutableStateOf("1.40") }
     var uk by remember { mutableStateOf("1.55") }
     var rates by remember { mutableStateOf(false) }

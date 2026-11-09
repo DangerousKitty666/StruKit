@@ -1,0 +1,357 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>:root{color-scheme:dark;font:14px system-ui;color:#d9dde3;background:#08090b}*{box-sizing:border-box}body{margin:0;padding:8px 10px 24px}h1{font-size:25px;margin:2px 0 12px}h2{font-size:18px}p,small{line-height:1.55;color:#aeb9c6}button,select,input{font:inherit;color:#a8cbe8;background:#10161d;border:1px solid #59758b;border-radius:9px;padding:10px;min-height:40px}button{cursor:pointer;margin:3px}button.active{background:#243a4c;border-color:#a8cbe8}input,select{width:100%;margin:5px 0 12px}label{display:block;margin:8px 0;color:#b8c7d5}.help{padding:0;border:0;background:none;text-align:left;min-height:24px}.card{border-radius:14px;background:#14171b;padding:14px;margin-bottom:12px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px}.result-row{display:flex;justify-content:space-between;gap:18px;border-bottom:1px solid #303b47;padding:10px 0}.result-row strong{text-align:right;color:#a8cbe8}small{display:block;margin-top:14px}#tabs{display:flex;gap:3px;overflow-x:auto;margin-bottom:14px;padding-bottom:7px}#tabs button{white-space:nowrap}.component{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;border-bottom:1px solid #384657;padding:10px 0}.component b{grid-column:1/-1}.circuit-svg{width:100%;max-height:340px;stroke:#a8cbe8;fill:none;stroke-width:1.5}.circuit-svg text{fill:#d9dde3;stroke:none;font:12px system-ui}.symbol{display:flex;gap:20px;align-items:center;padding:10px}.symbol svg{width:70px;height:40px;fill:none;stroke:#a8cbe8;stroke-width:1.5}dialog{color:#d9dde3;background:#182632ed;border:1px solid #9ec5e8;border-radius:14px;max-width:90%;line-height:1.6}dialog::backdrop{background:#0008}a{color:#9ec5e8}</style></head><body><h1 id="title"></h1><nav id="tabs"></nav><main id="content"></main><details><summary>Calculation references</summary><p><a href="https://openstax.org/books/university-physics-volume-2/pages/15-3-rlc-series-circuits-with-ac">OpenStax: AC circuits</a><br><a href="https://www.electrical-installation.org/enwiki/Definition_of_reactive_power">Electrical Installation Guide: single/three-phase power</a></p></details><dialog id="helpDialog"><p id="helpText"></p><form method="dialog"><button>Close</button></form></dialog><script>(() => {
+  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0786a\StruKit_Revision_0.786_A\engineering-tools-src\ac.js
+  var add = (a, b) => [a[0] + b[0], a[1] + b[1]];
+  var neg = (a) => [-a[0], -a[1]];
+  var mul = (a, b) => [a[0] * b[0] - a[1] * b[1], a[0] * b[1] + a[1] * b[0]];
+  var abs = (a) => Math.hypot(...a);
+  var div = (a, b) => {
+    const d = b[0] ** 2 + b[1] ** 2;
+    if (d === 0) throw Error("Singular circuit");
+    return [(a[0] * b[0] + a[1] * b[1]) / d, (a[1] * b[0] - a[0] * b[1]) / d];
+  };
+  var polar = (z) => ({ magnitude: abs(z), phase: Math.atan2(z[1], z[0]) * 180 / Math.PI });
+  function solveAC(elements, frequency2) {
+    if (!Number.isFinite(frequency2) || frequency2 <= 0) throw Error("Frequency must be positive.");
+    if (!elements.length || elements.length > 40) throw Error("Use 1\u201340 components.");
+    const nodes = [...new Set(elements.flatMap((e) => [e.a, e.b]))].filter((n) => n !== "0");
+    if (!elements.some((e) => e.a === "0" || e.b === "0")) throw Error("Connect reference node 0.");
+    if (nodes.length > 24) throw Error("Maximum 24 non-ground nodes.");
+    const ids = new Map(nodes.map((n, i) => [n, i])), sources = elements.filter((e) => ["V", "W"].includes(e.type) || e.type === "S" && e.closed), size = nodes.length + sources.length, w = 2 * Math.PI * frequency2;
+    const A = Array.from({ length: size }, () => Array.from({ length: size }, () => [0, 0])), b = Array.from({ length: size }, () => [0, 0]);
+    const stamp = (i, j, z) => {
+      if (i !== void 0 && j !== void 0) A[i][j] = add(A[i][j], z);
+    }, rhs = (i, z) => {
+      if (i !== void 0) b[i] = add(b[i], z);
+    };
+    const phasor = (e) => {
+      const p = (e.phase || 0) * Math.PI / 180;
+      return [e.value * Math.cos(p), e.value * Math.sin(p)];
+    };
+    const admittance = (e) => e.type === "R" ? [1 / e.value, 0] : e.type === "C" ? [0, w * e.value / 1e6] : [0, -1 / (w * e.value / 1e3)];
+    for (const e of elements) {
+      if (e.a === e.b) throw Error("A component must join different nodes.");
+      if (!Number.isFinite(e.value) || !Number.isFinite(e.phase || 0)) throw Error("Use finite component values and phases.");
+      if (!["R", "C", "L", "V", "I", "W", "S"].includes(e.type)) throw Error("Unsupported component.");
+      const a = ids.get(e.a), c = ids.get(e.b);
+      if (["R", "C", "L"].includes(e.type)) {
+        if (e.value <= 0) throw Error("R, C and L must be positive.");
+        const y = admittance(e);
+        stamp(a, a, y);
+        stamp(c, c, y);
+        stamp(a, c, neg(y));
+        stamp(c, a, neg(y));
+      } else if (e.type === "I") {
+        rhs(a, neg(phasor(e)));
+        rhs(c, phasor(e));
+      } else if (sources.includes(e)) {
+        const k = nodes.length + sources.indexOf(e);
+        stamp(a, k, [1, 0]);
+        stamp(c, k, [-1, 0]);
+        stamp(k, a, [1, 0]);
+        stamp(k, c, [-1, 0]);
+        b[k] = e.type === "V" ? phasor(e) : [0, 0];
+      }
+    }
+    const original = A.map((r) => r.map((z) => [...z])), originalB = b.map((z) => [...z]);
+    for (let i = 0; i < size; i++) {
+      const scale = Math.max(...A[i].map(abs));
+      if (!scale) throw Error("Floating or disconnected circuit.");
+      A[i] = A[i].map((z) => [z[0] / scale, z[1] / scale]);
+      b[i] = [b[i][0] / scale, b[i][1] / scale];
+    }
+    for (let k = 0; k < size; k++) {
+      let pivot = k;
+      for (let i = k + 1; i < size; i++) if (abs(A[i][k]) > abs(A[pivot][k])) pivot = i;
+      if (abs(A[pivot][k]) < 1e-12) throw Error("Floating circuit or conflicting / redundant ideal sources.");
+      [A[k], A[pivot]] = [A[pivot], A[k]];
+      [b[k], b[pivot]] = [b[pivot], b[k]];
+      const d = A[k][k];
+      A[k] = A[k].map((z) => div(z, d));
+      b[k] = div(b[k], d);
+      for (let i = 0; i < size; i++) {
+        if (i === k) continue;
+        const factor = A[i][k];
+        for (let j = k; j < size; j++) A[i][j] = add(A[i][j], neg(mul(factor, A[k][j])));
+        b[i] = add(b[i], neg(mul(factor, b[k])));
+      }
+    }
+    for (let i = 0; i < size; i++) {
+      const residual = add(original[i].reduce((sum, z, j) => add(sum, mul(z, b[j])), [0, 0]), neg(originalB[i]));
+      const scale = 1 + abs(originalB[i]) + original[i].reduce((sum, z, j) => sum + abs(mul(z, b[j])), 0);
+      if (abs(residual) > 1e-8 * scale) throw Error("Circuit is numerically unstable.");
+    }
+    const voltage = (n) => n === "0" ? [0, 0] : b[ids.get(n)];
+    const results = elements.map((e) => {
+      const v = add(voltage(e.a), neg(voltage(e.b)));
+      const i = ["R", "C", "L"].includes(e.type) ? mul(v, admittance(e)) : e.type === "I" ? phasor(e) : sources.includes(e) ? b[nodes.length + sources.indexOf(e)] : [0, 0];
+      const power = mul(v, [i[0], -i[1]]);
+      return { ...e, v, i, p: power[0], q: power[1] };
+    });
+    return { nodes: Object.fromEntries(["0", ...nodes].map((n) => [n, voltage(n)])), results, powerBalance: results.reduce((s, e) => s + e.p, 0), reactiveBalance: results.reduce((s, e) => s + e.q, 0) };
+  }
+  function acPower(voltage, current, pf, threePhase = false) {
+    if (![voltage, current, pf].every(Number.isFinite) || voltage <= 0 || current < 0 || pf < 0 || pf > 1) throw Error("Use positive RMS voltage, non-negative current and a power factor from 0 to 1.");
+    const apparent = voltage * current * (threePhase ? Math.sqrt(3) : 1);
+    return { apparent, active: apparent * pf, reactive: apparent * Math.sqrt(Math.max(0, 1 - pf * pf)) };
+  }
+
+  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0786a\StruKit_Revision_0.786_A\engineering-tools-src\core.js
+  function positive(...values) {
+    if (values.some((v) => !Number.isFinite(v) || v <= 0)) throw Error("Enter positive values in every required field.");
+  }
+  function solveCircuit(elements) {
+    if (elements.length > 40) throw Error("Maximum 40 components.");
+    const nodes = [...new Set(elements.flatMap((e) => [e.a, e.b]))].filter((n) => n !== "0");
+    if (!elements.some((e) => e.a === "0" || e.b === "0")) throw Error("Connect a reference node 0.");
+    if (nodes.length > 24) throw Error("Maximum 24 non-ground nodes.");
+    const ids = new Map(nodes.map((n, i) => [n, i])), sources = elements.filter((e) => ["V", "W"].includes(e.type) || e.type === "S" && e.closed);
+    const N = nodes.length + sources.length;
+    if (!N) throw Error("Add a circuit.");
+    const A = Array.from({ length: N }, () => Array(N).fill(0)), z = Array(N).fill(0);
+    const add2 = (i, j, x) => {
+      if (i !== void 0 && j !== void 0) A[i][j] += x;
+    }, rhs = (i, x) => {
+      if (i !== void 0) z[i] += x;
+    };
+    for (const e of elements) {
+      if (e.a === e.b) throw Error("A component must join two different nodes.");
+      const a = ids.get(e.a), b = ids.get(e.b);
+      if (!Number.isFinite(e.value)) throw Error("Every component needs a finite value.");
+      if (e.type === "R") {
+        positive(e.value);
+        const g = 1 / e.value;
+        add2(a, a, g);
+        add2(b, b, g);
+        add2(a, b, -g);
+        add2(b, a, -g);
+      } else if (e.type === "I") {
+        rhs(a, -e.value);
+        rhs(b, e.value);
+      } else if (sources.includes(e)) {
+        const i = nodes.length + sources.indexOf(e);
+        add2(a, i, 1);
+        add2(b, i, -1);
+        add2(i, a, 1);
+        add2(i, b, -1);
+        z[i] = e.type === "V" ? e.value : 0;
+      }
+    }
+    const original = A.map((row) => [...row]), originalZ = [...z];
+    for (let i = 0; i < N; i++) {
+      let pivot = i;
+      for (let j = i + 1; j < N; j++) if (Math.abs(A[j][i]) > Math.abs(A[pivot][i])) pivot = j;
+      if (Math.abs(A[pivot][i]) < 1e-12) throw Error("Floating nodes, conflicting sources or redundant ideal-wire loops. Connect every node to a reference and remove redundant wires.");
+      [A[i], A[pivot]] = [A[pivot], A[i]];
+      [z[i], z[pivot]] = [z[pivot], z[i]];
+      const d = A[i][i];
+      for (let j = i; j < N; j++) A[i][j] /= d;
+      z[i] /= d;
+      for (let k = 0; k < N; k++) if (k !== i) {
+        const f = A[k][i];
+        for (let j = i; j < N; j++) A[k][j] -= f * A[i][j];
+        z[k] -= f * z[i];
+      }
+    }
+    if (z.some((v) => !Number.isFinite(v))) throw Error("Circuit solution is not finite.");
+    const voltage = (n) => n === "0" ? 0 : z[ids.get(n)];
+    const results = elements.map((e) => {
+      const v = voltage(e.a) - voltage(e.b), i = e.type === "R" ? v / e.value : e.type === "I" ? e.value : sources.includes(e) ? z[nodes.length + sources.indexOf(e)] : 0;
+      return { ...e, v, i, p: v * i };
+    });
+    const residual = Math.max(...original.map((r, i) => Math.abs(r.reduce((s, a, j) => s + a * z[j], 0) - originalZ[i])));
+    if (residual > 1e-6 * Math.max(1, ...originalZ.map(Math.abs))) throw Error("Numerical residual too large. Check component value ranges.");
+    return { nodes: Object.fromEntries(["0", ...nodes].map((n) => [n, voltage(n)])), results, powerBalance: results.reduce((s, e) => s + e.p, 0), residual };
+  }
+
+  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0786a\StruKit_Revision_0.786_A\engineering-tools-src\ui.js
+  var $ = (id) => document.getElementById(id);
+  var fmt = (n, d = 3) => Number.isFinite(n) ? n.toLocaleString(void 0, { maximumFractionDigits: d }) : "\u2014";
+  function field(id, label, value, help) {
+    return `<label><button class="help" type="button" data-help="${id}">${label} \u24D8</button><input id="${id}" type="number" step="any" value="${value}"></label>`;
+  }
+  function select(id, label, options) {
+    return `<label>${label}<select id="${id}">${options.map((o) => `<option>${o}</option>`).join("")}</select></label>`;
+  }
+  function num(id) {
+    const t = $(id).value.trim();
+    if (!t) throw Error("Complete all inputs.");
+    const v = Number(t);
+    if (!Number.isFinite(v)) throw Error("Enter finite numbers.");
+    return v;
+  }
+  function output(rows, note = "") {
+    $("result").innerHTML = rows.map(([label, value]) => `<div class="result-row"><span>${label}</span><strong>${value}</strong></div>`).join("") + `<small>${note}</small>`;
+  }
+  function setup(title, tabs, render) {
+    $("title").textContent = title;
+    const nav = $("tabs");
+    for (const tab of tabs) {
+      const b = document.createElement("button");
+      b.textContent = tab;
+      b.onclick = () => {
+        nav.querySelectorAll("button").forEach((x) => x.classList.toggle("active", x === b));
+        render(tab);
+      };
+      nav.append(b);
+    }
+    nav.firstChild.click();
+  }
+  function form(html, calculate, help = {}) {
+    $("content").innerHTML = `<section class="card">${html}<button id="calculate">Calculate</button></section><section id="result" class="card" aria-live="polite"></section>`;
+    document.querySelectorAll("[data-help]").forEach((b) => b.onclick = () => {
+      $("helpText").textContent = help[b.dataset.help] || b.textContent.replace(" \u24D8", "");
+      $("helpDialog").showModal();
+    });
+    $("calculate").onclick = () => {
+      try {
+        calculate();
+      } catch (e) {
+        $("result").textContent = e.message;
+      }
+    };
+    $("calculate").click();
+  }
+
+  // source:C:\Users\gidro\Documents\Codex\2026-11-02\referenced-chatgpt-conversation-this-is-an-2\work\rev0786a\StruKit_Revision_0.786_A\engineering-tools-src\electricity.js
+  var circuit = [{ id: 1, type: "V", a: "1", b: "0", value: 12, closed: true }, { id: 2, type: "R", a: "1", b: "2", value: 1e3, closed: true }, { id: 3, type: "R", a: "2", b: "0", value: 2e3, closed: true }];
+  var nextId = 4;
+  var analysis = "DC";
+  var frequency = 50;
+  var names = { C: "Capacitor \xB7 \xB5F (AC)", L: "Inductor \xB7 mH (AC)", R: "Resistor \xB7 \u03A9", V: "Voltage source \xB7 V", I: "Current source \xB7 A", W: "Wire", S: "Switch" };
+  var symbols = { C: '<path d="M0 0H18M18 -9V9M26 -9V9M26 0H44"/>', L: '<path d="M0 0H6Q6 -14 14 -14T22 0Q22 -14 30 -14T38 0H44"/>', R: '<path d="M0 0H12M12 -6H32V6H12ZM32 0H44"/>', V: '<path d="M0 0H12M32 0H44M17 0H27M22 -5V5"/><circle cx="22" cy="0" r="10"/>', I: '<path d="M0 0H12M32 0H44M16 0H28L24 -4M28 0L24 4"/><circle cx="22" cy="0" r="10"/>', W: '<path d="M0 0H44"/>', S: '<path d="M0 0H12L30 -8M32 0H44"/>' };
+  function diagram() {
+    const nodes = [...new Set(circuit.flatMap((e) => [e.a, e.b]))], positions = new Map(nodes.map((n, i) => [n, { x: 180 + 135 * Math.cos(2 * Math.PI * i / nodes.length - Math.PI / 2), y: 155 + 115 * Math.sin(2 * Math.PI * i / nodes.length - Math.PI / 2) }]));
+    let html = '<svg viewBox="0 0 360 310" class="circuit-svg" aria-label="Circuit connections">';
+    for (const e of circuit) {
+      const a = positions.get(e.a), b = positions.get(e.b), mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, angle = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
+      html += `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"/><g transform="translate(${mx},${my}) rotate(${angle})"><rect x="-24" y="-12" width="48" height="24" fill="#14171b" stroke="none"/><g transform="translate(-22,0)">${symbols[e.type]}</g></g><text x="${mx}" y="${my - 16}">${e.type}${e.id}</text>`;
+    }
+    for (const [n, p] of positions) html += `<circle cx="${p.x}" cy="${p.y}" r="5"/><text x="${p.x + 10}" y="${p.y + 5}">${n === "0" ? "0 (ground)" : n}</text>`;
+    return html + "</svg>";
+  }
+  function builder() {
+    $("content").innerHTML = `<section class="card"><h2>Circuit builder</h2>${select("analysis", "Analysis", ["DC", "AC \xB7 RMS phasors"])}${field("frequency", "AC frequency \xB7 Hz", frequency)}<p>Join components by node number. Equal node numbers connect electrically; line crossings do not. Node 0 is reference ground.</p>${diagram()}<div id="components"></div>${select("type", "Add component", Object.values(names))}<div class="grid">${field("nodeA", "Positive / from node", 1)}${field("nodeB", "Negative / to node", 0)}${field("value", "Value (unit above)", 1e3)}</div><button id="add">Add component</button><button id="simulate">Test circuit</button><button id="reset-circuit">Reset example</button></section><section class="card" id="result" aria-live="polite"></section>`;
+    $("analysis").value = analysis;
+    $("analysis").onchange = () => {
+      analysis = $("analysis").value;
+    };
+    $("frequency").onchange = () => {
+      frequency = num("frequency");
+    };
+    for (const e of circuit) {
+      const row = document.createElement("div");
+      row.className = "component";
+      row.innerHTML = `<b>${e.type}${e.id}</b> <label>Node A<input type="number" min="0" step="1" value="${e.a}" data-key="a"></label><label>Node B<input type="number" min="0" step="1" value="${e.b}" data-key="b"></label><label>Value<input type="number" step="any" value="${e.value}" data-key="value"></label><label>Source phase \xB7 \xB0<input type="number" step="any" value="${e.phase || 0}" data-key="phase"></label>`;
+      for (const input of row.querySelectorAll("input")) input.onchange = () => {
+        const key = input.dataset.key;
+        if (!["value", "phase"].includes(key) && (!/^\d+$/.test(input.value) || Number(input.value) > 999)) {
+          input.value = e[key];
+          return;
+        }
+        e[key] = ["value", "phase"].includes(key) ? Number(input.value) : input.value;
+      };
+      if (e.type === "S") {
+        const button = document.createElement("button");
+        button.textContent = e.closed ? "Closed" : "Open";
+        button.onclick = () => {
+          e.closed = !e.closed;
+          button.textContent = e.closed ? "Closed" : "Open";
+        };
+        row.append(button);
+      }
+      const del = document.createElement("button");
+      del.textContent = "Delete";
+      del.onclick = () => {
+        circuit = circuit.filter((x) => x !== e);
+        builder();
+      };
+      row.append(del);
+      $("components").append(row);
+    }
+    $("add").onclick = () => {
+      try {
+        const a = num("nodeA"), b = num("nodeB");
+        if (!Number.isInteger(a) || !Number.isInteger(b) || a < 0 || b < 0 || a > 999 || b > 999) throw Error("Use node numbers 0\u2013999.");
+        const type = Object.keys(names).find((k) => names[k] === $("type").value);
+        const value = num("value");
+        if (circuit.length >= 40) throw Error("Maximum 40 components");
+        circuit.push({ id: nextId++, type, a: String(a), b: String(b), value, closed: true });
+        builder();
+      } catch (e) {
+        $("result").textContent = e.message;
+      }
+    };
+    $("simulate").onclick = () => {
+      try {
+        if (analysis !== "DC") {
+          const r2 = solveAC(circuit, num("frequency"));
+          const ph = (z) => {
+            const p = polar(z);
+            return fmt(p.magnitude) + " \u2220 " + fmt(p.phase, 2) + "\xB0";
+          };
+          document.querySelector(".circuit-svg").outerHTML = diagram();
+          output([...Object.entries(r2.nodes).map(([node, v]) => ["Node " + node, ph(v) + " V RMS"]), ...r2.results.flatMap((e) => [[e.type + e.id + " current A \u2192 B", ph(e.i) + " A RMS"], [e.type + e.id + " absorbed P / Q", fmt(e.p) + " W / " + fmt(e.q) + " var"]]), ["Power balance", fmt(r2.powerBalance, 8) + " W"]], "Sinusoidal steady-state RMS analysis at " + num("frequency") + " Hz. Source phase is relative to the common reference. R in \u03A9, C in \xB5F, L in mH. Negative absorbed power means delivery. Ideal linear components; no switching transients, harmonics, protective-device or installation-compliance assessment.");
+          return;
+        }
+        if (circuit.some((e) => ["C", "L"].includes(e.type))) throw Error("Choose AC analysis for capacitors and inductors.");
+        const r = solveCircuit(circuit);
+        document.querySelector(".circuit-svg").outerHTML = diagram();
+        output([...Object.entries(r.nodes).map(([n, v]) => ["Node " + n, fmt(v) + " V"]), ...r.results.flatMap((e) => [[e.type + e.id + " \xB7 A \u2192 B", fmt(e.i * 1e3) + " mA"], [e.type + e.id + " \xB7 absorbed power", fmt(e.p) + " W"]]), ["Power balance", fmt(r.powerBalance, 9) + " W"]], "Ideal linear DC model. Source polarity is A positive relative to B; current is A \u2192 B. Negative absorbed power means delivery. Open switches carry zero current; floating subnetworks are rejected. No real-device ratings, protection, mains compliance or dynamic behaviour is assessed.");
+      } catch (e) {
+        $("result").textContent = e.message;
+      }
+    };
+    $("reset-circuit").onclick = () => {
+      circuit = [{ id: 1, type: "V", a: "1", b: "0", value: 12, closed: true }, { id: 2, type: "R", a: "1", b: "2", value: 1e3, closed: true }, { id: 3, type: "R", a: "2", b: "0", value: 2e3, closed: true }];
+      nextId = 4;
+      builder();
+    };
+    $("simulate").click();
+  }
+  setup("Electricity", ["Calculator", "AC / mains", "Equation check", "Circuit builder", "Symbols", "Voltage drop", "Energy", "RC timing"], (tab) => {
+    if (tab === "AC / mains") form(select("supply", "Supply", ["Single-phase", "Balanced three-phase"]) + field("rms", "Voltage \xB7 V RMS", 230) + field("amps", "Line current \xB7 A RMS", 10) + field("pf", "Power factor", 0.9) + select("reactive", "Load", ["Inductive / lagging", "Capacitive / leading"]), () => {
+      const three = $("supply").value === "Balanced three-phase", r = acPower(num("rms"), num("amps"), num("pf"), three);
+      output([["Active power P", fmt(r.active) + " W"], ["Apparent power S", fmt(r.apparent) + " VA"], ["Reactive power Q", fmt(r.reactive * ($("reactive").selectedIndex ? -1 : 1)) + " var"]], (three ? "Voltage is line-to-line; current is line current. Balanced sinusoidal load. P = \u221A3 V I PF." : "Voltage is line-to-neutral / across the load. P = V I PF.") + " RMS values. These calculations do not determine cable ratings, fault protection or safe installation. See OpenStax, University Physics 2, chapter 15.");
+    });
+    if (tab === "Calculator") form(select("solve", "Find", ["Current", "Voltage", "Resistance", "Power"]) + field("v", "Voltage \xB7 V", 12) + field("i", "Current \xB7 A", 0.02) + field("r", "Resistance \xB7 \u03A9", 600), () => {
+      const v = num("v"), i = num("i"), r = num("r"), what = $("solve").value;
+      if (what === "Current") {
+        positive(r);
+        output([["Current", fmt(v / r) + " A"]], "I = V/R");
+      } else if (what === "Voltage") {
+        positive(r);
+        output([["Voltage", fmt(i * r) + " V"]], "V = IR");
+      } else if (what === "Resistance") {
+        if (i === 0) throw Error("Current cannot be zero");
+        output([["Resistance", fmt(v / i) + " \u03A9"]], "R = V/I");
+      } else output([["Power", fmt(v * i) + " W"]], "P = VI; signed absorbed power.");
+    });
+    if (tab === "Equation check") form(field("v", "Voltage \xB7 V", 12) + field("i", "Current \xB7 A", 0.02) + field("r", "Resistance \xB7 \u03A9", 600) + field("p", "Power \xB7 W", 0.24) + field("tol", "Relative tolerance \xB7 %", 0.1), () => {
+      positive(num("r"));
+      if (num("tol") < 0) throw Error("Tolerance cannot be negative");
+      const check = (actual, expected) => Math.abs(actual - expected) <= Math.max(1e-9, Math.abs(expected) * num("tol") / 100);
+      output([["V = IR", check(num("v"), num("i") * num("r")) ? "Consistent" : "Not consistent"], ["P = VI", check(num("p"), num("v") * num("i")) ? "Consistent" : "Not consistent"], ["Voltage residual", fmt(num("v") - num("i") * num("r"), 6) + " V"], ["Power residual", fmt(num("p") - num("v") * num("i"), 6) + " W"]], "Numeric consistency check for a resistive DC branch. This does not prove component suitability or circuit safety.");
+    });
+    if (tab === "Circuit builder") builder();
+    if (tab === "Symbols") {
+      $("content").innerHTML = '<section class="card"><h2>Symbol library</h2>' + Object.entries(names).map(([type, name]) => `<div class="symbol"><svg viewBox="-2 -14 48 28">${symbols[type]}</svg><span>${name}</span></div>`).join("") + "<p>Ideal DC and sinusoidal AC components supported by the circuit solver. AC sources use RMS values and phase angles; capacitors and inductors require AC mode. Node 0 provides the voltage reference. Wires and closed switches are zero-volt ideal constraints.</p></section>";
+    }
+    if (tab === "Voltage drop") form(field("len", "One-way length \xB7 m", 10) + field("cross", "Conductor area \xB7 mm\xB2", 2.5) + field("rho", "Resistivity \xB7 \u03A9\xB7mm\xB2/m", 0.0175) + field("i", "Load current \xB7 A", 5) + field("v", "Supply \xB7 V", 24), () => {
+      positive(num("len"), num("cross"), num("rho"), num("v"));
+      const r = 2 * num("rho") * num("len") / num("cross"), drop = Math.abs(num("i")) * r;
+      output([["Loop resistance", fmt(r) + " \u03A9"], ["Voltage drop", fmt(drop) + " V"], ["Percentage", fmt(drop / num("v") * 100) + " %"], ["Cable loss", fmt(num("i") ** 2 * r) + " W"]], "Two-wire DC loop at constant resistivity. Excludes contacts and temperature correction. This is not a cable ampacity or protection-sizing tool.");
+    });
+    if (tab === "Energy") form(field("power", "Power \xB7 W", 1e3) + field("hours", "Use \xB7 hours", 3) + field("tariff", "Tariff \xB7 currency/kWh", 0.25), () => {
+      if ([num("power"), num("hours"), num("tariff")].some((x) => x < 0)) throw Error("Values cannot be negative");
+      const energy = num("power") * num("hours") / 1e3;
+      output([["Energy", fmt(energy) + " kWh"], ["Cost", fmt(energy * num("tariff"), 2) + " currency units"]], "Energy = power \xD7 time. Fixed power and tariff; standing charges excluded.");
+    });
+    if (tab === "RC timing") form(field("r", "Resistance \xB7 \u03A9", 1e4) + field("c", "Capacitance \xB7 \xB5F", 100) + field("v", "Step voltage \xB7 V", 5) + field("time", "Elapsed time \xB7 s", 1), () => {
+      positive(num("r"), num("c"));
+      if (num("time") < 0) throw Error("Time cannot be negative");
+      const tau = num("r") * num("c") / 1e6;
+      output([["Time constant", fmt(tau) + " s"], ["Charging capacitor voltage", fmt(num("v") * (1 - Math.exp(-num("time") / tau))) + " V"], ["Time to 99%", fmt(-tau * Math.log(0.01)) + " s"]], "Ideal series RC charging from zero initial voltage; ideal voltage step.");
+    });
+  });
+})();
+</script></body></html>
