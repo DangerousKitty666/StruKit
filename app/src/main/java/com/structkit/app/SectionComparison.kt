@@ -62,7 +62,7 @@ internal data class SectionPin(val section: String, val property: String, val va
     val context=androidx.compose.ui.platform.LocalContext.current
     LaunchedEffect(Unit){PriceCatalog.load(context)}
     val hollow=listOf("RHS","SHS","CHS").any{section.startsWith(it)}
-    val grades=if(hollow)listOf("S235","S275","S355","SS 304","SS 316") else if(section.startsWith("Purlin"))listOf("Galvanised") else listOf("S235","S275","S355")
+    val grades=if(hollow)listOf("S275","SS 304","SS 316") else if(section.startsWith("Purlin"))listOf("Galvanised") else listOf("S275")
     val unit=if(plate)"m²"else"m"
     Spacer(Modifier.height(12.dp))
     Row(Modifier.fillMaxWidth().padding(vertical=10.dp)){
@@ -82,5 +82,5 @@ internal data class SectionPin(val section: String, val property: String, val va
         }
         HorizontalDivider(color=updateBlue.copy(alpha=.18f))
     }
-    Text("Indicative · ex VAT. Exact comparable listings are averaged per supplier. Where these are missing, carbon grades share a mass-based budget estimate, not a verified grade premium. Stainless availability requires an exact listed size. Delivery/cutting excluded.",color=updateMuted,fontSize=10.sp,modifier=Modifier.padding(top=10.dp))
+    Text("Estimates / m · ex VAT; delivery excluded.\nUnavailable = no reliable price data.",color=updateMuted,fontSize=10.sp,maxLines=2,modifier=Modifier.padding(top=10.dp))
 }

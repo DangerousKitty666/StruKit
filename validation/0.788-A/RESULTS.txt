@@ -1,0 +1,9 @@
+0.788 A / versionCode 21
+Kotlin price and PDF search checks: PASS
+DC/AC engineering calculations: PASS
+Browser circuit, search, all tool tabs and 360px layout checks: PASS
+Android assembleDebug: PASS
+APK signature verified; certificate matches prior release
+Embedded updated assets match source byte-for-byte
+No physical-device installation test
+APK SHA-256: d2197b6197d30e84f207430ba40931067a248e7ade947843c0c10bbe4401c0db

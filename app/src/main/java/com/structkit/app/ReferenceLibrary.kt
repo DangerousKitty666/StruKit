@@ -59,8 +59,11 @@ private fun topicTint(id:String):Color=when(id){
     val isPdf=referenceTopics[selected].second in listOf("access","dw144","htm0301")
     BackHandler(enabled=isPdf && sourcePage==null) { selected=0;query="";expanded=false }
     val context = LocalContext.current
-    val texts = remember { referenceTopics.map { (_,file) -> runCatching { if(file in listOf("access","dw144","htm0301"))context.assets.open("standards/$file.search.json").bufferedReader().use{it.readText()}else context.assets.open("standards/$file.html").bufferedReader().use { it.readText() }.replace(Regex("<[^>]*>"), " ") }.getOrDefault("") } }
-    val matches = remember(query) { referenceTopics.indices.filter { referenceTopics[it].first.contains(query, true) || texts[it].contains(query, true) } }
+    val texts = remember { referenceTopics.map { (_,file) -> runCatching {
+        if(file in listOf("access","dw144","htm0301")){val a=org.json.JSONArray(context.assets.open("standards/$file.search.json").bufferedReader().use{it.readText()});(0 until a.length()).joinToString(" "){a.getString(it)}}
+        else {val html=context.assets.open("standards/$file.html").bufferedReader().use{it.readText()};val body=html.substringAfter("<body>",html).substringBefore("</body>").replace(Regex("<(script|style|head)\\b[^>]*>.*?</\\1>",setOf(RegexOption.IGNORE_CASE,RegexOption.DOT_MATCHES_ALL))," ");android.text.Html.fromHtml(body,android.text.Html.FROM_HTML_MODE_LEGACY).toString()}
+    }.getOrDefault("") } }
+    val matches = remember(query) { referenceTopics.indices.filter { searchRanges(referenceTopics[it].first,query).isNotEmpty() || searchRanges(texts[it],query).isNotEmpty() } }
     if (sourcePage != null) {
         PublicationViewer("standards/${referenceTopics[selected].second}.pdf", referenceTopics[selected].first, sourcePage!!) { sourcePage = null }
         return
@@ -119,7 +122,7 @@ private fun topicTint(id:String):Color=when(id){
             isVerticalFadingEdgeEnabled = true
             setFadingEdgeLength((14 * resources.displayMetrics.density).toInt())
             webViewClient = object : WebViewClient() {
-                override fun onPageFinished(view:WebView,url:String){view.findAllAsync(liveQuery)}
+                override fun onPageFinished(view:WebView,url:String){view.evaluateJavascript("window.strukitSearch?.("+org.json.JSONObject.quote(liveQuery)+")",null)}
                 override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
                     val uri = request.url
                     if(uri.scheme == "strukit" && uri.host == "pin") { onPin?.invoke(uri.getQueryParameter("label").orEmpty(),uri.getQueryParameter("value").orEmpty());return true }
@@ -136,14 +139,13 @@ private fun topicTint(id:String):Color=when(id){
                     if(m.groupValues[2].replace(Regex("<[^>]*>"), " ").contains(query, true)) "<details open${m.groupValues[1]}>${m.groupValues[2]}</details>" else m.value
                 }
             }
+            html += "<script>"+context.assets.open("standards/search.js").bufferedReader().use{it.readText()}+"</script>"
             val subdir = file.substringBeforeLast('/', "").let { if(it.isEmpty()) "" else "$it/" }
             loadDataWithBaseURL("file:///android_asset/standards/$subdir", html, "text/html", "UTF-8", null)
         }
     },update={view->
-        val q=org.json.JSONObject.quote(query)
-        view.evaluateJavascript("document.querySelectorAll('details').forEach(d=>{if($q && d.textContent.toLowerCase().includes($q.toLowerCase()))d.open=true})",null)
-        if(view.tag!=query){view.tag=query;view.findAllAsync(query)}
-        if(navigation!=previousNavigation){view.findNext(navigation>previousNavigation);previousNavigation=navigation}
+        if(view.tag!=query){view.tag=query;view.evaluateJavascript("window.strukitSearch?.("+org.json.JSONObject.quote(query)+")",null)}
+        if(navigation!=previousNavigation){view.evaluateJavascript("window.strukitSearchNext?.("+(if(navigation>previousNavigation)1 else -1)+")",null);previousNavigation=navigation}
     }, onRelease = { it.stopLoading(); it.destroy() })
 }
 
@@ -162,5 +164,5 @@ private fun topicTint(id:String):Color=when(id){
 }
 
 private fun highlightText(text:String,query:String):androidx.compose.ui.text.AnnotatedString=androidx.compose.ui.text.buildAnnotatedString{
- append(text);if(query.isNotBlank()){var from=0;while(from<text.length){val i=text.indexOf(query,from,true);if(i<0)break;addStyle(androidx.compose.ui.text.SpanStyle(background=Color(0xFF47677C),color=Color.White),i,i+query.length);from=i+query.length}}
+ append(text);searchRanges(text,query).forEach{addStyle(androidx.compose.ui.text.SpanStyle(background=Color(0xFF47677C),color=Color.White),it.first,it.last+1)}
 }

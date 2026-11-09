@@ -76,7 +76,7 @@ import java.io.File
         withContext(Dispatchers.Main){words=parsed;contentsPage=if(data.isNull("contents"))null else data.getInt("contents")}
     }}}
     LaunchedEffect(externalQuery){query=externalQuery;hit=0}
-    val matches=remember(query,pages){if(query.isBlank())emptyList() else pages.indices.filter{pages[it].contains(query,true)}}
+    val matches=remember(query,pages){if(query.isBlank())emptyList() else pages.indices.filter{searchRanges(pages[it],query).isNotEmpty()}}
     LaunchedEffect(query,pages){hit=0;if(matches.isNotEmpty())scroll.scrollToItem(matches[0])}
     var previousNav by remember{mutableIntStateOf(navigation)}
     LaunchedEffect(navigation){if(matches.isNotEmpty()&&navigation!=previousNav){hit=Math.floorMod(hit+if(navigation>previousNav)1 else -1,matches.size);scroll.scrollToItem(matches[hit])};previousNav=navigation}

@@ -9,17 +9,18 @@ internal fun priceText(s:String):String {
     return Regex("&(#x[0-9a-fA-F]+|#[0-9]+|[a-z]+);").replace(stripped){m->val key=m.groupValues[1];named[key] ?: runCatching {val n=if(key.startsWith("#x"))key.substring(2).toInt(16)else key.substring(1).toInt();String(Character.toChars(n))}.getOrDefault(m.value)}.replace('\u00a0',' ').replace(Regex("\\s+")," ").trim()
 }
 internal fun sectionKey(s:String):String {
-    val upper=s.uppercase(Locale.ROOT).replace('×','X').replace(',','.').replace("MM","")
+    val upper=s.uppercase(Locale.ROOT).replace('×','X').replace('*','X').replace(',','.').replace("MM","")
     val family=Regex("^(RHS|SHS|CHS|IPE|IPN|HEA|HEB|HEM|RSA|UPN|UPE|PLATE|PLATES|T)\\s*").find(upper)?.groupValues?.get(1) ?: return upper.replace(" ","")
     val nums=Regex("\\d+(?:\\.\\d+)?").findAll(upper.substring(family.length)).map{it.value.toDouble().toString().removeSuffix(".0")}.toList()
-    return family+":"+nums.joinToString("x")
+    val canonical=if(family=="SHS"&&nums.size==3&&nums[0]==nums[1])listOf(nums[0],nums[2]) else if(family=="RHS"&&nums.size==3)listOf(maxOf(nums[0].toDouble(),nums[1].toDouble()).toString().removeSuffix(".0"),minOf(nums[0].toDouble(),nums[1].toDouble()).toString().removeSuffix(".0"),nums[2])else nums
+    return family+":"+canonical.joinToString("x")
 }
 internal fun quoteSection(name:String,hint:String=""):String? {
-    val n=name.uppercase(Locale.ROOT).replace('×','X').replace(',','.')
+    val n=name.uppercase(Locale.ROOT).replace('×','X').replace('*','X').replace(',','.')
     Regex("\\b(IPE|IPN|HEA|HEB|HEM|UPN|UPE)\\s*(\\d{2,4})\\b").find(n)?.let{return it.groupValues[1]+" "+it.groupValues[2]}
-    val dims=Regex("(\\d+(?:\\.\\d+)?)\\s*(?:MM)?\\s*X\\s*(\\d+(?:\\.\\d+)?)(?:\\s*(?:MM)?\\s*X\\s*(\\d+(?:\\.\\d+)?))?").find(n) ?: return null
+    val dims=Regex("(\\d+(?:\\.\\d+)?)\\s*(?:MM)?\\s*(?:OD)?\\s*X\\s*(\\d+(?:\\.\\d+)?)(?:\\s*(?:MM)?\\s*(?:OD)?\\s*X\\s*(\\d+(?:\\.\\d+)?))?").find(n) ?: return null
     val a=dims.groupValues[1];val b=dims.groupValues[2];val c=dims.groupValues[3]
-    val family=when{hint=="RSA"->"RSA";hint=="CHS"||n.contains("ROUND TUBE")->"CHS";hint=="RHS"||n.contains("BOX SECTION")||n.contains("RECTANGULAR TUBE")||n.contains("SQUARE TUBE")->if(a.toDouble()==b.toDouble())"SHS" else "RHS";else->return null}
+    val family=when{hint=="RSA"->"RSA";hint=="CHS"||n.contains("ROUND TUBE")||n.contains("STAINLESS STEEL TUBE")->"CHS";hint=="RHS"||n.contains("BOX SECTION")||n.contains("RECTANGULAR TUBE")||n.contains("SQUARE TUBE")->if(a.toDouble()==b.toDouble())"SHS" else "RHS";else->return null}
     if(family=="CHS"&&c.isNotEmpty()||family!="CHS"&&c.isEmpty())return null
     return "$family $a"+"x$b"+(if(c.isNotEmpty())"x$c"else "")
 }
@@ -48,6 +49,17 @@ internal fun parsePricePage(supplier:PriceSupplier,url:String,html:String,checke
             val p=Regex("£\\s*([0-9,]+\\.[0-9]{2})\\s*p/m\\s*\\(ex VAT\\)",RegexOption.IGNORE_CASE).find(cardText) ?: continue
             val link=Regex("href=[\"']([^\"']+)[\"']").find(a.value)?.groupValues?.get(1)?.let{URI(url).resolve(it).toString()} ?: url
             add(name,p.groupValues[1].replace(",","").toDouble(),quoteGrade(name),name.substringAfter("Section","").trim(),"ex VAT",link)
+        }
+    }
+    if(supplier.name=="Linoksa"&&text.contains("Kaina be PVM",true)){
+        val hint=when{url.contains("81-apvalus-vamzdziai")->"CHS";url.contains("82-profiliniai-vamzdziai")->"RHS";else->""}
+        if(hint.isNotEmpty()){
+            val names=Regex("(\\d+(?:[,.]\\d+)?(?:\\s*[*x×]\\s*\\d+(?:[,.]\\d+)?){1,2})\\s*mm\\s*N/p\\s*vamzdis\\s*(304L?|316L?)\\b",RegexOption.IGNORE_CASE).findAll(text).toList()
+            names.forEachIndexed{i,m->
+                val tail=text.substring(m.range.last+1, minOf(names.getOrNull(i+1)?.range?.first ?: text.length,m.range.last+801))
+                val price=Regex("([0-9]+(?:[.,][0-9]{2}))\\s*€\\s*/\\s*m\\b").find(tail)
+                if(price!=null)add(m.groupValues[1],price.groupValues[1].replace(',','.').toDouble(),m.groupValues[2].uppercase(Locale.ROOT),if(tail.contains("Grid",true))"Grid"else"MF","ex VAT",hint=hint)
+            }
         }
     }
     // Other supplier schemas are accepted only when Product + explicit unit-price specification agree.

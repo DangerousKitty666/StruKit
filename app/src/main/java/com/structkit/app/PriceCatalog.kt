@@ -16,7 +16,9 @@ internal object PriceCatalog {
     var lastCheck by mutableLongStateOf(0); private set
     private var loaded=false
     fun load(context:Context){if(loaded)return;loaded=true;val prefs=context.getSharedPreferences("supplier-prices",0)
-        quotes=runCatching{decode(JSONArray(prefs.getString("quotes",null) ?: context.assets.open("supplier-prices.json").bufferedReader().use{it.readText()}))}.getOrDefault(emptyList())
+        val bundled=runCatching{decode(JSONArray(context.assets.open("supplier-prices.json").bufferedReader().use{it.readText()}))}.getOrDefault(emptyList())
+        val cached=runCatching{decode(JSONArray(prefs.getString("quotes","[]")!!))}.getOrDefault(emptyList())
+        quotes=(bundled+cached).groupBy{listOf(it.supplier,sectionKey(it.section),it.grade,it.finish,it.url)}.values.map{rows->rows.maxBy{it.checked}}
         lastCheck=prefs.getLong("lastCheck",0)
         status=runCatching{val o=JSONObject(prefs.getString("status","{}")!!);o.keys().asSequence().associateWith{o.getString(it)}}.getOrDefault(emptyMap())
     }
@@ -48,7 +50,7 @@ internal object PriceCatalog {
         repeat(4){
             val connection=uri.toURL().openConnection() as HttpURLConnection
             try{connection.connectTimeout=8000;connection.readTimeout=10000;connection.instanceFollowRedirects=false
-                connection.setRequestProperty("User-Agent","StruKit/0.786 (public price reference)")
+                connection.setRequestProperty("User-Agent","StruKit/0.788 (public price reference)")
                 val code=connection.responseCode
                 if(code in 300..399){val next=uri.resolve(connection.getHeaderField("Location") ?: error("Missing redirect"));require(next.scheme=="https"&&next.host.removePrefix("www.")==uri.host.removePrefix("www.")){"Supplier redirect needs browser"};uri=next}
                 else {if(code!=200)error("HTTP $code");val data=connection.inputStream.use{it.readBytesBounded(4*1024*1024)};val charset=Regex("charset=([^; ]+)",RegexOption.IGNORE_CASE).find(connection.contentType.orEmpty())?.groupValues?.get(1)?.trim('"')?.let{runCatching{charset(it)}.getOrNull()} ?: Charsets.UTF_8
@@ -62,12 +64,12 @@ private fun java.io.InputStream.readBytesBounded(limit:Int):ByteArray {val out=j
 // Only known public catalogue pages. A refresh checks all suppliers, not an invented market-rate feed.
 internal val pricePages=mapOf(
     "FH Brundle" to listOf("https://www.fhbrundle.co.uk/steel-sections/square-hollow-section","https://www.fhbrundle.co.uk/steel-sections/rectangular-hollow-section","https://www.fhbrundle.co.uk/steel-sections/circular-hollow-section"),
-    "metals4U" to listOf("https://www.metals4u.co.uk/materials/mild-steel/mild-steel-box-section?product_list_limit=100","https://www.metals4u.co.uk/materials/stainless-steel/stainless-steel-box-section?product_list_limit=100","https://www.metals4u.co.uk/materials/stainless-steel/stainless-steel-tube?product_list_limit=100"),
+    "metals4U" to (listOf("https://www.metals4u.co.uk/materials/mild-steel/mild-steel-box-section?product_list_limit=100")+(1..4).map{"https://www.metals4u.co.uk/materials/stainless-steel/stainless-steel-box-section?p=$it"}+(1..5).map{"https://www.metals4u.co.uk/materials/stainless-steel/stainless-steel-tube?p=$it"}),
     "Cladco" to listOf("https://www.cladco.co.uk/z-purlins"),
     "The Metal Store" to listOf("https://www.themetalstore.co.uk/products/steel-box-section-uk-suppliers","https://www.themetalstore.co.uk/products/stainless-steel-tube"),
     "Lytagra" to listOf("https://lytagra.lt/metalo-gaminiai"),
     "Metalmaster" to listOf("https://metalmaster.lt/"),
     "Kovas" to listOf("https://kovas.lt/statybines-medziagos/metalai/vamzdis/profilinis/","https://kovas.lt/statybines-medziagos/metalai/vamzdis/apvalus-juodieji/","https://kovas.lt/statybines-medziagos/metalai/kampuotis/","https://kovas.lt/statybines-medziagos/metalai/plienine-juosta/","https://kovas.lt/statybines-medziagos/metalai/lovys/","https://kovas.lt/statybines-medziagos/metalai/lakstas/"),
     "b-a.eu" to listOf("https://www.b-a.eu/c11/Metalai"),
-    "Linoksa" to listOf("https://linoksa.com/lt/")
+    "Linoksa" to listOf("https://linoksa.com/lt/81-apvalus-vamzdziai","https://linoksa.com/lt/82-profiliniai-vamzdziai")
 )

@@ -1,0 +1,69 @@
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :app:mergeLibDexDebug UP-TO-DATE
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:compressDebugAssets
+> Task :app:mergeDebugNativeLibs UP-TO-DATE
+> Task :app:stripDebugDebugSymbols UP-TO-DATE
+> Task :app:validateSigningDebug UP-TO-DATE
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :app:compileDebugKotlin
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/EngineeringTools.kt:678:29 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:97:41 'fun <T : Parcelable!> getParcelableExtra(p0: String!): T?' is deprecated. Deprecated in Java.
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:107:16 'var statusBarColor: Int' is deprecated. Deprecated in Java.
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:108:16 'var navigationBarColor: Int' is deprecated. Deprecated in Java.
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:112:73 'static field SOFT_INPUT_ADJUST_RESIZE: Int' is deprecated. Deprecated in Java.
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:541:25 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:544:21 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:546:21 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:549:25 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:555:25 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:558:21 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:560:21 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:563:25 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:577:25 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:580:21 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:582:21 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:585:25 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:613:21 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:615:21 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:617:21 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:628:21 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+w: file:///C:/Users/gidro/Documents/Codex/2026-11-02/referenced-chatgpt-conversation-this-is-an-2/work/rev0788a/StruKit_Revision_0.788_A/app/src/main/java/com/structkit/app/MainActivity.kt:631:21 'fun quadraticBezierTo(x1: Float, y1: Float, x2: Float, y2: Float): Unit' is deprecated. Use quadraticTo() for consistency with cubicTo().
+
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:dexBuilderDebug
+> Task :app:mergeDebugGlobalSynthetics UP-TO-DATE
+> Task :app:processDebugJavaRes UP-TO-DATE
+> Task :app:mergeDebugJavaResource UP-TO-DATE
+> Task :app:mergeProjectDexDebug
+> Task :app:packageDebug
+> Task :app:createDebugApkListingFileRedirect UP-TO-DATE
+> Task :app:assembleDebug
+
+BUILD SUCCESSFUL in 45s
+35 actionable tasks: 6 executed, 29 up-to-date
